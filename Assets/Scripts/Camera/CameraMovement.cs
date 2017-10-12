@@ -28,6 +28,10 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("Limit of camera movement to the bottom")]
     public float limitBottom;
 
+    [Header("Keyboard controls")]
+    [Tooltip("Enable the keyboard controls")]
+    public bool keyboardControlsEnabled = true;
+
     [Header("Camera zooming")]
     [Tooltip("Enable or disable zooming")]
     bool scrollingEnabled = true;
@@ -58,34 +62,47 @@ public class CameraMovement : MonoBehaviour
         }     
     }
 
-	bool HandleInput()
+	Vector2 GetInput()
 	{
-		// Flag ON if there was an user's input
-		bool key_pressed = false;
+        Vector2 input_out = Vector2.zero;
 
-		// Handle input and move camera
-        if (Input.GetKey(KeyCode.W) || (Input.mousePosition.y >= Screen.height - activeBorderThickness) 
-            && screenControlEnabled) {
-			cameraSpeed.y = cameraSpeed.y < 0f ? 0f : cameraSpeed.y + movementAcceleration;
-			key_pressed = true;
-		}
-        if (Input.GetKey(KeyCode.S) || (Input.mousePosition.y <= activeBorderThickness) 
-            && screenControlEnabled) {
-			cameraSpeed.y = cameraSpeed.y > 0f ? 0f : cameraSpeed.y - movementAcceleration;
-			key_pressed = true;
-		}
-        if (Input.GetKey(KeyCode.D) || (Input.mousePosition.x >= Screen.width - activeBorderThickness) 
-            && screenControlEnabled) {
-			cameraSpeed.x = cameraSpeed.x < 0f ? 0f : cameraSpeed.x + movementAcceleration;
-			key_pressed = true;
-		}
-        if (Input.GetKey(KeyCode.A) || (Input.mousePosition.x <= activeBorderThickness) 
-            && screenControlEnabled) {
-			cameraSpeed.x = cameraSpeed.x > 0f ? 0f : cameraSpeed.x - movementAcceleration;
-			key_pressed = true;
-		}
+        // If the screen handling with mouse is enabled
+        if (screenControlEnabled) {
+			if (Input.mousePosition.y >= Screen.height - activeBorderThickness) {
+				input_out.y += 1;
+			}
+            if (Input.mousePosition.y <= activeBorderThickness) {
+				input_out.y += -1;
+			}
+            if (Input.mousePosition.x >= Screen.width - activeBorderThickness) {
+				input_out.x += 1;
+			}
+			if (Input.mousePosition.x <= activeBorderThickness) {
+				input_out.x += -1;
+			}
+        }
 
-		return key_pressed;
+        // If the keyboard input is enabled
+        if (keyboardControlsEnabled) {
+            if (Input.GetKey(KeyCode.W)) {
+				input_out.y += 1;
+			}
+            if (Input.GetKey(KeyCode.S)) {
+				input_out.y -= 1;
+			}
+            if (Input.GetKey(KeyCode.D)) {
+				input_out.x += 1;
+			}
+            if (Input.GetKey(KeyCode.A)) {
+				input_out.x -= 1;
+			}
+        }
+
+        // Clamp the output to <-1, 1>
+        input_out.x = Mathf.Clamp(input_out.x, -1, 1);
+        input_out.y = Mathf.Clamp(input_out.y, -1, 1);
+        
+        return input_out;
 	}
 
     void RotateCamera() 
@@ -110,30 +127,46 @@ public class CameraMovement : MonoBehaviour
         Vector3 pos = transform.position;
 
         // Handle the input
-        bool key_pressed = HandleInput();
+        Vector2 input = GetInput();
+
+        // Make a fast snappy break
+        if ((cameraSpeed.y < 0 && input.y > 0) || (cameraSpeed.y > 0 && input.y < 0)) {
+            cameraSpeed.y = 0;
+        }
+        if ((cameraSpeed.x < 0 && input.x > 0) || (cameraSpeed.x > 0 && input.x < 0)) {
+			cameraSpeed.x = 0;
+		}
+
+        // Add the input scaled by movement acceleration
+        cameraSpeed += input * movementAcceleration;
+
 
 		// If there was no keypress lower the camera speed
-		if (!key_pressed) {
+		if (input == Vector2.zero) {
 			if (cameraSpeed.magnitude < 0.1) {
 				cameraSpeed = Vector2.zero;                 // If the speed of camera is small, stop the movement
-			}
-			else {
+			} else {
 				cameraSpeed = cameraSpeed * (4f / 5f);      // If the camera wasn't accelerated make it slower 
 			}
 		}
 
         // Clamp the maximum camera speed 
-        cameraSpeed.x = Mathf.Clamp(cameraSpeed.x, -maxMovementSpeed, maxMovementSpeed);
-        cameraSpeed.y = Mathf.Clamp(cameraSpeed.y, -maxMovementSpeed, maxMovementSpeed);
+        cameraSpeed = Vector2.ClampMagnitude(cameraSpeed, maxMovementSpeed);
 
         // Assign the pos
 		pos += new Vector3(cameraSpeed.x, 0f, cameraSpeed.y);
 
-        // Zoom camera
+        // Zoom camera if enabled
         if (scrollingEnabled) {
 			float scroll = Input.GetAxis("Mouse ScrollWheel");
 			pos.y -= scroll * zoomingSpeed * Time.deltaTime;
         }
+
+		// Rotate the camera if enabled
+		if (rotationEnabled)
+		{
+			RotateCamera();
+		}
 
         // Apply limits
         pos.x = Mathf.Clamp(pos.x, limitLeft, limitRight);
@@ -145,9 +178,6 @@ public class CameraMovement : MonoBehaviour
         // Lerp to the target rotation
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * damping);
             
-        // Rotate the camera
-        if (rotationEnabled) {
-            RotateCamera();
-        }
+
     }
 }
