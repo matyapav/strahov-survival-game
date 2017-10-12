@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CameraMovement : MonoBehaviour {
-
+public class CameraMovement : MonoBehaviour 
+{
     [Header("Camera movement")]
     [Tooltip("The maximum speed that the camera can be moving.")]
     public float maxMovementSpeed = 20.0f;
@@ -49,9 +49,10 @@ public class CameraMovement : MonoBehaviour {
     // The camera's current speed
     private Vector2 cameraSpeed = Vector2.zero;
 
+
     private void Start()
     {
-        if(useDefaultCameraHeight)
+        if (useDefaultCameraHeight)
         {
             maxY = Camera.main.transform.position.y;
         }     
@@ -64,26 +65,22 @@ public class CameraMovement : MonoBehaviour {
 
 		// Handle input and move camera
         if (Input.GetKey(KeyCode.W) || (Input.mousePosition.y >= Screen.height - activeBorderThickness) 
-            && screenControlEnabled)
-		{
+            && screenControlEnabled) {
 			cameraSpeed.y = cameraSpeed.y < 0f ? 0f : cameraSpeed.y + movementAcceleration;
 			key_pressed = true;
 		}
         if (Input.GetKey(KeyCode.S) || (Input.mousePosition.y <= activeBorderThickness) 
-            && screenControlEnabled)
-		{
+            && screenControlEnabled) {
 			cameraSpeed.y = cameraSpeed.y > 0f ? 0f : cameraSpeed.y - movementAcceleration;
 			key_pressed = true;
 		}
         if (Input.GetKey(KeyCode.D) || (Input.mousePosition.x >= Screen.width - activeBorderThickness) 
-            && screenControlEnabled)
-		{
+            && screenControlEnabled) {
 			cameraSpeed.x = cameraSpeed.x < 0f ? 0f : cameraSpeed.x + movementAcceleration;
 			key_pressed = true;
 		}
         if (Input.GetKey(KeyCode.A) || (Input.mousePosition.x <= activeBorderThickness) 
-            && screenControlEnabled)
-		{
+            && screenControlEnabled) {
 			cameraSpeed.x = cameraSpeed.x > 0f ? 0f : cameraSpeed.x - movementAcceleration;
 			key_pressed = true;
 		}
@@ -116,14 +113,11 @@ public class CameraMovement : MonoBehaviour {
         bool key_pressed = HandleInput();
 
 		// If there was no keypress lower the camera speed
-		if (!key_pressed)
-		{
-			if (cameraSpeed.magnitude < 0.1)
-			{
+		if (!key_pressed) {
+			if (cameraSpeed.magnitude < 0.1) {
 				cameraSpeed = Vector2.zero;                 // If the speed of camera is small, stop the movement
 			}
-			else
-			{
+			else {
 				cameraSpeed = cameraSpeed * (4f / 5f);      // If the camera wasn't accelerated make it slower 
 			}
 		}
@@ -136,7 +130,7 @@ public class CameraMovement : MonoBehaviour {
 		pos += new Vector3(cameraSpeed.x, 0f, cameraSpeed.y);
 
         // Zoom camera
-        if(scrollingEnabled) {
+        if (scrollingEnabled) {
 			float scroll = Input.GetAxis("Mouse ScrollWheel");
 			pos.y -= scroll * zoomingSpeed * Time.deltaTime;
         }
@@ -152,7 +146,7 @@ public class CameraMovement : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * damping);
             
         // Rotate the camera
-        if(rotationEnabled) {
+        if (rotationEnabled) {
             RotateCamera();
         }
     }
