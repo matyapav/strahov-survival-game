@@ -17,8 +17,10 @@ public class CameraMovement : MonoBehaviour
     [Header("Mouse controls")]
     [Tooltip("Enable the mouse controls")]
     public bool screenControlEnabled = false;
-    [Tooltip ("How thick should be border around corners which triggers camera movement with mouse.")]
-    public float activeBorderThickness = 20f;
+    [Tooltip ("How thick should be border around left and right corners in percentage which triggers camera movement with mouse.")]
+    public float activeBorderThicknessX = 20f;
+    [Tooltip("How thick should be border around top and bottom corners in percentage corners which triggers camera movement with mouse.")]
+    public float activeBorderThicknessY = 20f;
     [Tooltip("Limit of camera movement to the left")]
     public float limitLeft;
     [Tooltip("Limit of camera movement to the right")]
@@ -59,7 +61,9 @@ public class CameraMovement : MonoBehaviour
         if (useDefaultCameraHeight)
         {
             maxY = Camera.main.transform.position.y;
-        }     
+        }
+        activeBorderThicknessY = Screen.height / 100 * activeBorderThicknessY;
+        activeBorderThicknessX = Screen.width / 100 * activeBorderThicknessX;
     }
 
 	Vector2 GetInput()
@@ -68,16 +72,16 @@ public class CameraMovement : MonoBehaviour
 
         // If the screen handling with mouse is enabled
         if (screenControlEnabled) {
-			if (Input.mousePosition.y >= Screen.height - activeBorderThickness) {
+			if (Input.mousePosition.y >= Screen.height - activeBorderThicknessY) {
 				input_out.y += 1;
 			}
-            if (Input.mousePosition.y <= activeBorderThickness) {
+            if (Input.mousePosition.y <= activeBorderThicknessY) {
 				input_out.y += -1;
 			}
-            if (Input.mousePosition.x >= Screen.width - activeBorderThickness) {
+            if (Input.mousePosition.x >= Screen.width - activeBorderThicknessX) {
 				input_out.x += 1;
 			}
-			if (Input.mousePosition.x <= activeBorderThickness) {
+			if (Input.mousePosition.x <= activeBorderThicknessX) {
 				input_out.x += -1;
 			}
         }
@@ -85,7 +89,7 @@ public class CameraMovement : MonoBehaviour
         // If the keyboard input is enabled
         if (keyboardControlsEnabled) {
             if (Input.GetKey(KeyCode.W)) {
-				input_out.y += 1;
+                input_out.y += 1;
 			}
             if (Input.GetKey(KeyCode.S)) {
 				input_out.y -= 1;
