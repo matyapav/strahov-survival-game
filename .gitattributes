@@ -51,3 +51,6 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+Assets/Graphics/buildmenu2.png filter=lfs diff=lfs merge=lfs -text
+Assets/Models/Strahov_concept.blend filter=lfs diff=lfs merge=lfs -text
+Assets/Models/Strahov_concept.fbx filter=lfs diff=lfs merge=lfs -text
