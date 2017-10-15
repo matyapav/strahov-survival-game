@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class TestMultipleChoiceTrigger : MonoBehaviour, IPointerClickHandler {
 
-    public MultipleChoiceController multipleChoice;
+    public GameObject multipleChoicePrefab;
     public Sprite backGroundImage;
     private MultipleChoiceController multipleChoiceControllerInstance;
 
@@ -16,15 +16,17 @@ public class TestMultipleChoiceTrigger : MonoBehaviour, IPointerClickHandler {
 
     private void Start()
     {
-        multipleChoiceControllerInstance = multipleChoice.GetInstance(transform)
-                                                         .SetNumberOfChoices(4)
-                                                         .SetBackgroundImage(backGroundImage)
-                                                         .SetTextToAll("")
-                                                         .SetScale(0.5f, 0.5f);
-        multipleChoiceControllerInstance.onFirstButtonDown += Repair;
-        multipleChoiceControllerInstance.onSecondButtonDown += Move;
-        multipleChoiceControllerInstance.onThirdButtonDown += Upgrade;
-        multipleChoiceControllerInstance.onFourthButtonDown += Destroy;
+        multipleChoiceControllerInstance = multipleChoicePrefab.GetComponent<MultipleChoiceControllerBuilder>()
+                                                               .SetNumberOfChoices(4)
+                                                               .SetBackgroundImageToAllButtons(backGroundImage)
+                                                               .SetBackgroundColorToAllButtons(Color.white)
+                                                               .SetTextToAllButtons("")
+                                                               .SetScale(0.75f, 0.75f)
+                                                               .AddOnFirstButtonDownAction(Repair)
+                                                               .AddOnSecondButtonDownAction(Move)
+                                                               .AddOnThirdButtonDownAction(Upgrade)
+                                                               .AddOnFourthButtonDownAction(Destroy)
+                                                               .Build(transform);
     }
 
     // Update is called once per frame
