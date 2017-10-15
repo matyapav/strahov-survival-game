@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TestMultipleChoiceTrigger : MonoBehaviour, IPointerClickHandler {
+public class TestMultipleChoiceTrigger : MonoBehaviour {
 
     public GameObject multipleChoicePrefab;
     public Sprite backGroundImage;
     private MultipleChoiceController multipleChoiceControllerInstance;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("clicked");
-    }
 
     private void Start()
     {

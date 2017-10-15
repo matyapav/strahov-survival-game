@@ -138,7 +138,7 @@ public class MultipleChoiceControllerBuilder : MonoBehaviour {
                 fourthBackgroundColor = color;
                 break;
             default:
-                //TODO handle default case;
+                Debug.LogError("Wrong button number in set bacground color to button method. Must be betwwen 1-4");
                 break;
         }
         allBackgroundColorsSame = false;
@@ -185,7 +185,7 @@ public class MultipleChoiceControllerBuilder : MonoBehaviour {
                 fourthBackgroundImage = image;
                 break;
             default:
-                //TODO handle default case;
+                Debug.LogError("Wrong button number in set background image to button method. Must be betwwen 1-4");
                 break;
         }
         allBackgrounsSame = false;
@@ -217,7 +217,7 @@ public class MultipleChoiceControllerBuilder : MonoBehaviour {
                 fourthButtonText = text;
                 break;
             default:
-                //TODO handle default case;
+                Debug.LogError("Wrong button number in set text to button method. Must be betwwen 1-4");
                 break;
         }
 
