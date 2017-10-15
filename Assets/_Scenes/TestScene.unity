@@ -313,7 +313,7 @@ MonoBehaviour:
   limitBottom: -43
   keyboardControlsEnabled: 1
   zoomingSpeed: 200
-  minY: 6
+  minY: 15
   maxY: 12
   useDefaultCameraHeight: 1
   rotationEnabled: 1
@@ -382,7 +382,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359900543}
   m_LocalRotation: {x: 0.5689599, y: -0, z: -0, w: 0.8223653}
-  m_LocalPosition: {x: -4.5, y: 20.9, z: -21.6}
+  m_LocalPosition: {x: -4.5, y: 21, z: -21.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
