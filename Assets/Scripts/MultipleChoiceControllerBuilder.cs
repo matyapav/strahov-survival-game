@@ -403,13 +403,12 @@ public class MultipleChoiceControllerBuilder : MonoBehaviour {
 
     private void SetBackgroundColorToAll(Color backgroundColor, GameObject panelVisualization)
     {
-        if (backgroundColor != null)
-        {
+        // if (backgroundColor != null) {
             foreach (Image img in panelVisualization.GetComponentsInChildren<Image>(true))
             {
                 img.color = backgroundColor;
             }
-        }
+        // }
     }
 
     private void SetBackgroundColor(GameObject panelVisualization, Color backgroundColor, int buttonNumber)

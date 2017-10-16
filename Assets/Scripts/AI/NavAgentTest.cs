@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class NavAgentTest : MonoBehaviour {
 
     private NavMeshAgent agent;
+    private GameObject tempObstacle;
+    private RaycastHit hit;
+
     public GameObject obstacle_prefab;
-    GameObject tempObstacle;
 
-    RaycastHit hit;
-
-    float place_rotation = 0f;
+    private float place_rotation = 0f;
 
 	void Start () 
     {
@@ -43,15 +44,16 @@ public class NavAgentTest : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 100)) {
             // If there is a temp obstacle in the scene rotate it
             if (tempObstacle) {
-                tempObstacle.transform.position = hit.point;
-                tempObstacle.transform.rotation = Quaternion.Euler(0, place_rotation, 0);
+                tempObstacle.transform.position = hit.point;                                // Set the position
+                tempObstacle.transform.rotation = Quaternion.Euler(0, place_rotation, 0);   // Set the rotation
             }
 
             // Set the target of the agent with a right click
 			if (Input.GetKeyDown(KeyCode.Mouse1)) {
-                NavMeshPath navMeshPath = new NavMeshPath();
-                agent.CalculatePath(hit.point, navMeshPath);
+                NavMeshPath navMeshPath = new NavMeshPath();    // Create a new navmesh path
+                agent.CalculatePath(hit.point, navMeshPath);    // Calculate the path
 
+                // Check if the path exist
                 if (navMeshPath.status == NavMeshPathStatus.PathComplete) {
                     Debug.Log("Path complete");
                 } else if (navMeshPath.status == NavMeshPathStatus.PathPartial) {
@@ -60,6 +62,7 @@ public class NavAgentTest : MonoBehaviour {
                     Debug.Log("Path invalid");
                 }
 
+                // Assign the path to the agent
                 agent.path = navMeshPath;
 			}
 
