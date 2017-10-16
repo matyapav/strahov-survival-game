@@ -49,7 +49,18 @@ public class NavAgentTest : MonoBehaviour {
 
             // Set the target of the agent with a right click
 			if (Input.GetKeyDown(KeyCode.Mouse1)) {
-				agent.SetDestination(hit.point);
+                NavMeshPath navMeshPath = new NavMeshPath();
+                agent.CalculatePath(hit.point, navMeshPath);
+
+                if (navMeshPath.status == NavMeshPathStatus.PathComplete) {
+                    Debug.Log("Path complete");
+                } else if (navMeshPath.status == NavMeshPathStatus.PathPartial) {
+                    Debug.Log("Path partial");
+                } else if (navMeshPath.status == NavMeshPathStatus.PathInvalid) {
+                    Debug.Log("Path invalid");
+                }
+
+                agent.path = navMeshPath;
 			}
 
         }
