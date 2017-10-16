@@ -13,9 +13,9 @@ public class TestMultipleChoiceTrigger : MonoBehaviour {
     {
         multipleChoiceControllerInstance = multipleChoicePrefab.GetComponent<MultipleChoiceControllerBuilder>()
                                                                .SetNumberOfChoices(4)
-                                                               .SetBackgroundImageToAllButtons(backGroundImage)
+                                                               .SetBackgroundImageToAllButtons(backGroundImage) //TODO nefunguje
                                                                .SetBackgroundColorToAllButtons(Color.white)
-                                                               .SetTextToAllButtons("")
+                                                               .SetTextToAllButtons("AAA")
                                                                .SetScale(0.75f, 0.75f)
                                                                .AddOnFirstButtonDownAction(Repair)
                                                                .AddOnSecondButtonDownAction(Move)

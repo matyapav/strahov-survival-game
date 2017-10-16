@@ -38,7 +38,6 @@ public class MultipleChoiceController : MonoBehaviour
 
     private void OnButtonDown(Button button)
     {
-        //TODO think about hardcoded object names
         switch (button.gameObject.name)
         {
             case "A":
