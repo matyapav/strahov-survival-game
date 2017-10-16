@@ -34,9 +34,34 @@ public class NavAgentSimple : MonoBehaviour {
                     Debug.Log("Path invalid");
                 }
 
-                // Assign the path to the agent
-                agent.path = navMeshPath;
+                // Rotate and the assign
+				StartCoroutine(RotateToTarget(navMeshPath, hit.point));
 			}
         }
+	}
+
+	IEnumerator RotateToTarget(NavMeshPath _navMeshPath, Vector3 _agent_target) {
+		while (AngleToPath(_agent_target) > 5f) {
+			Vector3 targetDir = _agent_target - transform.position;
+			float step = 2f * Time.deltaTime;
+			Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
+			Debug.DrawRay (transform.position, newDir, Color.red);
+			transform.rotation = Quaternion.LookRotation (newDir);
+
+			yield return new WaitForEndOfFrame ();
+		}
+
+		agent.path = _navMeshPath;
+	}
+
+	float AngleToPath(Vector3 _target) {
+		// Get a copy of your forward vector
+		Vector3 forward = transform.forward;
+		Vector3 delta = _target - transform.position;
+
+		forward.y = 0;
+		delta.y = 0;
+
+		return Vector3.Angle(transform.forward, delta);
 	}
 }
