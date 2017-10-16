@@ -41,9 +41,10 @@ public class NavAgentSimple : MonoBehaviour {
 	}
 
 	IEnumerator RotateToTarget(NavMeshPath _navMeshPath, Vector3 _agent_target) {
+		agent.path.ClearCorners ();
 		while (AngleToPath(_agent_target) > 5f) {
 			Vector3 targetDir = _agent_target - transform.position;
-			float step = 2f * Time.deltaTime;
+			float step = 5f * Time.deltaTime;
 			Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
 			Debug.DrawRay (transform.position, newDir, Color.red);
 			transform.rotation = Quaternion.LookRotation (newDir);
