@@ -14,6 +14,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
         // Don’t update position automatically
         agent.updatePosition = false;
     }
@@ -39,8 +40,6 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
         // Update animation parameters
         anim.SetBool("isWalking", shouldMove);
-        GetComponent<LookAt>().lookAtTargetPosition = agent.steeringTarget + transform.forward;
-
     }
 
     void OnAnimatorMove()
