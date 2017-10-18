@@ -6,7 +6,7 @@ git checkout master
 git pull origin master
 git checkout svnsync
 git svn rebase
-git merge --no-ff master
+git merge --no-ff master -m "$msg"
 git commit -m "$msg"
 git svn dcommit
 git checkout master
