@@ -9,3 +9,4 @@ git svn rebase
 git merge --no-ff master
 git commit -m "$msg"
 git svn dcommit
+git checkout master
