@@ -117,7 +117,7 @@ public class CameraMovement : MonoBehaviour
         Vector3 current_rotation = transform.rotation.eulerAngles;
 
 		// Do not rotate around X axis
-		target_rotation.x = current_rotation.x;
+		// target_rotation.x = current_rotation.x;
 
         // The camera damping
         const float damping = 10f;
