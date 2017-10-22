@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyCS : MonoBehaviour
 {
-
+    // On enable add the listener to "subscribe"
     void OnEnable()
     {
         Player.onEnemyHit += Damage;
     }
 
-    void OnDestroy()
+    // On disable unsibscribe
+    void OnDisable()
     {
         Player.onEnemyHit -= Damage;
     }
