@@ -15,7 +15,7 @@ public class TestMultipleChoiceTrigger : MonoBehaviour {
                                                                .SetNumberOfChoices(4)
                                                                .SetBackgroundImageToAllButtons(backGroundImage) //TODO nefunguje
                                                                .SetBackgroundColorToAllButtons(Color.white)
-                                                               .SetTextToAllButtons("AAA")
+                                                               .SetTextToAllButtons("")
                                                                .SetScale(0.75f, 0.75f)
                                                                .AddOnFirstButtonDownAction(Repair)
                                                                .AddOnSecondButtonDownAction(Move)
