@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class MainCanvasManager : MonoBehaviourSingletonPersistent<MainCanvasManager> {
+public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
     public GameObject gamePausedPanel;
 
