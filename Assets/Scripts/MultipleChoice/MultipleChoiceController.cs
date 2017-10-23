@@ -73,6 +73,7 @@ public class MultipleChoiceController : MonoBehaviour
     /// <param name="position"></param>
     public void ShowPanel(Vector3 position)
     {
+        Debug.Log("showing panel");
         TogglePanel(true, Camera.main.WorldToScreenPoint(position));
         worldPos = position;
     }

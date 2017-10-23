@@ -28,7 +28,7 @@ public class TestMultipleChoiceTrigger : MonoBehaviour {
     void Update () {
         if (Input.GetMouseButtonDown(0)){
             RaycastHit hit;
-            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f))
+            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
                 if (hit.collider.gameObject.name.Equals(gameObject.name)) { //hit only this cube
                     multipleChoiceControllerInstance.ShowPanel(transform.position);
