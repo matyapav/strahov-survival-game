@@ -3,48 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MainSettings : MonoBehaviour {
-
-    #region Singleton Instance definition
-    private static bool applicationIsQuitting = false;
-    private static object _lock = new object();
-    private static MainSettings _instance;
-    public static MainSettings Instance
-    {
-        get
-        {
-            if (applicationIsQuitting)
-            {
-                return null;
-            }
-
-            lock (_lock)
-            {
-                if (_instance == null)
-                {
-                    GameObject go = new GameObject("Main Settings Singleton");
-                    go.AddComponent<MainSettings>();
-                    DontDestroyOnLoad(go);
-                }
-            }
-
-            return _instance;
-        }
-    }
-
-    void Awake()
-    {
-        _instance = this;
-    }
-
-    public void OnDestroy()
-    {
-        applicationIsQuitting = true;
-    }
-    #endregion
-
+public class MainSettings : MonoBehaviourSingletonPersistent<MainSettings> {
+    
     #region Events
     public UnityEvent SwitchDayPhaseEvent;
+
+    private void OnEnable() {
+        SwitchDayPhaseEvent.AddListener(SwitchPhase);
+    }
+
+    private void OnDisable() {
+        SwitchDayPhaseEvent.RemoveListener(SwitchPhase);
+    }
     #endregion
 
     // The current phas of the game
@@ -75,8 +45,13 @@ public class MainSettings : MonoBehaviour {
         }
     }
 
+    // Event listener for void event
+    private void SwitchPhase() {
+        NextPhase();
+    }
+
     // Continues to the next phase and returns it
-    public DayPhase NextPhase() {
+    private DayPhase NextPhase() {
         if(currentDayPhase == DayPhase.Day) {
             _currentDayPhase = DayPhase.Night;
         }
@@ -86,7 +61,5 @@ public class MainSettings : MonoBehaviour {
 
         return _currentDayPhase;
     }
-
-
 
 }

@@ -4,45 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class MainCanvasManager : MonoBehaviour {
+public class MainCanvasManager : MonoBehaviourSingletonPersistent<MainCanvasManager> {
 
     public GameObject gamePausedPanel;
-
-	#region Singleton Instance definition
-	private static bool applicationIsQuitting = false;
-	private static object _lock = new object();
-	private static MainCanvasManager _instance;
-	public static MainCanvasManager Instance
-	{
-		get
-		{
-			if (applicationIsQuitting)
-			{
-				return null;
-			}
-
-			lock (_lock)
-			{
-				if (_instance == null)
-				{
-					GameObject go = new GameObject("Main Canvas Manager");
-					go.AddComponent<MainCanvasManager>();
-					DontDestroyOnLoad(go);
-				}
-			}
-
-			return _instance;
-		}
-	}
-		
-	void Awake() {
-		_instance = this;
-	}
-		
-	public void OnDestroy() {
-		applicationIsQuitting = true;
-	}
-	#endregion
 
     public UnityEvent PauseAction;
     public UnityEvent ResumeAction;
