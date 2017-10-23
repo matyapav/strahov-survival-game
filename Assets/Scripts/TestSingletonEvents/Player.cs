@@ -31,6 +31,18 @@ public class Player : MonoBehaviour
             return _instance;
         }
     }
+
+	// On Awake set the instance to the local variable
+	void Awake()
+	{
+		_instance = this;
+	}
+
+	// When exiting the singleton, set the bool to false so the Instance returns null
+	public void OnDestroy()
+	{
+		applicationIsQuitting = true;
+	}
     #endregion
 
     // The c# style of events
@@ -40,11 +52,7 @@ public class Player : MonoBehaviour
     // The Unity style of events
     public MyColorEvent m_MyEvent;                      // Can predefined out of runtime
 
-    // Singleton stuff
-    void Awake()
-    {
-        _instance = this;
-    }
+
 
     // Unity style Events must be Initialised
     void OnEnable()
@@ -67,11 +75,5 @@ public class Player : MonoBehaviour
             m_MyEvent.Invoke(new Color(Random.value, Random.value, Random.value));
         }
     }
-
-    // When exiting the singleton, set the bool to false so the Instance returns null
-    public void OnDestroy()
-    {
-        Debug.Log("Sigleton gets destroyed");
-        applicationIsQuitting = true;
-    }
+		
 }

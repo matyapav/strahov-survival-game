@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 12fc65d1bce8045538f6a96824e7dfd9
+timeCreated: 1508749403
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TeX Gyre Adventor
+  fontNames:
+  - TeX Gyre Adventor
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
