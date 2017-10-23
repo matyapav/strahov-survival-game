@@ -216,8 +216,8 @@ Transform:
   m_LocalPosition: {x: 22.76, y: 35.1, z: 24.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1802794720}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 34.024002, y: -146.19101, z: -180.44499}
 --- !u!1001 &160404953
 Prefab:
@@ -256,7 +256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4364580237418610, guid: ad5ef2988a18ba846baf77a504c705cc, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1761817452528154, guid: ad5ef2988a18ba846baf77a504c705cc, type: 2}
       propertyPath: m_IsActive
@@ -360,7 +360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217737267
 GameObject:
@@ -971,7 +971,7 @@ Transform:
   m_LocalScale: {x: 4.0929017, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034096842
 GameObject:
@@ -1451,6 +1451,27 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  GamePauseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034096842}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  GameResumeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1405893057
 Transform:
   m_ObjectHideFlags: 0
@@ -1559,7 +1580,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802794719
 GameObject:
@@ -1588,6 +1609,7 @@ Transform:
   m_Children:
   - {fileID: 773399685}
   - {fileID: 440576165}
+  - {fileID: 41384540}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1700,27 +1722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePausedPanel: {fileID: 1034096842}
-  PauseAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1034096842}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  ResumeAction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1 &1973749240
 GameObject:
   m_ObjectHideFlags: 0

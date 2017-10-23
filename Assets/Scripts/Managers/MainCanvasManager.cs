@@ -8,26 +8,23 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
     public GameObject gamePausedPanel;
 
-    public UnityEvent PauseAction;
-    public UnityEvent ResumeAction;
-
     private void OnEnable()
     {
-        PauseAction.AddListener(PauseGame);
-        ResumeAction.AddListener(ResumeGame);
+        MainEventManager.Instance.GamePauseEvent.AddListener(PauseGame);
+        MainEventManager.Instance.GameResumeEvent.AddListener(ResumeGame);
     }
 
     private void OnDisable()
     {
-        PauseAction.RemoveListener(PauseGame);
-        ResumeAction.RemoveListener(ResumeGame);
+        MainEventManager.Instance.GamePauseEvent.RemoveListener(PauseGame);
+        MainEventManager.Instance.GameResumeEvent.RemoveListener(ResumeGame);
     }
 
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (gamePausedPanel != null && gamePausedPanel.activeSelf != true) {
-                PauseAction.Invoke();
+                MainEventManager.Instance.PauseGameEventInvoke();
             }
         }
 	}
