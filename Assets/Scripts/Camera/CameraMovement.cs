@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     [Header("Camera movement")]
     [Tooltip("The maximum speed that the camera can be moving.")]
     public float maxMovementSpeed = 20.0f;
-	[Tooltip("How fast will the movement of the camera change."), Range(0, 1)]
+	[Tooltip("How fast will the movement of the camera change."), Range(0, 2)]
 	public float movementAcceleration = 0.01f;
     [Tooltip("Number <0, 1> that sets the speed of the camera's movement slowing."), Range(0, 1)]
     public float movementSlowing = 0.8f;
