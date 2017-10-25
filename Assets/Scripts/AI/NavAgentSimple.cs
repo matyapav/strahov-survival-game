@@ -35,7 +35,7 @@ public class NavAgentSimple : MonoBehaviour {
 
     // the commented code serves the player. The code above is for ai
 
-    /*void Update () 
+    void Update () 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -86,5 +86,5 @@ public class NavAgentSimple : MonoBehaviour {
 		delta.y = 0;
 
 		return Vector3.Angle(transform.forward, delta);
-	}*/
+	}
 }
