@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,12 +9,33 @@ public class NavAgentSimple : MonoBehaviour {
 
     private NavMeshAgent agent;
 
+    [SerializeField]
+    private Transform destination;
+    
 	void Start () 
     {
+        //agent = GetComponent<NavMeshAgent>();
         agent = GetComponent<NavMeshAgent>();
-	}
-	
-	void Update () 
+
+        if (agent != null)
+        {
+            SetDestination();
+        }
+    }
+
+    private void SetDestination()
+    {
+        if (destination != null)
+        {
+            Vector3 target = destination.transform.position;
+            agent.SetDestination(target);
+        }
+    }
+
+
+    // the commented code serves the player. The code above is for ai
+
+    /*void Update () 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -64,5 +86,5 @@ public class NavAgentSimple : MonoBehaviour {
 		delta.y = 0;
 
 		return Vector3.Angle(transform.forward, delta);
-	}
+	}*/
 }
