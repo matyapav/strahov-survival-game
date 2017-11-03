@@ -6,39 +6,42 @@ using UnityEngine.UI;
 
 public class BarController : MonoBehaviour {
 
-    [System.Serializable]
-    public class ValueEvent : UnityEvent { }
+    public BarListController barListController;
 
     [Tooltip("Bar name text component")]
     public Text barNameText;
     [Tooltip("Bar rendering image")]
     public Image barValueImage;
+    [Tooltip("After how many seconds without any change should the bar hide.")]
+    public float secondsToHide = 3f;
 
-    [Tooltip("Called after rendering new value into bar")]
-    public ValueEvent onValueChanged;
-    [Tooltip("Called after value reaches its minimum")]
-    public ValueEvent onMinimumReached;
 
     public delegate void OnMinimumReached();
 
-    public string barName;
-    [Tooltip("Value at the beginning, must be between max value and min value")]
-    public float startValue;
-    [Tooltip("Check this if you want ot start at maximum value.")]
-    public bool startAtMaximum;
-    public float maxValue;
-    public float minValue;
-
+    private string barName;
+    private float maxValue;
+    private float minValue;
     private float currentValue;
 
     private void Start()
     {
-        if (startAtMaximum)
-        {
-            startValue = maxValue;
-        }
-        SetValue(startValue);
         barNameText.text = barName;
+    }
+
+    public void SetMaxValue(float maxVal)
+    {
+        this.maxValue = maxVal;
+    }
+
+    public void SetMinValue(float minVal)
+    {
+        this.minValue = minVal;
+    }
+
+    public void SetValue(float newValue)
+    {
+        currentValue = newValue;
+        RenderValue();
     }
 
     public void SetBarName(string text)
@@ -47,57 +50,48 @@ public class BarController : MonoBehaviour {
         barNameText.text = text;
     }
 
-    public void SetValue(float newValue)
-    {
-        if(newValue < minValue)        {
-            currentValue = minValue;
-            onMinimumReached.Invoke();
-        }
-        else if (newValue > maxValue)
-        {
-            currentValue = maxValue;
-        }
-        else
-        {
-            currentValue = newValue;
-        }
-        RenderValue();
-    }
-
-    public void DescreaseValue(float decrement)
-    {
-        if (currentValue - decrement < minValue)
-        {
-            currentValue = minValue;
-            onMinimumReached.Invoke();
-        }
-        else
-        {
-            currentValue -= decrement;
-
-        }
-        RenderValue();
-    }
-
-    public void IncreaseValue(float incremet)
-    {
-        if (currentValue + incremet > maxValue)
-        {
-            currentValue = maxValue;
-        } else
-        {
-            currentValue += incremet;
-        }
-        RenderValue();
-    }
-
     private void RenderValue()
     {
         float fillAmount = currentValue / maxValue;
         fillAmount = fillAmount > 1f ? 1f : fillAmount;
         fillAmount = fillAmount < 0f ? 0f : fillAmount;
         barValueImage.fillAmount = fillAmount;
-        onValueChanged.Invoke();
+    }
+
+    public void EnableBar(string message = null)
+    {
+        CancelInvoke("DisableBar");
+        if (!IsEnabled())
+        {
+            this.gameObject.SetActive(true);
+            this.gameObject.GetComponent<Animator>().SetBool("active", true);
+            barListController.RecalculateHeight();
+            if(message != null && barListController.msgController != null)
+            {
+                barListController.msgController.AddMessage(message, 2f);
+            }
+        }
+        Invoke("DisableBar", secondsToHide);
+    }
+
+    public void DisableBar()
+    {
+        if (IsEnabled()) { 
+            this.gameObject.GetComponent<Animator>().SetBool("active", false);
+            StartCoroutine(DisableBarAfterSeconds(this.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length));
+        }
+    }
+
+    private IEnumerator DisableBarAfterSeconds(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        this.gameObject.SetActive(false);
+        barListController.RecalculateHeight();
+    }
+
+    private bool IsEnabled()
+    {
+        return this.gameObject.activeInHierarchy;
     }
 
 }

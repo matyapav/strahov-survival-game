@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.11764705, g: 0.11764705, b: 0.11764705, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -280,23 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0874538c62a1adf418b8aecdf7e1fbd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barListController: {fileID: 0}
   barNameText: {fileID: 114695342818065742}
   barValueImage: {fileID: 114543585342144992}
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: BarController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onMinimumReached:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: BarController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  barName: Block 1
-  startValue: 100
-  startAtMaximum: 0
-  maxValue: 100
-  minValue: 0
+  secondsToHide: 3
 --- !u!222 &222118813794417384
 CanvasRenderer:
   m_ObjectHideFlags: 1
