@@ -161,13 +161,18 @@ public class CameraMovement : MonoBehaviour
 		pos += new Vector3(cameraSpeed.x, 0f, cameraSpeed.y);
 
         // Zoom camera if enabled
-        if (scrollingEnabled) {
-			float scroll = Input.GetAxis("Mouse ScrollWheel");
-			pos.y -= scroll * zoomingSpeed * Time.deltaTime;
+        if (scrollingEnabled)
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            //pos.y -= scroll * zoomingSpeed * Time.deltaTime;
+            Vector3 deltaPos = transform.forward * scroll * zoomingSpeed * Time.deltaTime;
+            if(pos.y + deltaPos.y >= minY && pos.y + deltaPos.y <= maxY) {
+                pos += deltaPos;
+            }
         }
 
-		// Rotate the camera if enabled
-		if (rotationEnabled)
+        // Rotate the camera if enabled
+        if (rotationEnabled)
 		{
 			RotateCamera();
 		}
@@ -181,7 +186,8 @@ public class CameraMovement : MonoBehaviour
 
         // Lerp to the target rotation
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * damping);
-            
+
+      
 
     }
 }

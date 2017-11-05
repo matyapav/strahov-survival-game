@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 95266724211736900}
   - component: {fileID: 114579613001558178}
   - component: {fileID: 114710670699968618}
+  - component: {fileID: 65648035641270912}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -736,7 +737,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272899712345456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9883854, y: 0.03, z: -2.0785375}
+  m_LocalPosition: {x: -42.186756, y: -16.010218, z: 79.691734}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4855590429185488}
@@ -1147,6 +1148,18 @@ Transform:
   m_Father: {fileID: 4803067376357400}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65648035641270912
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272899712345456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5446377, y: 1.7880654, z: 1}
+  m_Center: {x: 0.008187294, y: 0.8828614, z: 0}
 --- !u!95 &95266724211736900
 Animator:
   serializedVersion: 3
@@ -1175,8 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582aad3c095e54e70ba1d47286fb4861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle_prefab: {fileID: 1702146487033730, guid: 402a1aa61b6b8426d892b20051ced6f7,
-    type: 2}
+  destination: {fileID: 0}
 --- !u!114 &114710670699968618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1274,4 +1286,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3

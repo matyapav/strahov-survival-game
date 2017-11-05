@@ -31,7 +31,18 @@ public class NavAgentSimple : MonoBehaviour {
         {
             Vector3 target = destination.transform.position;
             agent.SetDestination(target);
+            Debug.Log(target);
         }
+    }
+
+    public void SetDestination(Transform target)
+    {
+       /* if(agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }*/
+        destination = target;
+        //agent.SetDestination(target.position);
     }
 
     /*private void Test()
