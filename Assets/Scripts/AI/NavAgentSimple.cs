@@ -10,39 +10,37 @@ public class NavAgentSimple : MonoBehaviour {
     private NavMeshAgent agent;
 
     [SerializeField]
-    private Transform destination;
-    
-	void Start () 
-    {
-        //agent = GetComponent<NavMeshAgent>();
-        agent = GetComponent<NavMeshAgent>();
+    private GameObject destination;
 
-
-        if (agent != null)
-        {
-            SetDestination();
-            //Test();
-        }
-    }
+    private bool destinationChanged = false;
 
     private void SetDestination()
     {
         if (destination != null)
         {
+            if (agent == null)
+            {
+                agent = GetComponent<NavMeshAgent>();
+            }
             Vector3 target = destination.transform.position;
+           
             agent.SetDestination(target);
-            Debug.Log(target);
         }
     }
 
     public void SetDestination(Transform target)
     {
-       /* if(agent == null)
+        destination = target.gameObject;
+        destinationChanged = true;
+    }
+
+    private void Update()
+    {
+        if (destinationChanged)
         {
-            agent = GetComponent<NavMeshAgent>();
-        }*/
-        destination = target;
-        //agent.SetDestination(target.position);
+            SetDestination();
+            destinationChanged = false;
+        }
     }
 
     /*private void Test()
@@ -57,7 +55,7 @@ public class NavAgentSimple : MonoBehaviour {
 
     // the commented code serves the player. The code above is for ai
 
-    void Update () 
+    /*void Update () 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -82,9 +80,9 @@ public class NavAgentSimple : MonoBehaviour {
 				StartCoroutine(RotateToTarget(navMeshPath, hit.point));
 			}
         }
-	}
+	}*/
 
-	IEnumerator RotateToTarget(NavMeshPath _navMeshPath, Vector3 _agent_target) {
+    IEnumerator RotateToTarget(NavMeshPath _navMeshPath, Vector3 _agent_target) {
 		agent.path.ClearCorners ();
 		while (AngleToPath(_agent_target) > 5f) {
 			Vector3 targetDir = _agent_target - transform.position;

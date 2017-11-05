@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class BusSpawner : MonoBehaviour {
 
+    public int busNumber;
     public GameObject ZombiePrefab;
     public int numberOfZombies = 10;
     public MainObjectManager mom;
     private Animator animator;
     private MessageController messageController;
+    private float timeBetweenSpawns = 0.75f;
+
+    public delegate void OnBusLeaving();
+    public OnBusLeaving onBusLeaving;
 
     private void Start()
     {
@@ -19,30 +24,34 @@ public class BusSpawner : MonoBehaviour {
 
     public void Arrive()
     {
-        animator.SetBool("active", true);
-        messageController.AddMessage("Prepare yourself! Bus n. 149 is arriving!!!", 6f, Color.green);
+        animator.SetBool(animator.GetParameter(0).name, true);
+        messageController.AddMessage("Prepare yourself! Bus n. "+ busNumber +" is arriving!!!", 6f, Color.green);
     }
 
     public void Leave()
     {
-        animator.SetBool("active", false);
+        animator.SetBool(animator.GetParameter(0).name, false);
+        onBusLeaving.Invoke();
     }
 
     public void SpawnWave () {
         for (int i = 0; i < numberOfZombies; i++) {
-            SpawnZombie();
+            Invoke("SpawnZombie", i* timeBetweenSpawns);
         }
+        Invoke("Leave", (numberOfZombies + 1) * timeBetweenSpawns);
     }
 
     private void SpawnZombie()
     {
         Transform target = randomTargetFromTargets();
-        ZombiePrefab.GetComponent<NavAgentSimple>().SetDestination(target);
-        Instantiate(ZombiePrefab, transform.position, Quaternion.identity);
+        GameObject zombie = (GameObject) Instantiate(ZombiePrefab, transform.position, Quaternion.identity);
+        zombie.GetComponent<NavAgentSimple>().SetDestination(target);
+
     }
 
     private Transform randomTargetFromTargets()
     {
-        return mom.bloky[UnityEngine.Random.Range(0, mom.bloky.Length)].transform;
+        //TODO remove get child 0 once pivots on buidings are in the right place
+        return mom.bloky[UnityEngine.Random.Range(0, mom.bloky.Length)].transform.GetChild(0);
     }
 }

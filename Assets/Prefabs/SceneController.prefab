@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4527191141995680}
   - component: {fileID: 114699383604780398}
+  - component: {fileID: 114797709273650692}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -55,3 +56,17 @@ MonoBehaviour:
   maxNumberOfMessages: 3
   messagePrefab: {fileID: 1827479993978140, guid: 608736aca514f8943af30e5668c59dad,
     type: 2}
+--- !u!114 &114797709273650692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb1c95b0e354b1448325c312ec179e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buses:
+  - {fileID: 0}
+  - {fileID: 0}
