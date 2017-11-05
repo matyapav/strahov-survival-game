@@ -33,6 +33,29 @@ ModelImporter:
     100050: Budovy_019
     100052: Budovy_020
     100054: Budovy_021
+    100056: BlackMarket
+    100058: Blok1
+    100060: Blok10
+    100062: Blok11_12
+    100064: Blok2
+    100066: Blok3
+    100068: Blok4
+    100070: Blok5
+    100072: Blok6
+    100074: Blok7
+    100076: Blok8
+    100078: Blok9
+    100080: Menza
+    100082: Nemocnice_Main
+    100084: Nemocnice_Trafo
+    100086: Posta
+    100088: Print
+    100090: SkoliciStredisko_Left
+    100092: SkoliciStredisko_Main
+    100094: SkoliciStredisko_Right
+    100096: Street_Main
+    100098: Street_Others
+    100100: Sphere
     400000: Budovy
     400002: Hradby
     400004: Hriste
@@ -61,6 +84,29 @@ ModelImporter:
     400050: Budovy_019
     400052: Budovy_020
     400054: Budovy_021
+    400056: BlackMarket
+    400058: Blok1
+    400060: Blok10
+    400062: Blok11_12
+    400064: Blok2
+    400066: Blok3
+    400068: Blok4
+    400070: Blok5
+    400072: Blok6
+    400074: Blok7
+    400076: Blok8
+    400078: Blok9
+    400080: Menza
+    400082: Nemocnice_Main
+    400084: Nemocnice_Trafo
+    400086: Posta
+    400088: Print
+    400090: SkoliciStredisko_Left
+    400092: SkoliciStredisko_Main
+    400094: SkoliciStredisko_Right
+    400096: Street_Main
+    400098: Street_Others
+    400100: Sphere
     2300000: Budovy
     2300002: Hradby
     2300004: Hriste
@@ -88,6 +134,29 @@ ModelImporter:
     2300048: Budovy_019
     2300050: Budovy_020
     2300052: Budovy_021
+    2300054: BlackMarket
+    2300056: Blok1
+    2300058: Blok10
+    2300060: Blok11_12
+    2300062: Blok2
+    2300064: Blok3
+    2300066: Blok4
+    2300068: Blok5
+    2300070: Blok6
+    2300072: Blok7
+    2300074: Blok8
+    2300076: Blok9
+    2300078: Menza
+    2300080: Nemocnice_Main
+    2300082: Nemocnice_Trafo
+    2300084: Posta
+    2300086: Print
+    2300088: SkoliciStredisko_Left
+    2300090: SkoliciStredisko_Main
+    2300092: SkoliciStredisko_Right
+    2300094: Street_Main
+    2300096: Street_Others
+    2300098: Sphere
     3300000: Budovy
     3300002: Hradby
     3300004: Hriste
@@ -115,6 +184,29 @@ ModelImporter:
     3300048: Budovy_019
     3300050: Budovy_020
     3300052: Budovy_021
+    3300054: BlackMarket
+    3300056: Blok1
+    3300058: Blok10
+    3300060: Blok11_12
+    3300062: Blok2
+    3300064: Blok3
+    3300066: Blok4
+    3300068: Blok5
+    3300070: Blok6
+    3300072: Blok7
+    3300074: Blok8
+    3300076: Blok9
+    3300078: Menza
+    3300080: Nemocnice_Main
+    3300082: Nemocnice_Trafo
+    3300084: Posta
+    3300086: Print
+    3300088: SkoliciStredisko_Left
+    3300090: SkoliciStredisko_Main
+    3300092: SkoliciStredisko_Right
+    3300094: Street_Main
+    3300096: Street_Others
+    3300098: Sphere
     4300000: Hradby
     4300002: Hriste
     4300004: Street_others
@@ -142,6 +234,29 @@ ModelImporter:
     4300048: Budovy_003
     4300050: Budovy_002
     4300052: Budovy_001
+    4300054: Menza
+    4300056: Nemocnice_Trafo
+    4300058: Nemocnice_Main
+    4300060: Print
+    4300062: Posta
+    4300064: Blok5
+    4300066: Blok6
+    4300068: Blok7
+    4300070: SkoliciStredisko_Right
+    4300072: SkoliciStredisko_Left
+    4300074: SkoliciStredisko_Main
+    4300076: BlackMarket
+    4300078: Blok11_12
+    4300080: Blok10
+    4300082: Blok9
+    4300084: Blok8
+    4300086: Blok4
+    4300088: Blok3
+    4300090: Blok2
+    4300092: Blok1
+    4300094: Street_Others
+    4300096: Street_Main
+    4300098: Sphere
     7400000: Default Take
     9500000: //RootNode
   materials:
