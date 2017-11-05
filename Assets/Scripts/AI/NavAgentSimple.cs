@@ -17,9 +17,11 @@ public class NavAgentSimple : MonoBehaviour {
         //agent = GetComponent<NavMeshAgent>();
         agent = GetComponent<NavMeshAgent>();
 
+
         if (agent != null)
         {
             SetDestination();
+            //Test();
         }
     }
 
@@ -31,6 +33,15 @@ public class NavAgentSimple : MonoBehaviour {
             agent.SetDestination(target);
         }
     }
+
+    /*private void Test()
+    {
+        GameObject[] hinges = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        foreach (GameObject hinge in hinges)
+        {
+            Debug.Log(hinge.name);
+        }
+    }*/
 
 
     // the commented code serves the player. The code above is for ai
