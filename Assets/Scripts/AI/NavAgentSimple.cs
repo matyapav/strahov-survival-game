@@ -35,6 +35,7 @@ public class NavAgentSimple : MonoBehaviour {
         }
     }
 
+<<<<<<< 6dc419d6e922fce00ee024e79a7456acda5604f4
     public void SetDestination(Transform target)
     {
        /* if(agent == null)
@@ -45,6 +46,8 @@ public class NavAgentSimple : MonoBehaviour {
         //agent.SetDestination(target.position);
     }
 
+=======
+>>>>>>> create cude as zombie in mainscene
     /*private void Test()
     {
         GameObject[] hinges = FindObjectsOfType(typeof(GameObject)) as GameObject[];
