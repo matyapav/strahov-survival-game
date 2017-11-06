@@ -66,9 +66,9 @@ public class BarController : MonoBehaviour {
             this.gameObject.SetActive(true);
             this.gameObject.GetComponent<Animator>().SetBool("active", true);
             barListController.RecalculateHeight();
-            if(message != null && barListController.msgController != null)
+            if(message != null)
             {
-                barListController.msgController.AddMessage(message, 2f);
+                MessageController.Instance.AddMessage(message, 2f);
             }
         }
         Invoke("DisableBar", secondsToHide);

@@ -8,9 +8,7 @@ public class BusSpawner : MonoBehaviour {
     public int busNumber;
     public GameObject ZombiePrefab;
     public int numberOfZombies = 10;
-    public MainObjectManager mom;
     private Animator animator;
-    private MessageController messageController;
     private float timeBetweenSpawns = 0.75f;
 
     public delegate void OnBusLeaving();
@@ -19,13 +17,12 @@ public class BusSpawner : MonoBehaviour {
     private void Start()
     {
         animator = GetComponent<Animator>();
-        messageController = GameObject.Find("SceneController").GetComponent<MessageController>();
     }
 
     public void Arrive()
     {
         animator.SetBool(animator.GetParameter(0).name, true);
-        messageController.AddMessage("Prepare yourself! Bus n. "+ busNumber +" is arriving!!!", 6f, Color.green);
+        MessageController.Instance.AddMessage("Prepare yourself! Bus n. "+ busNumber +" is arriving!!!", 6f, Color.green);
     }
 
     public void Leave()
@@ -51,7 +48,6 @@ public class BusSpawner : MonoBehaviour {
 
     private Transform randomTargetFromTargets()
     {
-        //TODO remove get child 0 once pivots on buidings are in the right place
-        return mom.bloky[UnityEngine.Random.Range(0, mom.bloky.Length)].transform.GetChild(0);
+        return MainObjectManager.Instance.bloky[UnityEngine.Random.Range(0, MainObjectManager.Instance.bloky.Length)].transform.GetChild(0);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //TODO make this somehow static?
-public class MessageController : MonoBehaviour {
+public class MessageController : MonoBehaviourSingleton<MessageController> {
 
     public Transform messageList;
     public int maxNumberOfMessages = 3;

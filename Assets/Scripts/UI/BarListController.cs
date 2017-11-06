@@ -8,18 +8,11 @@ using UnityEngine.UI;
 public class BarListController : MonoBehaviour {
 
     private float spacing;
-    private MessageController messageController;
-    public MessageController msgController {
-        get {
-           return messageController;
-        }
-    }
 
     private void Start()
     {
         RecalculateHeight();
         spacing = GetComponent<VerticalLayoutGroup>().spacing;
-        messageController = GameObject.Find("SceneController").GetComponent<MessageController>();
     }
 
     public void RecalculateHeight()

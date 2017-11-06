@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4527191141995680}
   - component: {fileID: 114699383604780398}
   - component: {fileID: 114797709273650692}
+  - component: {fileID: 114347083957288152}
+  - component: {fileID: 114259548158995310}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -41,6 +43,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114259548158995310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183b4dbed82d9d4697d0e52ff47fb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyText: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CurrencyController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  startValue: 15000
+  minValue: 0
+--- !u!114 &114347083957288152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899f58e13c2b2405f8f3c57ca872fe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114699383604780398
 MonoBehaviour:
   m_ObjectHideFlags: 1
