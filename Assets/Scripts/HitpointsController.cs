@@ -26,8 +26,11 @@ public class HitpointsController : MonoBehaviour {
     private void Start()
     {
         //setup bar controller
-        hpBar.SetMaxValue(maxValue);
-        hpBar.SetMinValue(minValue);
+        if(hpBar != null)
+        { 
+            hpBar.SetMaxValue(maxValue);
+            hpBar.SetMinValue(minValue);
+        }
 
         if (startAtMaximum)
         {
@@ -97,14 +100,20 @@ public class HitpointsController : MonoBehaviour {
 
     private void OnValueChanged(bool minimumReached)
     {
-        hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
-        hpBar.SetValue(currentValue);
+        if(hpBar != null)
+        { 
+            hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
+            hpBar.SetValue(currentValue);
+        }
         onValueChanged.Invoke();
         if (minimumReached)
         {
             onMinimumReached.Invoke();
-            hpBar.DisableBar();
-            hpBar = null;
+            if(hpBar != null)
+            { 
+                hpBar.DisableBar();
+                hpBar = null;
+            }
         }
     }
 }

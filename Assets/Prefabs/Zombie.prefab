@@ -1158,8 +1158,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5446377, y: 1.7880654, z: 1}
-  m_Center: {x: 0.008187294, y: 0.8828614, z: 0}
+  m_Size: {x: 1.0546675, y: 1.7880654, z: 1}
+  m_Center: {x: 0.044019222, y: 0.8828614, z: 0}
 --- !u!95 &95266724211736900
 Animator:
   serializedVersion: 3
@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582aad3c095e54e70ba1d47286fb4861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destination: {fileID: 0}
 --- !u!114 &114710670699968618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1285,4 +1286,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
+  m_ObstacleAvoidanceType: 4
