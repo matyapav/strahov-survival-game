@@ -5,7 +5,7 @@ using UnityEngine;
 public class Blok : MonoBehaviour {
 
     
-    public string name = "BlokX";
+    public string blockName = "BlokX";
 
     private HitpointsController hpControl;
     private MessageController messageController;
@@ -13,7 +13,7 @@ public class Blok : MonoBehaviour {
     private void Start()
     {
         hpControl = GetComponent<HitpointsController>();
-        hpControl.hpBar.SetBarName(name);
+        hpControl.hpBar.SetBarName(blockName);
         hpControl.onMinimumReached += DestroyBlok;
         messageController = GameObject.Find("SceneController").GetComponent<MessageController>(); 
     }
@@ -38,7 +38,7 @@ public class Blok : MonoBehaviour {
     public void DestroyBlok()
     {
         gameObject.SetActive(false);
-        messageController.AddMessage(name + " was destroyed!!!", 2f, Color.cyan);
+        messageController.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
     }
 
 }

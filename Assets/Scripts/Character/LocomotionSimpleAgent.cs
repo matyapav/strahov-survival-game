@@ -48,6 +48,10 @@ public class LocomotionSimpleAgent : MonoBehaviour
 	void OnAnimatorMove() 
 	{
 		// Move the transform
+        if(agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
 		transform.position = agent.nextPosition;
 	}
 

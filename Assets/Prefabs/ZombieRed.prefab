@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 114710670699968618}
   - component: {fileID: 65648035641270912}
   m_Layer: 0
-  m_Name: Zombie
+  m_Name: ZombieRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,7 +737,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272899712345456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.8, y: 0, z: 100}
+  m_LocalPosition: {x: -52.222874, y: -9.64126e-16, z: 67.92038}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4855590429185488}
@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582aad3c095e54e70ba1d47286fb4861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destination: {fileID: 0}
 --- !u!114 &114710670699968618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1212,7 +1213,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 09445f266d71d449cb54b53f3f567dba, type: 2}
+  - {fileID: 2100000, guid: 3a5d70d5e6cbbb64dbad52fc394210c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
