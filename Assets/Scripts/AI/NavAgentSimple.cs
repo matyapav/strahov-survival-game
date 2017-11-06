@@ -35,7 +35,10 @@ public class NavAgentSimple : MonoBehaviour {
         }
     }
 
+<<<<<<< b0bd6616d4fcf5cb765f47b6348235b91d23b82b
 <<<<<<< 6dc419d6e922fce00ee024e79a7456acda5604f4
+=======
+>>>>>>> added placeholder for bus + animations and dummy wave spawn (setting destination not working yet
     public void SetDestination(Transform target)
     {
        /* if(agent == null)
@@ -46,8 +49,11 @@ public class NavAgentSimple : MonoBehaviour {
         //agent.SetDestination(target.position);
     }
 
+<<<<<<< b0bd6616d4fcf5cb765f47b6348235b91d23b82b
 =======
 >>>>>>> create cude as zombie in mainscene
+=======
+>>>>>>> added placeholder for bus + animations and dummy wave spawn (setting destination not working yet
     /*private void Test()
     {
         GameObject[] hinges = FindObjectsOfType(typeof(GameObject)) as GameObject[];
