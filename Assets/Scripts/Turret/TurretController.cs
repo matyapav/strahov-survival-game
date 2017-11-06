@@ -55,9 +55,6 @@ public class TurretController : MonoBehaviour {
         // Get the current local rotation of the top
         Vector3 curRotation = TurretTop.transform.localRotation.eulerAngles;
 
-        // Get the current Z rotation
-        float currentZRotation = curRotation.z;
-
         // Get the current rotation and calculate the desired
         float desiredZRotation = Mathf.Atan2(delta.x, delta.z) * Mathf.Rad2Deg - 90;
 

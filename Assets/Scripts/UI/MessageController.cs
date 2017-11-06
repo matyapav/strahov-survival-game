@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//TODO make this somehow static?
+//TODO make this somehow static? DONE
 public class MessageController : MonoBehaviourSingleton<MessageController> {
 
     public Transform messageList;

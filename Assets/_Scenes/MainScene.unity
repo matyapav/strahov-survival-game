@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 1142102492}
   - {fileID: 846324845}
   - {fileID: 1665141578}
+  zombies: []
 --- !u!4 &56698844
 Transform:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ GameObject:
   - component: {fileID: 108720992}
   m_Layer: 8
   m_Name: Menza
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -710,7 +711,7 @@ GameObject:
   - component: {fileID: 197098886}
   m_Layer: 8
   m_Name: Stadion
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -801,7 +802,7 @@ GameObject:
   - component: {fileID: 221086333}
   m_Layer: 8
   m_Name: Blok8
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -937,7 +938,7 @@ Transform:
   m_LocalScale: {x: 23.22753, y: 6, z: 4.89873}
   m_Children: []
   m_Father: {fileID: 691981947}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &265680360
 MonoBehaviour:
@@ -1032,7 +1033,7 @@ GameObject:
   - component: {fileID: 266674772}
   m_Layer: 8
   m_Name: SkoliciStredisko
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
@@ -1109,7 +1110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 691981947}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &359427858
 MeshRenderer:
@@ -1540,7 +1541,7 @@ Transform:
   m_LocalScale: {x: 164.76744, y: 164.7674, z: 164.7674}
   m_Children: []
   m_Father: {fileID: 691981947}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &440576166
 MeshRenderer:
@@ -1809,7 +1810,7 @@ GameObject:
   - component: {fileID: 644853711}
   m_Layer: 8
   m_Name: Blok3
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -2190,11 +2191,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1112912659}
   - {fileID: 1910503933}
   - {fileID: 1717569309}
   - {fileID: 359427857}
-  - {fileID: 1268021443}
-  - {fileID: 1112912659}
   - {fileID: 1976672973}
   - {fileID: 265680359}
   - {fileID: 440576165}
@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 760227406}
   m_Layer: 8
   m_Name: Blok2
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -2509,6 +2509,10 @@ Prefab:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1399649911098644, guid: aa0ddd21c3ebcaa4dbf6470500396615, type: 2}
+      propertyPath: m_TagString
+      value: Blok
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa0ddd21c3ebcaa4dbf6470500396615, type: 2}
   m_IsPrefabParent: 0
@@ -2537,7 +2541,7 @@ GameObject:
   - component: {fileID: 846324850}
   m_Layer: 8
   m_Name: Blok10
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -2739,7 +2743,7 @@ GameObject:
   - component: {fileID: 930847174}
   m_Layer: 8
   m_Name: BlackMarket
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -2965,7 +2969,7 @@ GameObject:
   - component: {fileID: 1061230043}
   - component: {fileID: 1061230042}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3251,7 +3255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 691981947}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142102492
 GameObject:
@@ -3268,7 +3272,7 @@ GameObject:
   - component: {fileID: 1142102497}
   m_Layer: 8
   m_Name: Blok9
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3431,7 +3435,7 @@ GameObject:
   - component: {fileID: 1147250557}
   m_Layer: 8
   m_Name: Print
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3564,34 +3568,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1922513125}
   m_Script: {fileID: 11500000, guid: 1bb1c95b0e354b1448325c312ec179e6, type: 3}
---- !u!1 &1268021442
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1268021443}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1268021443
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1268021442}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: 0, z: -195}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 691981947}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1293444629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,7 +3859,7 @@ GameObject:
   - component: {fileID: 1396376060}
   m_Layer: 8
   m_Name: Blok6
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -4366,7 +4342,7 @@ GameObject:
   - component: {fileID: 1533936151}
   m_Layer: 8
   m_Name: Nemocnice
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
@@ -4454,7 +4430,7 @@ GameObject:
   - component: {fileID: 1649767492}
   m_Layer: 8
   m_Name: Hradby
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -4530,7 +4506,7 @@ GameObject:
   - component: {fileID: 1665141585}
   m_Layer: 8
   m_Name: Blok11_12
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -4834,7 +4810,7 @@ Transform:
   - {fileID: 2015165188}
   - {fileID: 1434163100}
   m_Father: {fileID: 691981947}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1734305470
 Prefab:
@@ -5116,7 +5092,7 @@ GameObject:
   - component: {fileID: 1859441361}
   m_Layer: 8
   m_Name: Blok7
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -5236,7 +5212,7 @@ GameObject:
   - component: {fileID: 1860518509}
   m_Layer: 8
   m_Name: Blok4
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -5584,7 +5560,7 @@ Transform:
   - {fileID: 197098883}
   - {fileID: 1147250556}
   m_Father: {fileID: 691981947}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1922513125
 Prefab:
@@ -5650,6 +5626,10 @@ Prefab:
       propertyPath: startValue
       value: 999999
       objectReference: {fileID: 0}
+    - target: {fileID: 1512734754738174, guid: 4566e1a31ad66a84897225e4b843ba6c, type: 2}
+      propertyPath: m_Name
+      value: Scene Controller
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4566e1a31ad66a84897225e4b843ba6c, type: 2}
   m_IsPrefabParent: 0
@@ -5670,7 +5650,7 @@ GameObject:
   - component: {fileID: 1934193608}
   m_Layer: 8
   m_Name: Blok1
-  m_TagString: Untagged
+  m_TagString: Blok
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -5955,7 +5935,7 @@ Transform:
   m_LocalScale: {x: 23.22753, y: 6, z: 4.89873}
   m_Children: []
   m_Father: {fileID: 691981947}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1976672974
 Animator:
@@ -6245,7 +6225,7 @@ GameObject:
   - component: {fileID: 2035108124}
   m_Layer: 8
   m_Name: Posta
-  m_TagString: Untagged
+  m_TagString: Budova
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -6379,8 +6359,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235517692}
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
-  m_Value: 0.49999973
-  m_Size: 0.81493205
+  m_Value: 0.4999998
+  m_Size: 0.7582598
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

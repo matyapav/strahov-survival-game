@@ -8,14 +8,12 @@ public class Blok : MonoBehaviour {
     public string blockName = "BlokX";
 
     private HitpointsController hpControl;
-    private MessageController messageController;
 
     private void Start()
     {
         hpControl = GetComponent<HitpointsController>();
         hpControl.hpBar.SetBarName(blockName);
         hpControl.onMinimumReached += DestroyBlok;
-        messageController = GameObject.Find("SceneController").GetComponent<MessageController>(); 
     }
 
 
@@ -38,7 +36,7 @@ public class Blok : MonoBehaviour {
     public void DestroyBlok()
     {
         gameObject.SetActive(false);
-        messageController.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
+        MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
     }
 
 }
