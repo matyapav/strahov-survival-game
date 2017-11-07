@@ -42,8 +42,10 @@ public class BusSpawner : MonoBehaviour {
     {
         Transform target = randomTargetFromTargets();
         GameObject zombie = (GameObject) Instantiate(ZombiePrefab, transform.position, Quaternion.identity);
-        zombie.GetComponent<NavAgentSimple>().SetDestination(target);
 
+        MainObjectManager.Instance.zombies.Add(zombie);
+
+        zombie.GetComponent<NavAgentSimple>().SetDestination(target);
     }
 
     private Transform randomTargetFromTargets()
