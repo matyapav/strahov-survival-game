@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 95750929477259528}
   - component: {fileID: 114339211067713318}
   - component: {fileID: 65519291495835062}
+  - component: {fileID: 114533974262776624}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Untagged
@@ -230,6 +231,20 @@ MonoBehaviour:
   damage: 10
   range: 20
   spread: 20
+--- !u!114 &114533974262776624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416805399143124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
+    type: 2}
+  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!198 &198829349077380064
 ParticleSystem:
   m_ObjectHideFlags: 1
