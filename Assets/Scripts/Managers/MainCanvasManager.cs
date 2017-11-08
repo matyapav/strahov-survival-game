@@ -11,7 +11,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (gamePausedPanel != null && gamePausedPanel.activeSelf != true) {
+            if (gamePausedPanel != null && gamePausedPanel.activeInHierarchy != true) {
                 MainEventManager.Instance.PauseGameEventInvoke();
             }
         }
