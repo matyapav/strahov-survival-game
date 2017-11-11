@@ -12,7 +12,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (gamePausedPanel != null && gamePausedPanel.activeInHierarchy != true) {
-                MainEventManager.Instance.PauseGameEventInvoke();
+                MainEventManager.Instance.GamePauseEvent.Invoke();
             }
         }
 	}

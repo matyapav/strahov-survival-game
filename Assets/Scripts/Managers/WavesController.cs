@@ -5,14 +5,16 @@ using UnityEngine;
 public class WavesController : MonoBehaviour {
 
     public BusSpawner[] buses;
+
     private int actualBusIndex = 0;
     private bool canSpawnNewWave = true;
 
     private void Start()
     {
+        // For each bus add a listener to the MainEventManager
         foreach (BusSpawner spawner in buses)
         {
-            spawner.onBusLeaving = AllowSpawningNewWave;
+            MainEventManager.Instance.OnBusLeaving.AddListener(AllowSpawningNewWave);
         }
     }
 

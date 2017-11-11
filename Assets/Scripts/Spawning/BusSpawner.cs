@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class BusSpawner : MonoBehaviour {
 
-    public int busNumber;
+    public string busName;
     public GameObject ZombiePrefab;
     public int numberOfZombies = 10;
     private Animator animator;
     private float timeBetweenSpawns = 0.75f;
-
-    public delegate void OnBusLeaving();
-    public OnBusLeaving onBusLeaving;
 
     private void Start()
     {
@@ -22,13 +19,16 @@ public class BusSpawner : MonoBehaviour {
     public void Arrive()
     {
         animator.SetBool(animator.GetParameter(0).name, true);
-        MessageController.Instance.AddMessage("Prepare yourself! Bus n. "+ busNumber +" is arriving!!!", 6f, Color.green);
+        MessageController.Instance.AddMessage("Prepare yourself! Bus n. "+ busName +" is arriving!!!", 6f, Color.green);
     }
 
     public void Leave()
     {
+        // Start the animation
         animator.SetBool(animator.GetParameter(0).name, false);
-        onBusLeaving.Invoke();
+
+        // Invoke the event in the EventManager
+        MainEventManager.Instance.OnBusLeaving.Invoke();
     }
 
     public void SpawnWave () {
@@ -38,16 +38,26 @@ public class BusSpawner : MonoBehaviour {
         Invoke("Leave", (numberOfZombies + 1) * timeBetweenSpawns);
     }
 
+    // Spawn a zombie
     private void SpawnZombie()
     {
+        // Get a random target
         Transform target = randomTargetFromTargets();
+
+        // Instantiate the zombie
         GameObject zombie = (GameObject) Instantiate(ZombiePrefab, transform.position, Quaternion.Euler(0, 180, 0));
 
+        // Invoke the zombie OnSpawn event
+        MainEventManager.Instance.OnZombieSpawn.Invoke(zombie);
+
+        // Add every zombie to the ObjectManager for further management
         MainObjectManager.Instance.zombies.Add(zombie);
 
+        // Set the destination of the zombie to a random target
         zombie.GetComponent<NavAgentSimple>().SetDestination(target);
     }
 
+    // Get a random blok as target
     private Transform randomTargetFromTargets()
     {
         return MainObjectManager.Instance.bloky[UnityEngine.Random.Range(0, MainObjectManager.Instance.bloky.Length)].transform.GetChild(0);

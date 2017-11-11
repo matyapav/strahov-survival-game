@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e5b3b54a1c64d68a0be964f51efecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  busNumber: 143
+  busName: 143
   ZombiePrefab: {fileID: 1272899712345456, guid: 8065d8059fa854b1c9fa80a8f04de70e,
     type: 2}
   numberOfZombies: 100
@@ -4282,6 +4282,16 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnBusLeaving:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnZombieSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1405893057
 Transform:
   m_ObjectHideFlags: 0
@@ -7587,7 +7597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e5b3b54a1c64d68a0be964f51efecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  busNumber: 149
+  busName: 149
   ZombiePrefab: {fileID: 1272899712345456, guid: 7aa03dcb190901c4b95007070a71693d,
     type: 2}
   numberOfZombies: 50
@@ -7981,8 +7991,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235517692}
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.93030655
+  m_Value: 0.49999967
+  m_Size: 0.84863096
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
