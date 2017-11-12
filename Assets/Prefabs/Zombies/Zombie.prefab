@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 95266724211736900}
   - component: {fileID: 114579613001558178}
   - component: {fileID: 114710670699968618}
-  - component: {fileID: 65648035641270912}
+  - component: {fileID: 136429691713865802}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -1148,18 +1148,6 @@ Transform:
   m_Father: {fileID: 4803067376357400}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65648035641270912
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1272899712345456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0546675, y: 1.7880654, z: 1}
-  m_Center: {x: 0.044019222, y: 0.8828614, z: 0}
 --- !u!95 &95266724211736900
 Animator:
   serializedVersion: 3
@@ -1200,6 +1188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa5357f868b4043b5cdc6b17cb4897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &136429691713865802
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272899712345456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!137 &137360397675627900
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
