@@ -7,6 +7,14 @@ public class MainSettingsManager : MonoBehaviourSingletonPersistent<MainSettings
     
     public enum DayPhase {Day, Night}
 
+    // true if there is an open panel in the foreground (shop/pause menu,..)
+    private bool _panelOpen = false;
+    public bool PanelOpen {
+        get {
+            return _panelOpen;
+        }
+    }
+
     private DayPhase _currentDayPhase = DayPhase.Day;
     public DayPhase currentDayPhase {
         get {
@@ -37,5 +45,4 @@ public class MainSettingsManager : MonoBehaviourSingletonPersistent<MainSettings
             _currentDayPhase = DayPhase.Day;
         }
     }
-
 }

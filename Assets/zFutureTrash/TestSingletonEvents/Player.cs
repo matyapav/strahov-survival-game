@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
     public MyColorEvent m_MyEvent;                      // Can predefined out of runtime
 
 
-
     // Unity style Events must be Initialised
     void OnEnable()
     {

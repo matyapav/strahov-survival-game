@@ -6,22 +6,63 @@ using UnityEngine.Events;
 
 public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
-    public GameObject gamePausedPanel;
+    // Contains references to all its children just for convience
+    public GameObject PauseMenu;
+    public GameObject Money;
+    public GameObject TimeText;
+    public GameObject WaveText;
+    public GameObject BlackMarketMenu;
 
-    // Update is called once per frame
-    void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (gamePausedPanel != null && gamePausedPanel.activeInHierarchy != true) {
-                MainEventManager.Instance.GamePauseEvent.Invoke();
-            }
+
+    private void OnEnable()
+    {
+        // Listener to the escape key
+        InputHandler.Instance.Controls_Exit.AddListener(OnExitPressed);
+
+        // Listener to the OpenBlackMarketMenu
+        MainEventManager.Instance.BlackMarketMenuOpen.AddListener(ShowBlackMarketMenu);
+    }
+
+    private void OnExitPressed() {
+        if (BlackMarketMenu.activeSelf) {
+            HideBlackMarketMenu();
         }
-	}
+        else if (PauseMenu.activeSelf) {
+            HidePauseMenu();
+        }
+        else if(!PauseMenu.activeSelf) {
+            ShowPauseMenu();
+        }
+    }
 
-    public void PauseGame() {
+    private void ShowBlackMarketMenu() {
+        // Check if the pause menu is active. If it is do not open the menu.
+        if(!PauseMenu.activeSelf) {
+            BlackMarketMenu.SetActive(true);
+            PauseTimescale();
+        }
+    }
+
+    private void HideBlackMarketMenu() {
+        BlackMarketMenu.SetActive(false);
+        ResumeTimescale();
+    }
+
+    private void ShowPauseMenu() {
+        PauseMenu.SetActive(true);
+        PauseTimescale();
+    }
+
+    private void HidePauseMenu() {
+        PauseMenu.SetActive(false);
+        ResumeTimescale();
+    }
+
+    public void PauseTimescale() {
         Time.timeScale = 0f;
     }
 
-    public void ResumeGame() {
+    public void ResumeTimescale() {
         Time.timeScale = 1f;
     }
 }

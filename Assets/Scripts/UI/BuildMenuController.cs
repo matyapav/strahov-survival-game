@@ -14,7 +14,13 @@ public class BuildMenuController : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-	public void Toggle()
+    private void OnEnable()
+    {
+        // Attach the listener to the controls
+        InputHandler.Instance.Controls_Build.AddListener(Toggle);
+    }
+
+    public void Toggle()
     {
         animator.SetBool("active", !opened);
         opened = !opened;

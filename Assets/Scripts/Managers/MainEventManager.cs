@@ -8,11 +8,12 @@ public class MainEventManager : MonoBehaviourSingletonPersistent<MainEventManage
     public UnityEvent SwitchDayPhaseEvent;
     public UnityEvent SpawnWaveEvent;
 
-    public UnityEvent GamePauseEvent;
-    public UnityEvent GameResumeEvent;
+    public UnityEvent BlackMarketMenuOpen;
 
     public UnityEvent OnBusLeaving;
     public GameObjectEvent OnZombieSpawn;
+
+    public UnityEvent OnBlackMarketClicked;
 
     // Initialise the UnityEvents that requie it 
     private void OnEnable()
@@ -30,14 +31,6 @@ public class MainEventManager : MonoBehaviourSingletonPersistent<MainEventManage
 
     public void SpawnWaveEventInvoke() {
         SpawnWaveEvent.Invoke();
-    }
-
-    public void PauseGameEventInvoke() {
-        GamePauseEvent.Invoke();
-    }
-
-	public void ResumeGameEventInvoke() {
-        GameResumeEvent.Invoke();
     }
 
     public void OnBusLeavingInvoke() {
