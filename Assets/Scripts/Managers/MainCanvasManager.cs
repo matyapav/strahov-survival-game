@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+// Manages enablind and disabling the UI elements in the canvas
 public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
     // Contains references to all its children just for convience
@@ -20,7 +21,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
         InputHandler.Instance.Controls_Exit.AddListener(OnExitPressed);
 
         // Listener to the OpenBlackMarketMenu
-        MainEventManager.Instance.BlackMarketMenuOpen.AddListener(ShowBlackMarketMenu);
+        MainEventManager.Instance.OnBlackMarketClicked.AddListener(ShowBlackMarketMenu);
     }
 
     private void OnExitPressed() {

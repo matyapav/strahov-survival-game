@@ -5,28 +5,23 @@ using UnityEngine.Events;
 
 public class MainEventManager : MonoBehaviourSingletonPersistent<MainEventManager> {
 
-    public UnityEvent SwitchDayPhaseEvent;
+    // Only show those that should be visible
     public UnityEvent SpawnWaveEvent;
 
-    public UnityEvent BlackMarketMenuOpen;
-
+    [HideInInspector] 
+    public UnityEvent OnDaySwitchPhase;
+    [HideInInspector]
     public UnityEvent OnBusLeaving;
-    public GameObjectEvent OnZombieSpawn;
-
+    [HideInInspector]
     public UnityEvent OnBlackMarketClicked;
-
-    // Initialise the UnityEvents that requie it 
-    private void OnEnable()
-    {
-        // OR NOT? not sure lol
-        //if (OnZombieSpawn == null) {
-        //    OnZombieSpawn = new GameObjectEvent();
-        //}
-    }
+    [HideInInspector]
+    public UnityEvent<int> OnBlokClicked;
+    [HideInInspector]
+    public UnityEvent<GameObject> OnZombieSpawn;
 
     // All invokes that will be called from the GUI events must have an invoke function
     public void SwitchDayPhaseEventInvoke() {
-        SwitchDayPhaseEvent.Invoke();
+        OnDaySwitchPhase.Invoke();
     }
 
     public void SpawnWaveEventInvoke() {

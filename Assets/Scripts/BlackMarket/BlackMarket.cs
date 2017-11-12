@@ -11,9 +11,9 @@ public class BlackMarket : MonoBehaviour {
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f)) 
             {
-                // If i really hit this (tag BlackMarket must be set)
+                // If I really hit this (tag BlackMarket must be set)
                 if (hit.collider.gameObject.tag == gameObject.tag) {
-                    MainEventManager.Instance.BlackMarketMenuOpen.Invoke();
+                    MainEventManager.Instance.OnBlackMarketClicked.Invoke();
                 }
             }
         }
