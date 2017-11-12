@@ -6,6 +6,13 @@ TagManager:
   tags:
   - MultipleChoicesPanelContainer
   - Budova
+  - Blok
+  - Turret
+  - Zombie
+  - Autobus
+  - Hriste
+  - Prekazka
+  - BlackMarket
   layers:
   - Default
   - TransparentFX

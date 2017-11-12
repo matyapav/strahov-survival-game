@@ -26,13 +26,11 @@ public class TurretController : MonoBehaviour {
     public float range = 100f;
 
     [Tooltip("The widhth of the field of attack")]
-    public float spread = 20f;
-
-    [Tooltip("Sound of the shooting")]
+    public float spread = 10f;
 
 
-    private float lastTimeShot;
-    private AudioSource audioSource;
+    private float lastTimeShot;         // used for the time delay
+    private AudioSource audioSource;    // used to play tunes
 
 	void Start () {
         turretParticleSystem = GetComponentInChildren<ParticleSystem>();
@@ -45,7 +43,9 @@ public class TurretController : MonoBehaviour {
         // TODO use the object manager or some effective way
         GameObject[] allGo = GameObject.FindGameObjectsWithTag("Zombie");
         foreach (GameObject g in allGo) {
-            SeekTarget(g.transform);
+            if (g.activeSelf){
+                SeekTarget(g.transform);
+            }
         }
 	}
 
@@ -57,7 +57,7 @@ public class TurretController : MonoBehaviour {
             {
                 float currentDeltaAngle = RotateTowardsTarget(_target);
                 // If the target is small enyought, shoot
-                if (Mathf.Abs(currentDeltaAngle - 360) % 360 < 10f || Mathf.Abs(currentDeltaAngle) % 360 < 10f)
+                if (Mathf.Abs(currentDeltaAngle - 360) % 360 < spread || Mathf.Abs(currentDeltaAngle) % 360 < spread)
                 {
                     Shoot(_target);
                 }
@@ -84,7 +84,7 @@ public class TurretController : MonoBehaviour {
 
 
     void Shoot(Transform _target) {
-        if(Time.time - lastTimeShot > fireDelay) {
+        if (Time.time - lastTimeShot > fireDelay) {
             // Update the delay
             lastTimeShot = Time.time;
 
