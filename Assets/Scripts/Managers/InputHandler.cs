@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 //TODO predelat sem veskere controls mimo UI (kamera taky???)
-public class InputHandler : MonoBehaviourSingletonPersistent<InputHandler> {
+public class InputHandler : MonoBehaviourSingleton<InputHandler> {
 
     public UnityEvent Controls_Build;
     public UnityEvent Controls_Exit;

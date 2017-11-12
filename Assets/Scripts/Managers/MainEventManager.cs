@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MainEventManager : MonoBehaviourSingletonPersistent<MainEventManager> {
+public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
 
     // Only show those that should be visible
     public UnityEvent SpawnWaveEvent;
