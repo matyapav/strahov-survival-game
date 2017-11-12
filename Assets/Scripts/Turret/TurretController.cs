@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
 [RequireComponent(typeof(Transform))]
+[RequireComponent(typeof(AudioSource))]
 public class TurretController : MonoBehaviour {
 
     private Transform TurretTop;
@@ -22,35 +23,51 @@ public class TurretController : MonoBehaviour {
     public float damage = 10f;
 
     [Tooltip("The range of the turret")]
-    public float range = 20f;
+    public float range = 100f;
 
     [Tooltip("The widhth of the field of attack")]
     public float spread = 20f;
 
+    [Tooltip("Sound of the shooting")]
+
+
     private float lastTimeShot;
+    private AudioSource audioSource;
 
 	void Start () {
         turretParticleSystem = GetComponentInChildren<ParticleSystem>();
         TurretTop = transform.GetChild(0);
         lastTimeShot = Time.time;
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	void Update () {
-        // Rotate towards the target and shoot
-        if (TargetTransform != null && TurretTop != null) {
-            if ((TargetTransform.position - transform.position).magnitude < range) {
-                float currentDeltaAngle = RotateTowardsTarget();
-                // If the target is small enyought, shoot
-                if (Mathf.Abs(currentDeltaAngle - 360)  % 360 < 10f || Mathf.Abs(currentDeltaAngle) % 360 < 10f) {
-                    Shoot();
-                }
-            }    
+        // TODO use the object manager or some effective way
+        GameObject[] allGo = GameObject.FindGameObjectsWithTag("Zombie");
+        foreach (GameObject g in allGo) {
+            SeekTarget(g.transform);
         }
 	}
 
-    float RotateTowardsTarget() {
+    void SeekTarget(Transform _target) {
+        // Rotate towards the target and shoot
+        if (_target != null && TurretTop != null)
+        {
+            if ((_target.position - transform.position).magnitude < range)
+            {
+                float currentDeltaAngle = RotateTowardsTarget(_target);
+                // If the target is small enyought, shoot
+                if (Mathf.Abs(currentDeltaAngle - 360) % 360 < 10f || Mathf.Abs(currentDeltaAngle) % 360 < 10f)
+                {
+                    Shoot(_target);
+                }
+            }
+        }
+    }
+
+    float RotateTowardsTarget(Transform _target) {
         // Delta vector to the target
-        Vector3 delta = TargetTransform.position - TurretTop.transform.position;
+        Vector3 delta = _target.position - TurretTop.transform.position;
 
         // Get the current local rotation of the top
         Vector3 curRotation = TurretTop.transform.localRotation.eulerAngles;
@@ -66,10 +83,22 @@ public class TurretController : MonoBehaviour {
     }
 
 
-    void Shoot() {
+    void Shoot(Transform _target) {
         if(Time.time - lastTimeShot > fireDelay) {
+            // Update the delay
             lastTimeShot = Time.time;
-            turretParticleSystem.Play();   
+
+            // Play the particle shoot animation
+            turretParticleSystem.Play();
+
+            // Play the sound
+            audioSource.Play();
+
+            // Damage the zombie
+            ZombieHealth zombieHealth = _target.GetComponent<ZombieHealth>();
+            if (zombieHealth != null) {
+                zombieHealth.GetHit(damage);    
+            }
         }
     }
 }

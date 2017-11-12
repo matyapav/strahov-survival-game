@@ -14,6 +14,14 @@ public class NavAgentSimple : MonoBehaviour {
 
     private bool destinationChanged = false;
 
+    private void Start()
+    {
+        // If the target is set go to the target on spawn
+        if (destination != null) {
+            destinationChanged = true;
+        }
+    }
+
     private void SetDestination()
     {
         if (destination != null)
