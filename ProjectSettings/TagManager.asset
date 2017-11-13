@@ -13,6 +13,7 @@ TagManager:
   - Hriste
   - Prekazka
   - BlackMarket
+  - test
   layers:
   - Default
   - TransparentFX
