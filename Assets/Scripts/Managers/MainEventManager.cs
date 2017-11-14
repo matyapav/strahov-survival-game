@@ -17,7 +17,7 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
     [HideInInspector]
     public UnityEvent<int> OnBlokClicked;
     [HideInInspector]
-    public UnityEvent<GameObject> OnZombieSpawn;
+    public GameObjectEvent OnZombieSpawn;
 
     // All invokes that will be called from the GUI events must have an invoke function
     public void SwitchDayPhaseEventInvoke() {
