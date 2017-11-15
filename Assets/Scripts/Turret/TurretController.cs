@@ -5,10 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 [RequireComponent(typeof(Transform))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(NeighbourObjectTracker))]
 public class TurretController : MonoBehaviour {
-
-    private Transform TurretTop;
-    private ParticleSystem turretParticleSystem;
 
     [Tooltip("The target transform")]
     public Transform TargetTransform;
@@ -28,41 +26,48 @@ public class TurretController : MonoBehaviour {
     [Tooltip("The widhth of the field of attack")]
     public float spread = 10f;
 
-
+    private Transform TurretTop;
+    private ParticleSystem turretParticleSystem;
     private float lastTimeShot;         // used for the time delay
     private AudioSource audioSource;    // used to play tunes
+    private NeighbourObjectTracker neighbourObjectTracker;
 
 	void Start () {
         turretParticleSystem = GetComponentInChildren<ParticleSystem>();
         TurretTop = transform.GetChild(0);
         lastTimeShot = Time.time;
         audioSource = GetComponent<AudioSource>();
+
+        // Init the neighbour tracker
+        neighbourObjectTracker = GetComponent<NeighbourObjectTracker>();
+        neighbourObjectTracker.Init(range);
 	}
 	
 	void Update () {
-        // TODO use the object manager or some effective way
-        GameObject[] allGo = GameObject.FindGameObjectsWithTag("Zombie");
-        foreach (GameObject g in allGo) {
-            if (g.activeSelf){
-                SeekTarget(g.transform);
-            }
+        foreach (GameObject g in neighbourObjectTracker.trackedObjects) {
+            SeekTarget(g.transform);
         }
 	}
 
     void SeekTarget(Transform _target) {
-        // Rotate towards the target and shoot
-        if (_target != null && TurretTop != null)
-        {
-            if ((_target.position - transform.position).magnitude < range)
-            {
-                float currentDeltaAngle = RotateTowardsTarget(_target);
-                // If the target is small enyought, shoot
-                if (Mathf.Abs(currentDeltaAngle - 360) % 360 < spread || Mathf.Abs(currentDeltaAngle) % 360 < spread)
-                {
-                    Shoot(_target);
-                }
+        if (transform.gameObject.activeSelf) {
+            if(IsInRange(transform, _target, range)) {
+				// Rotate towards the target and shoot
+				if (_target != null && TurretTop != null)
+				{
+					float currentDeltaAngle = RotateTowardsTarget(_target);
+					// If the target is small enyought, shoot
+					if (Mathf.Abs(currentDeltaAngle - 360) % 360 < spread || Mathf.Abs(currentDeltaAngle) % 360 < spread)
+					{
+						Shoot(_target);
+					}
+				}            
             }
         }
+    }
+
+    public static bool IsInRange(Transform _position, Transform _target, float _range) {
+        return ((_target.position - _position.position).magnitude < _range);
     }
 
     float RotateTowardsTarget(Transform _target) {

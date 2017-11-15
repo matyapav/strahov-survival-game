@@ -30,7 +30,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
             RaycastHit hit;
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
-                if (hit.collider.gameObject.Equals(gameObject)) { //hit only this cube
+                if (hit.collider.gameObject == this.gameObject) { //hit only this cube
                     //TODO: add sound (blop) for this menu
 
                     multipleChoiceControllerInstance.ShowPanel(transform.position);
