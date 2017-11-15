@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: b0e5b3b54a1c64d68a0be964f51efecc
-timeCreated: 1508756094
+timeCreated: 1510754694
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ZombiePrefab: {fileID: 1313111769781402, guid: 05b9372baf2ec4141a26c4fb82ae9738,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

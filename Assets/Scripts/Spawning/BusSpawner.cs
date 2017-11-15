@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BusSpawner : MonoBehaviour {
 
@@ -54,7 +55,7 @@ public class BusSpawner : MonoBehaviour {
         MainObjectManager.Instance.zombies.Add(zombie);
 
         // Set the destination of the zombie to a random target
-        zombie.GetComponent<NavAgentSimple>().SetDestination(target);
+		zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
     }
 
     // Get a random blok as target

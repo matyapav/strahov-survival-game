@@ -136,7 +136,7 @@ Transform:
   m_LocalScale: {x: 0.79817706, y: 0.79817706, z: 0.79817706}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3603226
 MonoBehaviour:
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   busName: 143
-  ZombiePrefab: {fileID: 1272899712345456, guid: 8065d8059fa854b1c9fa80a8f04de70e,
+  ZombiePrefab: {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738,
     type: 2}
   numberOfZombies: 100
 --- !u!95 &265680361
@@ -5860,7 +5860,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425279393
 GameObject:
@@ -8888,7 +8888,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4527191141995680, guid: 4566e1a31ad66a84897225e4b843ba6c, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114259548158995310, guid: 4566e1a31ad66a84897225e4b843ba6c,
         type: 2}
@@ -9125,7 +9125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   busName: 149
-  ZombiePrefab: {fileID: 1272899712345456, guid: 7aa03dcb190901c4b95007070a71693d,
+  ZombiePrefab: {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738,
     type: 2}
   numberOfZombies: 50
 --- !u!1001 &1978127119
@@ -9475,8 +9475,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235517692}
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
-  m_Value: 0.49999967
-  m_Size: 0.8458476
+  m_Value: 0.4999997
+  m_Size: 0.8431851
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

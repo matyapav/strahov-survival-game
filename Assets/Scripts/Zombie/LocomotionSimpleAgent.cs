@@ -14,7 +14,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
     private Animator anim;
     private NavMeshAgent agent;
 
-	private Vector3 destination;
+	public Transform target;
 
     void Start()
     {
@@ -39,23 +39,22 @@ public class LocomotionSimpleAgent : MonoBehaviour
 			agent.isStopped = true;
 		}
 		// Navigate to mouse cursor position on LMB click
-		// Double click needed for some reason
-		/*
+
 		if (Input.GetMouseButtonDown (1)) {
 				RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
 				agent.isStopped = false;
-				destination = hit.point;
+				agent.destination = hit.point;
 			}
 		}
-		*/
+
 		// END DEBUG BLOCK
     }
 
 	void FixedUpdate()
 	{
 		// Stop pathfinding on the last step
-		if (agent.remainingDistance < lastStepLength) {
+		if (Vector3.Magnitude(transform.position-agent.destination) < lastStepLength) {
 			agent.isStopped = true;
 		} 
 
@@ -68,15 +67,8 @@ public class LocomotionSimpleAgent : MonoBehaviour
 		}
 
 		// Call the correct animation
-		// TODO
-		anim.SetBool ("isWalking", agent.remainingDistance > stoppingDistance && turnAngle<=angleTurnLimit);
-		anim.SetBool ("isAttacking", agent.remainingDistance <= stoppingDistance); //TODO && nearObstacle && pathIncomplete
-	}
-
-	// Set a new destination point
-	void LateUpdate(){
-		if (!destination.Equals (agent.destination)) {
-			agent.SetDestination (destination);
-		}
+		// TODO add obstacle detection
+		anim.SetBool ("isWalking", Vector3.Magnitude(transform.position-agent.destination) > stoppingDistance && turnAngle<=angleTurnLimit);
+		anim.SetBool ("isAttacking", Vector3.Magnitude(transform.position-agent.destination) <= stoppingDistance); //TODO && nearObstacle && pathIncomplete
 	}
  }
