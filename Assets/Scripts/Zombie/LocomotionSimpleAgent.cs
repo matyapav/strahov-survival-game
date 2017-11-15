@@ -40,6 +40,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
 		}
 		// Navigate to mouse cursor position on LMB click
 		// Double click needed for some reason
+		/*
 		if (Input.GetMouseButtonDown (1)) {
 				RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
@@ -47,6 +48,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
 				destination = hit.point;
 			}
 		}
+		*/
 		// END DEBUG BLOCK
     }
 
