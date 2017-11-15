@@ -20,7 +20,6 @@ public class ZombieHealth : MonoBehaviour {
         // Play the dying animation and delete afterwards
 
         // Play the death sound
-        //audio.Play();
 
         // Remove from the global object manager
 

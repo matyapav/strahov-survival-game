@@ -5,65 +5,63 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NavAgentSimple : MonoBehaviour {
+public class NavAgentSimple_obsolete : MonoBehaviour {
 
     private NavMeshAgent agent;
 
     [SerializeField]
-    private GameObject destination;
-
-    private bool destinationChanged = false;
+    private Transform destination;
 
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+
         // If the target is set go to the target on spawn
         if (destination != null) {
-            destinationChanged = true;
-        }
-    }
-
-    private void SetDestination()
-    {
-        if (destination != null)
-        {
-            if (agent == null)
-            {
-                agent = GetComponent<NavMeshAgent>();
-            }
-            Vector3 target = destination.transform.position;
-           
-            agent.SetDestination(target);
+            SetDestination(transform);
         }
     }
 
     public void SetDestination(Transform target)
     {
-        destination = target.gameObject;
-        destinationChanged = true;
-    }
+        if (target != null) {
+            NavMeshPath navMeshPath = new NavMeshPath();        // Create a new navmesh path
+            agent.CalculatePath(target.position, navMeshPath);  // Calculate the path
 
-    private void Update()
-    {
-        if (destinationChanged)
-        {
-            SetDestination();
-            destinationChanged = false;
+            // Check if the path exist
+            if (navMeshPath.status == NavMeshPathStatus.PathComplete)
+            {
+                Debug.Log("Path complete");
+            }
+            else if (navMeshPath.status == NavMeshPathStatus.PathPartial)
+            {
+                Debug.Log("Path partial");
+            }
+            else if (navMeshPath.status == NavMeshPathStatus.PathInvalid)
+            {
+                Debug.Log("Path invalid");
+            }
+
+            // Assign the path to the agent
+            agent.path = navMeshPath;
         }
     }
 
-    /*private void Test()
+    // Old unused stuff which I have memories of and moral attachment to
+    /*
+
+    private void Test()
     {
         GameObject[] hinges = FindObjectsOfType(typeof(GameObject)) as GameObject[];
         foreach (GameObject hinge in hinges)
         {
             Debug.Log(hinge.name);
         }
-    }*/
-
+    }
 
     // the commented code serves the player. The code above is for ai
 
-    /*void Update () 
+    void Update () 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -88,7 +86,7 @@ public class NavAgentSimple : MonoBehaviour {
 				StartCoroutine(RotateToTarget(navMeshPath, hit.point));
 			}
         }
-	}*/
+	}
 
     IEnumerator RotateToTarget(NavMeshPath _navMeshPath, Vector3 _agent_target) {
 		agent.path.ClearCorners ();
@@ -115,4 +113,6 @@ public class NavAgentSimple : MonoBehaviour {
 
 		return Vector3.Angle(transform.forward, delta);
 	}
+
+    */
 }
