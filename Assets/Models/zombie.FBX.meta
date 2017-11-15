@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: baba5abeed771554eb01e1624d969a7e
-timeCreated: 1508011403
+guid: 1d2f106a98c3f4b4c9762613f8ac09ad
+timeCreated: 1510692284
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Bip001
     100002: Bip001 Footsteps
@@ -84,23 +84,19 @@ ModelImporter:
     400074: Object003
     400076: //RootNode
     4300000: Object003
-    7400000: StartWalking
-    7400002: ZombieWalk
-    7400004: NormalWalk
-    7400006: Idle
+    7400000: RaiseArms
+    7400002: FirstStep
+    7400004: Walk
+    7400006: StopWalking
+    7400008: AttackSmash
+    7400010: AttackKick
+    7400012: Death
     9500000: //RootNode
     13700000: Object003
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 09 - Default
-    second: {fileID: 2100000, guid: 89390cbac1fd3b248881ebc8320645de, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -113,7 +109,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -123,10 +118,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: StartWalking
+      name: RaiseArms
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -151,10 +146,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ZombieWalk
+      name: FirstStep
       takeName: Take 001
-      firstFrame: 39
-      lastFrame: 68
+      firstFrame: 58
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 109
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -179,17 +202,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: NormalWalk
+      name: StopWalking
       takeName: Take 001
-      firstFrame: 99
-      lastFrame: 128
+      firstFrame: 110
+      lastFrame: 139
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -207,10 +230,66 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: AttackSmash
       takeName: Take 001
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 140
+      lastFrame: 196
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AttackKick
+      takeName: Take 001
+      firstFrame: 198
+      lastFrame: 240
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 266
+      lastFrame: 303
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
