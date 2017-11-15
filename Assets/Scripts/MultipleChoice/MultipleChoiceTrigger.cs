@@ -24,20 +24,19 @@ public class MultipleChoiceTrigger : MonoBehaviour {
                                                                .Build(transform);
     }
 
-    // Update is called once per frame
     void Update () {
         if (active && Input.GetMouseButtonDown(1)){
             RaycastHit hit;
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
-                if (hit.collider.gameObject == this.gameObject) { //hit only this cube
-                    //TODO: add sound (blop) for this menu
-
+                if (hit.collider.gameObject == this.gameObject) {
                     multipleChoiceControllerInstance.ShowPanel(transform.position);
                 } else
                 {
                     multipleChoiceControllerInstance.HidePanel();
                 }
+
+                MainUISoundManager.Instance.PlayBlop();
             }
         }
 	}
@@ -49,27 +48,34 @@ public class MultipleChoiceTrigger : MonoBehaviour {
 
     void Repair()
     {
-        //just change cube to blue
+        // just change cube to blue
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 0f, 1f);
+
+        MainUISoundManager.Instance.PlayBlop();
     }
 
     void Move()
     {
-        //just move it 
-
+        // just move it 
         ObstaclePlacer.Instance.SetObstacle(gameObject, 0, true);
+
+        MainUISoundManager.Instance.PlayBlop();
     }
 
     void Upgrade()
     {
-        //just change cube to green
+        // just change cube to green
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 1f, 0f);
+
+        MainUISoundManager.Instance.PlayBlop();
     }
 
     void Destroy()
     {
         Destroy(gameObject);
+
+        MainUISoundManager.Instance.PlayBlop();
     }
 }

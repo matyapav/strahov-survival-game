@@ -18,7 +18,7 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
     public void SetObstacle(GameObject obstacle, float price, bool alreadyInScene = false)
     {
         obstacleRotation = obstacle.transform.rotation.eulerAngles;
-        Debug.Log(obstacleRotation);
+        // Debug.Log(obstacleRotation);
         obstacle_prefab = obstacle;
         obstaclePrice = price;
         if(alreadyInScene)
