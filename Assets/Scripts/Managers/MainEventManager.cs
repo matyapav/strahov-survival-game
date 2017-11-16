@@ -12,7 +12,6 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
     public UnityEvent OnDaySwitchPhase;
     [HideInInspector]
     public UnityEvent OnBusLeaving;
-    [HideInInspector]
     public UnityEvent OnBlackMarketClicked;
     [HideInInspector]
     public UnityEvent<int> OnBlokClicked;

@@ -1,11 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BlackMarketMenuController : MonoBehaviour {
+public class BlackMarketMenuController : MonoBehaviour
+{
 
-    private void Update()
+    public float refillAmount;
+    public float pricePerUnit;
+    public Text priceText;
+
+    private void OnEnable()
     {
-        // TODO
+        if (pricePerUnit > 10000)
+        {
+            priceText.text = (pricePerUnit / 1000 + "K");
+        }
+        else
+        {
+            priceText.text = pricePerUnit.ToString();
+        }
     }
 }
+
+    

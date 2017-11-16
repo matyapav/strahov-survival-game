@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +19,8 @@ public class HitpointsController : MonoBehaviour {
 
     public float startValue = 100f;
     public bool startAtMaximum = true;
+
+
     public float maxValue = 100f;
     public float minValue = 0f;
 
@@ -82,6 +85,9 @@ public class HitpointsController : MonoBehaviour {
         {
             currentValue -= decrement;
         }
+        if(hpBar != null) { 
+             hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
+        }
         OnValueChanged(false);
     }
 
@@ -102,7 +108,7 @@ public class HitpointsController : MonoBehaviour {
     {
         if(hpBar != null)
         { 
-            hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
+           
             hpBar.SetValue(currentValue);
         }
         onValueChanged.Invoke();
@@ -115,5 +121,11 @@ public class HitpointsController : MonoBehaviour {
                 hpBar = null;
             }
         }
+    }
+
+
+    public bool CanIncrease(float amount)
+    {
+        return currentValue + amount <= maxValue;
     }
 }

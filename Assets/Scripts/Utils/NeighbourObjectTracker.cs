@@ -29,7 +29,9 @@ public class NeighbourObjectTracker : MonoBehaviour {
     // Initialise the NeighbourTracker with correct range and start scanning
     public void Init(float range) 
     {
-        trackedObjects.Clear();
+        if(trackedObjects != null) { 
+            trackedObjects.Clear();
+        }
         scanDistance = range;
         StartTracking();
     }

@@ -44,7 +44,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
         }
     }
 
-    private void HideBlackMarketMenu() {
+    public void HideBlackMarketMenu() {
         BlackMarketMenu.SetActive(false);
         ResumeTimescale();
     }

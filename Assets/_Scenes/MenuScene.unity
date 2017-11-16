@@ -5928,7 +5928,6 @@ GameObject:
   - component: {fileID: 1899546820}
   - component: {fileID: 1899546819}
   - component: {fileID: 1899546818}
-  - component: {fileID: 1899546822}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -6012,22 +6011,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1899546822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1899546817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7dafc4afedd4494ba4471176708f0f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
-  Money: {fileID: 0}
-  TimeText: {fileID: 0}
-  WaveText: {fileID: 0}
-  BlackMarketMenu: {fileID: 0}
 --- !u!1 &1910503932
 GameObject:
   m_ObjectHideFlags: 0
@@ -6067,15 +6050,15 @@ Transform:
   - {fileID: 1465312926}
   - {fileID: 601774990}
   - {fileID: 956261498}
-  - {fileID: 1587948180}
-  - {fileID: 1988522622}
   - {fileID: 1148931434}
-  - {fileID: 628794844}
-  - {fileID: 878072384}
-  - {fileID: 59079205}
   - {fileID: 1486304794}
-  - {fileID: 739063607}
   - {fileID: 147982448}
+  - {fileID: 878072384}
+  - {fileID: 628794844}
+  - {fileID: 1988522622}
+  - {fileID: 59079205}
+  - {fileID: 739063607}
+  - {fileID: 1587948180}
   m_Father: {fileID: 691981947}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
