@@ -8,7 +8,6 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
     // Only show those that should be visible
     public UnityEvent SpawnWaveEvent;
 
-    [HideInInspector] 
     public UnityEvent OnDaySwitchPhase;
     [HideInInspector]
     public UnityEvent OnBusLeaving;
