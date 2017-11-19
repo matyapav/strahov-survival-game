@@ -549,7 +549,10 @@ GameObject:
   - component: {fileID: 136056394141057526}
   - component: {fileID: 195321002085130088}
   - component: {fileID: 114222867250876620}
-  - component: {fileID: 114813949596035934}
+  - component: {fileID: 114493171711953580}
+  - component: {fileID: 114395367515994644}
+  - component: {fileID: 114941551173762640}
+  - component: {fileID: 114925930533713810}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -1178,7 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
---- !u!114 &114813949596035934
+--- !u!114 &114395367515994644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1186,14 +1189,68 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861962750543516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa5357f868b4043b5cdc6b17cb4897, type: 3}
+  m_Script: {fileID: 11500000, guid: b886bd98dd2374a02b6932382270e985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
-  lastStepLength: 0.4
+  movementSpeed: 2.7
   stoppingDistance: 1
   angleTurnLimit: 60
   target: {fileID: 0}
+--- !u!114 &114493171711953580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861962750543516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001a931a605948c9a32733967787e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114925930533713810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861962750543516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48cc96d623f1479eb3f795301e1d1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeltaY: 15
+  MaxLineLenght: 10
+--- !u!114 &114941551173762640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861962750543516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8812eb78526b4c2799020bdbb67618a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSeekPath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnWalkingStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDying:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!136 &136056394141057526
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1282,8 +1339,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 15
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
