@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainUISoundManager : MonoBehaviourSingleton<MainUISoundManager> {
 
-    [Tooltip("Children GameObject that contains a BlopSound"), SerializeField]
-    private GameObject BlopSound;
+    [Tooltip("Children GameObject that contains a BlopSound")]
+    public GameObject BlopSound;
     private AudioSource blopAS;
 
     private void Start()

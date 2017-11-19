@@ -43,7 +43,7 @@ public class BusSpawner : MonoBehaviour {
     private void SpawnZombie()
     {
         // Get a random target
-        Transform target = randomTargetFromTargets();
+        Transform target = MainObjectManager.Instance.GetRandomBlock().transform;
 
         // Instantiate the zombie
         GameObject zombie = (GameObject) Instantiate(ZombiePrefab, transform.position, Quaternion.Euler(0, 180, 0));
@@ -56,11 +56,5 @@ public class BusSpawner : MonoBehaviour {
 
         // Set the destination of the zombie to a random target
 		zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
-    }
-
-    // Get a random blok as target
-    private Transform randomTargetFromTargets()
-    {
-        return MainObjectManager.Instance.bloky[UnityEngine.Random.Range(0, MainObjectManager.Instance.bloky.Length)].transform.GetChild(0);
     }
 }

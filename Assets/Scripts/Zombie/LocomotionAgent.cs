@@ -4,6 +4,7 @@ using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(ZombieHealth))]
 public class LocomotionAgent : MonoBehaviour
 {
     public float movementSpeed = 2.7f;
@@ -13,6 +14,7 @@ public class LocomotionAgent : MonoBehaviour
 
     private Animator anim;
     private NavMeshAgent agent;
+    private ZombieHealth zombieHealth;
 
     public Transform target;
 
@@ -20,6 +22,7 @@ public class LocomotionAgent : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        zombieHealth = GetComponent<ZombieHealth>();
 
         agent.speed = movementSpeed;
         agent.angularSpeed = 900; //huge number helps with clumsy turning
@@ -71,6 +74,11 @@ public class LocomotionAgent : MonoBehaviour
         else
         {
             agent.speed = movementSpeed;
+        }
+
+        if (zombieHealth.health < 0) {
+            anim.SetTrigger("die");
+            agent.isStopped = true;
         }
 
         // Call the correct animation

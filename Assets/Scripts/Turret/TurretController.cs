@@ -44,8 +44,15 @@ public class TurretController : MonoBehaviour {
 	}
 	
 	void Update () {
+        // TODO: do this better
         foreach (GameObject g in neighbourObjectTracker.trackedObjects) {
-            SeekTarget(g.transform);
+            if(g != null) {
+                ZombieStateMachine z = g.GetComponent<ZombieStateMachine>();
+
+                if(!z.IsDying()) {
+                    SeekTarget(g.transform);
+                }
+            }
         }
 	}
 

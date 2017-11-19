@@ -9,8 +9,7 @@ public class NavAgentSimple_obsolete : MonoBehaviour {
 
     private NavMeshAgent agent;
 
-    [SerializeField]
-    private Transform destination;
+    public Transform destination;
 
     private void Start()
     {

@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416805399143124}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -33.1027, y: -0.19881368, z: -146.92467}
+  m_LocalPosition: {x: -40.7, y: -0.2, z: -34.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4024837982367796}
@@ -307,9 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 0}
-  rotationSpeed: 3
+  rotationSpeed: 5
   fireDelay: 0.5
-  damage: 10
+  damage: 20
   range: 50
   spread: 20
 --- !u!114 &114533974262776624
