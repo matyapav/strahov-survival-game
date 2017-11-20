@@ -22,52 +22,49 @@ public class ZombieStateMachine : MonoBehaviour
     [HideInInspector]
     public UnityEvent OnDying;
 
-    // Apparently Unity crashes when using get/set on enum
-    private ZombieStateEnum currentState;
+    private ZombieStateEnum _state;
+    public ZombieStateEnum State {
+        get {
+            return _state;
+        }
+        set {
+            if (value == ZombieStateEnum.SeekPath)
+            {
+                OnSeekPath.Invoke();
+            }
+            else if (value == ZombieStateEnum.Walking)
+            {
+                OnWalkingStart.Invoke();
+            }
+            else if (value == ZombieStateEnum.Attacking)
+            {
+                OnAttackStart.Invoke();
+            }
+            else if (value == ZombieStateEnum.Dying)
+            {
+                OnDying.Invoke();
+            }
 
-    // Set a state and invoke events
-    public void SetCurrentState(ZombieStateEnum state) {
-        if (state == ZombieStateEnum.SeekPath)
-        {
-            OnSeekPath.Invoke();
+            _state = value;
         }
-        else if (state == ZombieStateEnum.Walking)
-        {
-            OnWalkingStart.Invoke();
-        }
-        else if (state == ZombieStateEnum.Attacking)
-        {
-            OnAttackStart.Invoke();
-        }
-        else if (state == ZombieStateEnum.Dying)
-        {
-            OnDying.Invoke();
-        }
-
-        currentState = state;
-    }
-
-    // Get the current state of the event machine
-    public ZombieStateEnum GetCurrentState() {
-        return currentState;
     }
 
     // On spawn start seeking a target
     private void Start()
     {
-        SetCurrentState(ZombieStateEnum.SeekPath);
+        State = ZombieStateEnum.SeekPath;
     }
 
     // Some bool checks
     public bool IsWalking() {
-        return currentState == ZombieStateEnum.Walking;
+        return State == ZombieStateEnum.Walking;
     }
 
     public bool IsAttacking() {
-        return currentState == ZombieStateEnum.Attacking;
+        return State == ZombieStateEnum.Attacking;
     }
 
     public bool IsDying() {
-        return currentState == ZombieStateEnum.Dying;
+        return State == ZombieStateEnum.Dying;
     }
 }

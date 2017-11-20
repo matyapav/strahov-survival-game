@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blok : MonoBehaviour {
+public class Blok : MonoBehaviour, IDamageable<float> {
 
     
     public string blockName = "BlokX";
@@ -31,6 +31,14 @@ public class Blok : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void Damage (float damage) {
+        hpControl.DescreaseValue(damage);
+    }
+
+    public bool Dead () {
+        return hpControl.GetCurrentValue() == hpControl.minValue;
     }
 
     public void DestroyBlok()

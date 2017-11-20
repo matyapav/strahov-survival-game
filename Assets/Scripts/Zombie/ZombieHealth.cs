@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ZombieStateMachine))]
-public class ZombieHealth : MonoBehaviour {
+public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     private ZombieStateMachine zombieStateMachine;
 
@@ -31,16 +31,19 @@ public class ZombieHealth : MonoBehaviour {
         zombieStateMachine.OnDying.AddListener(Die);
     }
 
-    // Lower the HP and if < 0 invoke the Event in FSM
-    public void GetHit(float damage)
-    {
+    public void Damage(float damage) {
         health -= damage;
         if (health <= 0)
         {
-            if(!zombieStateMachine.IsDying()) {
-                zombieStateMachine.SetCurrentState(ZombieStateMachine.ZombieStateEnum.Dying);
+            if (!zombieStateMachine.IsDying())
+            {
+                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
             }
         }
+    }
+
+    public bool Dead() {
+        return health <= 0;
     }
 
     // Do some stuff to dispose itself

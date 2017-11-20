@@ -10,7 +10,6 @@ using UnityEngine.AI;
 /// This scripts takes care of switching the animations in the Zombie
 /// </remarks>
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(ZombieHealth))]
 [RequireComponent(typeof(ZombieStateMachine))]
 public class ZombieAnimationController : MonoBehaviour {
 

@@ -21,12 +21,6 @@ public class NeighbourObjectTracker : MonoBehaviour
     [Tooltip("The step when expanding during the startup scan")]
     public float scanStep = 0.1f;
 
-    // Init the HashSet
-    private void Start()
-    {
-        trackedObjects = new HashSet<GameObject>();
-    }
-
     // ForceCheck once in a time
     private void LateUpdate()
     {
@@ -36,6 +30,13 @@ public class NeighbourObjectTracker : MonoBehaviour
             ForceCheckForDead();
             checkCounter = Random.Range(30, 60);
         }
+    }
+
+
+    // Init the HashSet
+    private void Awake()
+    {
+        trackedObjects = new HashSet<GameObject>();
     }
 
     // Initialise the NeighbourTracker with correct range and start scanning
@@ -94,11 +95,22 @@ public class NeighbourObjectTracker : MonoBehaviour
     {
         List<GameObject> toDelete = new List<GameObject>();
 
-        foreach (GameObject g in trackedObjects)
-        {
-            if (g == null || !g.activeSelf)
-            {
+        foreach (GameObject g in trackedObjects) {
+            if (g == null || !g.activeSelf) {
                 toDelete.Add(g);
+            }
+            else if (g != null) {
+                // Check all Components if they implement the Interface
+                Component[] components = g.GetComponents(typeof(Component));
+                foreach (Component comp in components) {
+                    IDamageable<float> interfaced = comp as IDamageable<float>;
+
+                    if (interfaced != null) {
+                        if (interfaced.Dead()) {
+                            toDelete.Add(g);
+                        }
+                    }
+                }
             }
         }
 

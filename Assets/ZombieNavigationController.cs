@@ -59,7 +59,7 @@ public class ZombieNavigationController : MonoBehaviour {
         agent.isStopped = false;
         agent.SetDestination(target.position);
 
-        zombieStateMachine.SetCurrentState(ZombieStateMachine.ZombieStateEnum.Walking);
+        zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
 
     // Stop the agent from navigating and moving
@@ -82,12 +82,18 @@ public class ZombieNavigationController : MonoBehaviour {
             }
             else {
                 agent.speed = movementSpeed;
-            }    
+            }
+
+            // Check if there is an object to attack
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 3f )) {
+                Debug.Log(hit.transform.tag);
+            }
         }
         else if(zombieStateMachine.IsAttacking()) {
             // If the target is null, start seeking the path again
             if (target == null) {
-               zombieStateMachine.SetCurrentState(ZombieStateMachine.ZombieStateEnum.SeekPath);
+               zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.SeekPath);
             } 
             else {
                 // TODO: attack logic = decrease blocks health,..   
@@ -101,7 +107,7 @@ public class ZombieNavigationController : MonoBehaviour {
         Debug.Log("Collision");
         if (collision.gameObject.tag == "Blok") {
             target = collision.gameObject.transform;
-            zombieStateMachine.SetCurrentState(ZombieStateMachine.ZombieStateEnum.Attacking);
+            zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.Attacking);
         }
     }
 }

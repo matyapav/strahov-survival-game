@@ -106,9 +106,8 @@ public class HitpointsController : MonoBehaviour {
 
     private void OnValueChanged(bool minimumReached)
     {
-        if(hpBar != null)
+        if (hpBar != null)
         { 
-           
             hpBar.SetValue(currentValue);
         }
         onValueChanged.Invoke();
@@ -123,9 +122,12 @@ public class HitpointsController : MonoBehaviour {
         }
     }
 
-
     public bool CanIncrease(float amount)
     {
         return currentValue + amount <= maxValue;
+    }
+
+    public float GetCurrentValue() {
+        return currentValue;
     }
 }

@@ -109,7 +109,7 @@ public class TurretController : MonoBehaviour {
             // Damage the zombie
             ZombieHealth zombieHealth = _target.GetComponent<ZombieHealth>();
             if (zombieHealth != null) {
-                zombieHealth.GetHit(damage);    
+                zombieHealth.Damage(damage);    
             }
         }
     }
