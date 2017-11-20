@@ -10,7 +10,7 @@ public class BusSpawner : MonoBehaviour {
     public GameObject ZombiePrefab;
     public int numberOfZombies = 10;
     private Animator animator;
-    private float timeBetweenSpawns = 0.75f;
+    public float timeBetweenSpawns = 0.75f;
 
     private void Start()
     {

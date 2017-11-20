@@ -12,7 +12,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ZombieHealth))]
 [RequireComponent(typeof(ZombieStateMachine))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class ZombieNavigationController : MonoBehaviour {
+public class ZombieNavigationController : MonoBehaviour
+{
 
     public float movementSpeed = 2.7f;
     public float stoppingDistance = 1.0f;
@@ -22,6 +23,7 @@ public class ZombieNavigationController : MonoBehaviour {
     private NavMeshAgent agent;
 
     public Transform target;
+    private Rigidbody rb;
 
     // Add the events
     private void OnEnable()
@@ -31,10 +33,13 @@ public class ZombieNavigationController : MonoBehaviour {
         zombieStateMachine.OnSeekPath.AddListener(SeekANewtarget);
         zombieStateMachine.OnAttackStart.AddListener(StopNavigation);
         zombieStateMachine.OnDying.AddListener(StopNavigation);
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
     }
 
     // Set some hardcoded stuff to the Agent
-    private void SetAgentSeeting() {
+    private void SetAgentSeeting()
+    {
         agent.speed = movementSpeed;
         agent.angularSpeed = 900;   // Huge number helps with clumsy turning
         agent.acceleration = 5;
@@ -45,7 +50,7 @@ public class ZombieNavigationController : MonoBehaviour {
     }
 
     // Seek a new target and start navigation
-    private void SeekANewtarget() 
+    private void SeekANewtarget()
     {
         // TODO: Add more things than only bloks
         Transform _target = MainObjectManager.Instance.GetRandomBlock().transform;
@@ -58,56 +63,70 @@ public class ZombieNavigationController : MonoBehaviour {
         target = _target;
         agent.isStopped = false;
         agent.SetDestination(target.position);
-
         zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
+        rb.isKinematic = false;
     }
 
     // Stop the agent from navigating and moving
-    private void StopNavigation() {
+    private void StopNavigation()
+    {
         agent.isStopped = true;
+    }
+
+    private void LateUpdate()
+    {
+        if (!zombieStateMachine.IsAttacking()) { 
+            Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 5f))
+            {
+                if(hit.transform.gameObject.tag == "Blok") {
+                    Debug.Log("Attacking");
+                    //a little hack for rigidbody to stop moving
+                    rb.isKinematic = true;
+                    target = hit.transform;
+                    zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.Attacking);
+                }
+            }
+        }
     }
 
     private void Update()
     {
-        if (zombieStateMachine.IsWalking()) {
+        if (zombieStateMachine.IsWalking())
+        {
             // Stop pathfinding on the last step
-            if (Vector3.Magnitude(transform.position - agent.destination) <= stoppingDistance) {
+            if (Vector3.Magnitude(transform.position - agent.destination) <= stoppingDistance)
+            {
                 zombieStateMachine.OnAttackStart.Invoke();
             }
 
             // Limit movement speed when doing sharp turns
             float turnAngle = Vector3.Angle(transform.forward, agent.destination);
-            if (turnAngle > angleTurnLimit) {
+            if (turnAngle > angleTurnLimit)
+            {
                 agent.speed = 0.3f;
             }
-            else {
+            else
+            {
                 agent.speed = movementSpeed;
             }
 
-            // Check if there is an object to attack
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 3f )) {
-                Debug.Log(hit.transform.tag);
-            }
+           
         }
-        else if(zombieStateMachine.IsAttacking()) {
+        else if (zombieStateMachine.IsAttacking())
+        {
             // If the target is null, start seeking the path again
-            if (target == null) {
-               zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.SeekPath);
-            } 
-            else {
+            if (target == null)
+            {
+                zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.SeekPath);
+            }
+            else
+            {
                 // TODO: attack logic = decrease blocks health,..   
             }
         }
     }
 
-    // The bloks must have a static rigid body
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision");
-        if (collision.gameObject.tag == "Blok") {
-            target = collision.gameObject.transform;
-            zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.Attacking);
-        }
-    }
 }
+  
