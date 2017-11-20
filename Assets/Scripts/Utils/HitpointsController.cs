@@ -20,9 +20,10 @@ public class HitpointsController : MonoBehaviour {
     public float startValue = 100f;
     public bool startAtMaximum = true;
 
-
     public float maxValue = 100f;
     public float minValue = 0f;
+
+    public bool minimumReached = false;
 
     private float currentValue;
 
@@ -59,7 +60,8 @@ public class HitpointsController : MonoBehaviour {
         if (newValue <= minValue)
         {
             currentValue = minValue;
-            OnValueChanged(true);
+            minimumReached = true;
+            OnValueChanged();
             return;
         }
         else if (newValue > maxValue)
@@ -70,7 +72,7 @@ public class HitpointsController : MonoBehaviour {
         {
             currentValue = newValue;
         }
-        OnValueChanged(false);
+        OnValueChanged();
     }
 
     public void DescreaseValue(float decrement)
@@ -78,7 +80,8 @@ public class HitpointsController : MonoBehaviour {
         if (currentValue - decrement <= minValue)
         {
             currentValue = minValue;
-            OnValueChanged(true);
+            minimumReached = true;
+            OnValueChanged();
             return;
         }
         else
@@ -88,7 +91,7 @@ public class HitpointsController : MonoBehaviour {
         if(hpBar != null) { 
              hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
         }
-        OnValueChanged(false);
+        OnValueChanged();
     }
 
     public void IncreaseValue(float incremet)
@@ -101,10 +104,10 @@ public class HitpointsController : MonoBehaviour {
         {
             currentValue += incremet;
         }
-        OnValueChanged(false);
+        OnValueChanged();
     }
 
-    private void OnValueChanged(bool minimumReached)
+    private void OnValueChanged()
     {
         if (hpBar != null)
         { 

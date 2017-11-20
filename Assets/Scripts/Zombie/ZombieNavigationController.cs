@@ -18,12 +18,15 @@ public class ZombieNavigationController : MonoBehaviour
     public float movementSpeed = 2.7f;
     public float stoppingDistance = 1.0f;
     public float angleTurnLimit = 60;
+    public float damage = 5f;
 
     private ZombieStateMachine zombieStateMachine;
     private NavMeshAgent agent;
 
     public Transform target;
     private Rigidbody rb;
+    private float nextAttackTime = 0.0f;
+    private float nextAttackIn = 1.5f;
 
     // Add the events
     private void OnEnable()
@@ -124,9 +127,21 @@ public class ZombieNavigationController : MonoBehaviour
             else
             {
                 // TODO: attack logic = decrease blocks health,..   
+                if (target.tag == "Blok")
+                {
+                    if(Time.time > nextAttackTime)
+                    {
+                        nextAttackTime = Time.time + nextAttackIn;
+                        HitpointsController hpControl = target.GetComponent<HitpointsController>();
+                        hpControl.DescreaseValue(5f);
+                        if(hpControl.minimumReached)
+                        {
+                            target = null;
+                        }
+                    }
+                }
             }
         }
     }
-
 }
   

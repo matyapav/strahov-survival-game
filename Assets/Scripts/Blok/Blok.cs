@@ -16,24 +16,8 @@ public class Blok : MonoBehaviour, IDamageable<float> {
         hpControl.onMinimumReached += DestroyBlok;
     }
 
-
-    // Update is called once per frame 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
-            {
-                if (hit.collider.gameObject.name.Equals(gameObject.name))
-                { //hit only this cube
-                    hpControl.DescreaseValue(5f);
-                }
-            }
-        }
-    }
-
     public void Damage (float damage) {
+        
         hpControl.DescreaseValue(damage);
     }
 
@@ -43,8 +27,10 @@ public class Blok : MonoBehaviour, IDamageable<float> {
 
     public void DestroyBlok()
     {
-        gameObject.SetActive(false);
-        MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
+        if (gameObject.activeInHierarchy) { 
+            gameObject.SetActive(false);
+            MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
+        }
     }
 
 }
