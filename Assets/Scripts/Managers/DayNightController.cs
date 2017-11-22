@@ -26,10 +26,12 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         if(phase == DayNightPhase.DAY)
         {
             phase = DayNightPhase.NIGHT;
+            MainUISoundManager.Instance.PlayNight();
         }
         else if(phase == DayNightPhase.NIGHT)
         {
             phase = DayNightPhase.DAY;
+            MainUISoundManager.Instance.PlayDay();
         }
     }
 
