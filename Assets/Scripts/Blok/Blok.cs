@@ -30,6 +30,7 @@ public class Blok : MonoBehaviour, IDamageable<float> {
         if (gameObject.activeInHierarchy) { 
             gameObject.SetActive(false);
             MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
+            MainObjectManager.Instance.bloky.Remove(gameObject); //remove block from possible targets
         }
     }
 

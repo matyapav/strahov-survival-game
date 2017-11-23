@@ -11,6 +11,38 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1420999804372786}
   m_IsPrefabParent: 1
+--- !u!1 &1048108736628702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4983111066815922}
+  - component: {fileID: 108789204200811428}
+  m_Layer: 0
+  m_Name: LightLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1191223638612602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4293155220670486}
+  - component: {fileID: 108771518210263962}
+  m_Layer: 0
+  m_Name: LightRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1420999804372786
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,6 +55,7 @@ GameObject:
   - component: {fileID: 23970748367089322}
   - component: {fileID: 95149270665029054}
   - component: {fileID: 65859417992965960}
+  - component: {fileID: 114457093833729194}
   m_Layer: 0
   m_Name: bus143
   m_TagString: Untagged
@@ -30,19 +63,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4293155220670486
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191223638612602}
+  m_LocalRotation: {x: 0.09166386, y: 0.6928814, z: -0.08950694, w: 0.70957845}
+  m_LocalPosition: {x: 69.70003, y: 32, z: -11.600037}
+  m_LocalScale: {x: 1.0000263, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4462359569030274}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 14.722001, y: 88.636, z: 0}
 --- !u!4 &4462359569030274
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1420999804372786}
-  m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 481.1, y: 0, z: 262.54}
-  m_LocalScale: {x: 0.23, y: 0.23, z: 0.1874818}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 480.2, y: 0, z: 262.57}
+  m_LocalScale: {x: 0.23, y: 0.23, z: 0.2}
+  m_Children:
+  - {fileID: 4983111066815922}
+  - {fileID: 4293155220670486}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4983111066815922
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048108736628702}
+  m_LocalRotation: {x: 0.09166386, y: 0.6928814, z: -0.08950694, w: 0.70957845}
+  m_LocalPosition: {x: 69.199936, y: 32, z: 11.199951}
+  m_LocalScale: {x: 1.0000263, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4462359569030274}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 14.722001, y: 88.636, z: 0}
 --- !u!23 &23970748367089322
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -97,7 +158,7 @@ BoxCollider:
   m_GameObject: {fileID: 1420999804372786}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 242.74069, y: 36.4398, z: 33.96081}
   m_Center: {x: 0, y: 18.219904, z: -0.0000019073486}
@@ -109,8 +170,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1420999804372786}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6bb69fc3ca24e714a856d6ff161f512f, type: 3}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4b5317662341bb4ea22c40a2dc1ccbc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -118,3 +179,91 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &108771518210263962
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191223638612602}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 10
+  m_Range: 30
+  m_SpotAngle: 35
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!108 &108789204200811428
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048108736628702}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 10
+  m_Range: 30
+  m_SpotAngle: 35
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &114457093833729194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420999804372786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e5b3b54a1c64d68a0be964f51efecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busName: 143
+  ZombiePrefab: {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738,
+    type: 2}
+  numberOfZombies: 50
+  timeBetweenSpawns: 1.5

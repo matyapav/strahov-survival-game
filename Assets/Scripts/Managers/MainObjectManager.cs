@@ -17,7 +17,6 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         if (bloky.Count < 1) {
             return null;
         }
-
         return bloky[Random.Range(0, bloky.Count)];
     }
 }
