@@ -7,6 +7,7 @@ public class BlackMarketButton : MonoBehaviour {
 
     public HitpointsController hitpointsController;
     public Image blackMarketBar;
+    public Button blackMarketBtn;
     public BlackMarketMenuController blackMarketMenuController;
 
     private float refillAmount;
@@ -20,7 +21,11 @@ public class BlackMarketButton : MonoBehaviour {
     // Use this for initialization
     void OnEnable () {
         blackMarketBar.fillAmount = hitpointsController.hpBar.barValueImage.fillAmount;
-	}
+        if (hitpointsController.minimumReached)
+        {
+            blackMarketBtn.interactable = false;
+        }
+    }
 
     public void Refill()
     {

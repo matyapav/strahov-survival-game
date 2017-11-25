@@ -1134,6 +1134,128 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &122734153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 122734154}
+  - component: {fileID: 122734156}
+  - component: {fileID: 122734155}
+  - component: {fileID: 122734157}
+  m_Layer: 5
+  m_Name: Heading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &122734154
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122734153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1220002545}
+  m_Father: {fileID: 2066832232}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.000023509758, y: 63}
+  m_SizeDelta: {x: 250, y: 50}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &122734155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122734153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.5254902, b: 0.7372549, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &122734156
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122734153}
+--- !u!114 &122734157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122734153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 122734155}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2066832236}
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &132051455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 215827439}
   blackMarketBar: {fileID: 1032420655}
+  blackMarketBtn: {fileID: 1828764765}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &166209457
 GameObject:
@@ -1559,6 +1682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1686287703}
   blackMarketBar: {fileID: 166209459}
+  blackMarketBtn: {fileID: 1642973781}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &189109578
 GameObject:
@@ -3723,6 +3847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1332670624}
   blackMarketBar: {fileID: 788328430}
+  blackMarketBtn: {fileID: 640577556}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &459936529
 GameObject:
@@ -3943,6 +4068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1908711747}
   blackMarketBar: {fileID: 1908966462}
+  blackMarketBtn: {fileID: 1376310525}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &574927226
 GameObject:
@@ -4421,6 +4547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1107783724}
   blackMarketBar: {fileID: 1403107773}
+  blackMarketBtn: {fileID: 1628027250}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &663144677
 GameObject:
@@ -5240,6 +5367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1847211945}
   blackMarketBar: {fileID: 1122533121}
+  blackMarketBtn: {fileID: 228116362}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &816566340
 GameObject:
@@ -6703,6 +6831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 870204715}
   blackMarketBar: {fileID: 1543117277}
+  blackMarketBtn: {fileID: 1577739379}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &964031086
 GameObject:
@@ -8298,6 +8427,80 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1220002544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1220002545}
+  - component: {fileID: 1220002547}
+  - component: {fileID: 1220002546}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1220002545
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220002544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 122734154}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.00000062157415, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1220002546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220002544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: <b>[B]</b>uild menu
+--- !u!222 &1220002547
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220002544}
 --- !u!4 &1231097722 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4378846041318996, guid: e05fc758f495e804d909c1428cc23c63,
@@ -8988,6 +9191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1742487224}
   blackMarketBar: {fileID: 2109162893}
+  blackMarketBtn: {fileID: 329711623}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &1322897969
 GameObject:
@@ -9974,6 +10178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 214365173}
   blackMarketBar: {fileID: 840936867}
+  blackMarketBtn: {fileID: 1865463891}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &1425279393
 GameObject:
@@ -10419,6 +10624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 882114802}
   blackMarketBar: {fileID: 459936531}
+  blackMarketBtn: {fileID: 816566342}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &1543117275
 GameObject:
@@ -11995,7 +12201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Welcome to the <b>BLACK MARKET</b>. It's really simple. We have some suggled
+  m_Text: Welcome to the <b>BLACK MARKET</b>. It's really simple. We have some smuggled
     beer and we need some butter. Wanna trade? Just click on the block to refill the
     beer. The price is in the upper right corner.
 --- !u!222 &1802324228
@@ -14324,6 +14530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpointsController: {fileID: 1298901103}
   blackMarketBar: {fileID: 299610560}
+  blackMarketBtn: {fileID: 1025903041}
   blackMarketMenuController: {fileID: 391962943}
 --- !u!1 &1899546817
 GameObject:
@@ -15397,7 +15604,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
   m_Value: 0.5
-  m_Size: 0.96450293
+  m_Size: 0.886764
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15828,12 +16035,13 @@ RectTransform:
   m_Children:
   - {fileID: 189555288}
   - {fileID: 2046223225}
+  - {fileID: 122734154}
   m_Father: {fileID: 1899546821}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -255}
+  m_AnchoredPosition: {x: 0, y: -238}
   m_SizeDelta: {x: -200, y: 230}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2066832233

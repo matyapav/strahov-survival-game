@@ -14,6 +14,14 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     public GameObject WaveText;
     public GameObject BlackMarketMenu;
 
+    private void Start()
+    {
+        PauseMenu.SetActive(false);
+        Money.SetActive(true);
+        TimeText.SetActive(false);
+        WaveText.SetActive(true);
+        BlackMarketMenu.SetActive(false);
+    }
 
     private void OnEnable()
     {
