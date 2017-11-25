@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class DayNightController : MonoBehaviourSingleton<DayNightController> {
 
-    public Animator lightAnimator;
-    public GameObject lamps;
     public Text dayNightText;
     private DayNightPhase phase;
     
-    private int dayCounter = 1;
+    private int dayCounter = 0;
 
     public DayNightPhase Phase
     {
@@ -22,37 +20,41 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
 
     public void Start()
     {
-        phase = DayNightPhase.DAY;
-        dayNightText.text = "Day "+ dayCounter;
+        StartDayPhase();
     }
 
     public void SwitchPhace()
     {
-        lightAnimator.SetBool("night", !lightAnimator.GetBool("night"));
         if(phase == DayNightPhase.DAY)
         {
-            phase = DayNightPhase.NIGHT;
-            MainUISoundManager.Instance.PlayNight();
-            dayNightText.text = "Night " + dayCounter;
-            SetLampsOn(true);
+            StartNightPhase();
         }
         else if(phase == DayNightPhase.NIGHT)
         {
-            dayCounter++;
-            phase = DayNightPhase.DAY;
-            MainUISoundManager.Instance.PlayDay();
-            dayNightText.text = "Day " + dayCounter;
-            SetLampsOn(false);
-           
+            StartDayPhase();
         }
     }
 
-    private void SetLampsOn(bool lampsOn)
+    private void StartNightPhase()
     {
-        foreach (Animator lampAnimator in lamps.transform.GetComponentsInChildren<Animator>(true))
-        {
-            lampAnimator.SetBool("on", lampsOn);
-        }
+        LightsController.Instance.SetDirectionalLightOn(false);
+        phase = DayNightPhase.NIGHT;
+        MainUISoundManager.Instance.PlayMain();
+        MainUISoundManager.Instance.PlayNight();
+        dayNightText.text = "Night " + dayCounter;
+        LightsController.Instance.SetLampsOn(true);
+        MainCanvasManager.Instance.HideBuildMenu();
+    }
+
+    private void StartDayPhase()
+    {
+        LightsController.Instance.SetDirectionalLightOn(true);
+        dayCounter++;
+        phase = DayNightPhase.DAY;
+        MainUISoundManager.Instance.PlayDay();
+        dayNightText.text = "Day " + dayCounter;
+        LightsController.Instance.SetLampsOn(false);
+        MainCanvasManager.Instance.ShowBuildMenu();
     }
 
     public bool IsDay

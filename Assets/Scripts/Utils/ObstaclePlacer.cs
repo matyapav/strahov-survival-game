@@ -44,7 +44,13 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
             //Handle moving obstacle in scene
             if (tempObstacle)
             {
-                if (Physics.OverlapBox(tempObstacle.transform.position, tempObstacle.transform.localScale / 2, tempObstacle.transform.rotation, LayerMask.GetMask("Obstacle")).Length > 0)
+                //TODO opravit .. zatim nechame placovat vsude
+                /*Collider[] overlapedObjects = Physics.OverlapBox(tempObstacle.transform.position, tempObstacle.transform.localScale /2, tempObstacle.transform.rotation, LayerMask.GetMask("Obstacle"));
+                foreach(Collider col in overlapedObjects)
+                {
+                    Debug.Log(col.gameObject.name);
+                }
+                if (overlapedObjects.Length > 0)
                 {
                     //hits another obstacle 
                     tempObstacle.GetComponent<Renderer>().material.color = Color.red; //TODO resit zacervenani nejakym shaderem
@@ -54,12 +60,12 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                 {
                     canPlace = true;
                     tempObstacle.GetComponent<Renderer>().material.color = tempObstacleMaterialBackupColor; 
-                }
+                }*/
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
-                    tempObstacle.transform.position = new Vector3(hit.point.x, tempObstacle.transform.localScale.y / 2 ,hit.point.z);
+                    tempObstacle.transform.position = new Vector3(hit.point.x, 0f ,hit.point.z);
                     tempObstacle.transform.rotation = Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z);   // Set the rotation
                 }
                 //Handle placing

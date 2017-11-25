@@ -52,8 +52,12 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The target of the camera rotation")]
     public Transform rotationTarget;
 
+    public Vector3 buildingInfoCameraPos;
     // The camera's current speed
     private Vector2 cameraSpeed = Vector2.zero;
+    private bool showingBuildingInfo = false;
+    private Vector3 backupPosition;
+    
 
 
     private void Start()
@@ -128,66 +132,85 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 pos = transform.position;
-
-        // Handle the input
-        Vector2 input = GetInput();
-
-        // Make a fast snappy break
-        if ((cameraSpeed.y < 0 && input.y > 0) || (cameraSpeed.y > 0 && input.y < 0)) {
-            cameraSpeed.y = 0;
-        }
-        if ((cameraSpeed.x < 0 && input.x > 0) || (cameraSpeed.x > 0 && input.x < 0)) {
-			cameraSpeed.x = 0;
-		}
-
-        // Add the input scaled by movement acceleration
-        cameraSpeed += input * movementAcceleration;
-
-
-		// If there was no keypress lower the camera speed
-		if (input == Vector2.zero) {
-			if (cameraSpeed.magnitude < 0.1) {
-				cameraSpeed = Vector2.zero;                 // If the speed of camera is small, stop the movement
-			} else {
-				cameraSpeed = cameraSpeed * (4f / 5f);      // If the camera wasn't accelerated make it slower 
-			}
-		}
-
-        // Clamp the maximum camera speed 
-        cameraSpeed = Vector2.ClampMagnitude(cameraSpeed, maxMovementSpeed);
-
-        // Assign the pos
-		pos += new Vector3(cameraSpeed.x, 0f, cameraSpeed.y);
-
-        // Zoom camera if enabled
-        if (scrollingEnabled)
+        if (showingBuildingInfo)
         {
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            //pos.y -= scroll * zoomingSpeed * Time.deltaTime;
-            Vector3 deltaPos = transform.forward * scroll * zoomingSpeed * Time.deltaTime;
-            if(pos.y + deltaPos.y >= minY && pos.y + deltaPos.y <= maxY) {
-                pos += deltaPos;
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                showingBuildingInfo = false;
+                transform.position = backupPosition;
+                MainCanvasManager.Instance.HideBuildingsInfo();
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                backupPosition = transform.position;
+                showingBuildingInfo = true;
+                transform.position = buildingInfoCameraPos;
+                MainCanvasManager.Instance.ShowBuildingsInfo();
+            }
+            Vector3 pos = transform.position;
 
-        // Rotate the camera if enabled
-        if (rotationEnabled)
-		{
-			RotateCamera();
-		}
+            // Handle the input
+            Vector2 input = GetInput();
 
-        // Apply limits
-        pos.x = Mathf.Clamp(pos.x, limitLeft, limitRight);
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
-        pos.z = Mathf.Clamp(pos.z, limitBottom, limitTop);
+            // Make a fast snappy break
+            if ((cameraSpeed.y < 0 && input.y > 0) || (cameraSpeed.y > 0 && input.y < 0)) {
+                cameraSpeed.y = 0;
+            }
+            if ((cameraSpeed.x < 0 && input.x > 0) || (cameraSpeed.x > 0 && input.x < 0)) {
+			    cameraSpeed.x = 0;
+		    }
 
-        const float damping = 5f;
+            // Add the input scaled by movement acceleration
+            cameraSpeed += input * movementAcceleration;
 
-        // Lerp to the target rotation
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * damping);
 
-      
+		    // If there was no keypress lower the camera speed
+		    if (input == Vector2.zero) {
+			    if (cameraSpeed.magnitude < 0.1) {
+				    cameraSpeed = Vector2.zero;                 // If the speed of camera is small, stop the movement
+			    } else {
+				    cameraSpeed = cameraSpeed * (4f / 5f);      // If the camera wasn't accelerated make it slower 
+			    }
+		    }
+
+            // Clamp the maximum camera speed 
+            cameraSpeed = Vector2.ClampMagnitude(cameraSpeed, maxMovementSpeed);
+
+            // Assign the pos
+		    pos += new Vector3(cameraSpeed.x, 0f, cameraSpeed.y);
+
+            // Zoom camera if enabled
+            if (scrollingEnabled)
+            {
+                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                //pos.y -= scroll * zoomingSpeed * Time.deltaTime;
+                Vector3 deltaPos = transform.forward * scroll * zoomingSpeed * Time.deltaTime;
+                if(pos.y + deltaPos.y >= minY && pos.y + deltaPos.y <= maxY) {
+                    pos += deltaPos;
+                }
+            }
+
+            // Rotate the camera if enabled
+            if (rotationEnabled)
+		    {
+			    RotateCamera();
+		    }
+
+            // Apply limits
+            pos.x = Mathf.Clamp(pos.x, limitLeft, limitRight);
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            pos.z = Mathf.Clamp(pos.z, limitBottom, limitTop);
+
+            const float damping = 5f;
+
+            // Lerp to the target rotation
+            transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * damping);
+
+        }
+
 
     }
 }

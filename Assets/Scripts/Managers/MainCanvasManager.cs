@@ -13,6 +13,8 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     public GameObject TimeText;
     public GameObject WaveText;
     public GameObject BlackMarketMenu;
+    public GameObject BuildMenu;
+    public GameObject BuildingsInfoMenu;
 
     private void Start()
     {
@@ -20,7 +22,9 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
         Money.SetActive(true);
         TimeText.SetActive(false);
         WaveText.SetActive(true);
+        BuildMenu.SetActive(true);
         BlackMarketMenu.SetActive(false);
+        BuildingsInfoMenu.SetActive(false);
     }
 
     private void OnEnable()
@@ -50,6 +54,32 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
             BlackMarketMenu.SetActive(true);
             PauseTimescale();
         }
+    }
+
+    public void ShowBuildingsInfo()
+    {
+        // Check if the pause menu is active. If it is do not open the menu.
+        if (!PauseMenu.activeSelf)
+        {
+            BuildingsInfoMenu.SetActive(true);
+            PauseTimescale();
+        }
+    }
+
+    public void HideBuildingsInfo()
+    {
+        BuildingsInfoMenu.SetActive(false);
+        ResumeTimescale();
+    }
+
+    public void HideBuildMenu()
+    {
+        BuildMenu.SetActive(false);
+    }
+
+    public void ShowBuildMenu()
+    {
+        BuildMenu.SetActive(true);
     }
 
     public void HideBlackMarketMenu() {
