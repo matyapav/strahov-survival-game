@@ -37,20 +37,24 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     }
 
     private void OnExitPressed() {
-        if (BlackMarketMenu.activeSelf) {
+        if (BuildingsInfoMenu.activeInHierarchy)
+        {
+            HideBuildingsInfo();
+        }
+        else if (BlackMarketMenu.activeInHierarchy) {
             HideBlackMarketMenu();
         }
-        else if (PauseMenu.activeSelf) {
+        else if (PauseMenu.activeInHierarchy) {
             HidePauseMenu();
         }
-        else if(!PauseMenu.activeSelf) {
+        else if(!PauseMenu.activeInHierarchy) {
             ShowPauseMenu();
         }
     }
 
     private void ShowBlackMarketMenu() {
         // Check if the pause menu is active. If it is do not open the menu.
-        if(!PauseMenu.activeSelf) {
+        if(!PauseMenu.activeInHierarchy) {
             BlackMarketMenu.SetActive(true);
             PauseTimescale();
         }
@@ -59,7 +63,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     public void ShowBuildingsInfo()
     {
         // Check if the pause menu is active. If it is do not open the menu.
-        if (!PauseMenu.activeSelf)
+        if (!PauseMenu.activeInHierarchy)
         {
             BuildingsInfoMenu.SetActive(true);
             PauseTimescale();

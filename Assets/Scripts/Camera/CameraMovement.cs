@@ -134,7 +134,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (showingBuildingInfo)
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
             {
                 showingBuildingInfo = false;
                 transform.position = backupPosition;
@@ -143,7 +143,8 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I) && !MainCanvasManager.Instance.PauseMenu.activeInHierarchy &&
+                !MainCanvasManager.Instance.BlackMarketMenu.activeInHierarchy)
             {
                 backupPosition = transform.position;
                 showingBuildingInfo = true;
