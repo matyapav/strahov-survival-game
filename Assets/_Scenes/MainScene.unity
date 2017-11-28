@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 46720407}
   - component: {fileID: 46720409}
   - component: {fileID: 46720408}
+  - component: {fileID: 46720410}
   m_Layer: 5
   m_Name: BlockInfo12
   m_TagString: Untagged
@@ -578,6 +579,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 46720406}
+--- !u!114 &46720410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 46720406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1742487224}
 --- !u!4 &54242832 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 137a625f838241643887ce85957880a5, type: 3}
@@ -2481,6 +2494,7 @@ GameObject:
   - component: {fileID: 201432377}
   - component: {fileID: 201432379}
   - component: {fileID: 201432378}
+  - component: {fileID: 201432380}
   m_Layer: 5
   m_Name: BlockInfo11
   m_TagString: Untagged
@@ -2540,6 +2554,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 201432376}
+--- !u!114 &201432380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 201432376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1742487224}
 --- !u!1001 &214365170
 Prefab:
   m_ObjectHideFlags: 0
@@ -3338,6 +3364,7 @@ GameObject:
   - component: {fileID: 232256434}
   - component: {fileID: 232256436}
   - component: {fileID: 232256435}
+  - component: {fileID: 232256437}
   m_Layer: 5
   m_Name: BlockInfo9
   m_TagString: Untagged
@@ -3397,6 +3424,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 232256433}
+--- !u!114 &232256437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232256433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1847211945}
 --- !u!1 &233974472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5870,7 +5909,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 59fd5204d9bf67f4e99f0ee2995fe143, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6466,6 +6505,7 @@ GameObject:
   - component: {fileID: 600406436}
   - component: {fileID: 600406438}
   - component: {fileID: 600406437}
+  - component: {fileID: 600406439}
   m_Layer: 5
   m_Name: BlockInfo1
   m_TagString: Untagged
@@ -6525,6 +6565,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 600406435}
+--- !u!114 &600406439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600406435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1908711747}
 --- !u!1001 &608247209
 Prefab:
   m_ObjectHideFlags: 0
@@ -10556,9 +10608,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5be9110b2b1e55c47b218a12509c74d6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.206
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10912,6 +10964,7 @@ GameObject:
   - component: {fileID: 1025665516}
   - component: {fileID: 1025665518}
   - component: {fileID: 1025665517}
+  - component: {fileID: 1025665519}
   m_Layer: 5
   m_Name: BlockInfo3
   m_TagString: Untagged
@@ -10971,6 +11024,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025665515}
+--- !u!114 &1025665519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025665515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1298901103}
 --- !u!1 &1025903039
 GameObject:
   m_ObjectHideFlags: 0
@@ -11501,6 +11566,7 @@ GameObject:
   - component: {fileID: 1064128561}
   - component: {fileID: 1064128563}
   - component: {fileID: 1064128562}
+  - component: {fileID: 1064128564}
   m_Layer: 5
   m_Name: BlockInfo2
   m_TagString: Untagged
@@ -11560,6 +11626,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064128560}
+--- !u!114 &1064128564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1064128560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 215827439}
 --- !u!1 &1069260358
 GameObject:
   m_ObjectHideFlags: 0
@@ -12431,6 +12509,7 @@ GameObject:
   - component: {fileID: 1137806022}
   - component: {fileID: 1137806024}
   - component: {fileID: 1137806023}
+  - component: {fileID: 1137806025}
   m_Layer: 5
   m_Name: BlockInfo6
   m_TagString: Untagged
@@ -12490,6 +12569,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1137806021}
+--- !u!114 &1137806025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137806021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 870204715}
 --- !u!1001 &1144566693
 Prefab:
   m_ObjectHideFlags: 0
@@ -12630,6 +12721,7 @@ GameObject:
   - component: {fileID: 1168180204}
   - component: {fileID: 1168180206}
   - component: {fileID: 1168180205}
+  - component: {fileID: 1168180207}
   m_Layer: 5
   m_Name: BlockInfo8
   m_TagString: Untagged
@@ -12689,6 +12781,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1168180203}
+--- !u!114 &1168180207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1168180203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1332670624}
 --- !u!1 &1169420775
 GameObject:
   m_ObjectHideFlags: 0
@@ -12729,7 +12833,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f4bc4fdd74f656f41ba50f0fe4e0b9e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12912,7 +13016,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5f47d939e649025459ba0f68bd28257a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13021,9 +13125,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a78d5ef5f953da54da9e81d8a92ac136, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.216
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13104,6 +13208,7 @@ GameObject:
   - component: {fileID: 1213017763}
   - component: {fileID: 1213017765}
   - component: {fileID: 1213017764}
+  - component: {fileID: 1213017766}
   m_Layer: 5
   m_Name: BlockInfo7
   m_TagString: Untagged
@@ -13163,6 +13268,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1213017762}
+--- !u!114 &1213017766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1213017762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1107783724}
 --- !u!1 &1220002544
 GameObject:
   m_ObjectHideFlags: 0
@@ -15426,6 +15543,7 @@ GameObject:
   - component: {fileID: 1423860956}
   - component: {fileID: 1423860958}
   - component: {fileID: 1423860957}
+  - component: {fileID: 1423860959}
   m_Layer: 5
   m_Name: BlockInfo10
   m_TagString: Untagged
@@ -15485,6 +15603,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423860955}
+--- !u!114 &1423860959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423860955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 1686287703}
 --- !u!1 &1425279393
 GameObject:
   m_ObjectHideFlags: 0
@@ -16334,7 +16464,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 37a53a91dac414c489bd2cfe11fb4a8a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16579,6 +16709,7 @@ GameObject:
   - component: {fileID: 1594757613}
   - component: {fileID: 1594757615}
   - component: {fileID: 1594757614}
+  - component: {fileID: 1594757616}
   m_Layer: 5
   m_Name: BlockInfo5
   m_TagString: Untagged
@@ -16638,6 +16769,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1594757612}
+--- !u!114 &1594757616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1594757612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 214365173}
 --- !u!1 &1617308185
 GameObject:
   m_ObjectHideFlags: 0
@@ -18714,6 +18857,7 @@ GameObject:
   - component: {fileID: 1802655732}
   - component: {fileID: 1802655734}
   - component: {fileID: 1802655733}
+  - component: {fileID: 1802655735}
   m_Layer: 5
   m_Name: BlockInfo4
   m_TagString: Untagged
@@ -18773,6 +18917,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1802655731}
+--- !u!114 &1802655735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802655731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f8d9a4f0a83a49868c2b426f8f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpointsController: {fileID: 882114802}
 --- !u!1 &1804235937
 GameObject:
   m_ObjectHideFlags: 0

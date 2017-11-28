@@ -25,6 +25,15 @@ public class HitpointsController : MonoBehaviour {
 
     public bool minimumReached = false;
 
+    private bool isUnderAttack = false;
+    public bool IsUnderAttack
+    {
+        get
+        {
+            return isUnderAttack;
+        }
+    }
+
     private float currentValue;
 
     private void Start()
@@ -77,6 +86,7 @@ public class HitpointsController : MonoBehaviour {
 
     public void DescreaseValue(float decrement)
     {
+        CancelInvoke("isNoMoreUnderAttack");
         if (currentValue - decrement <= minValue)
         {
             currentValue = minValue;
@@ -91,7 +101,14 @@ public class HitpointsController : MonoBehaviour {
         if(hpBar != null) { 
              hpBar.EnableBar(GetComponent<Blok>().name + " is under attack!");
         }
+        isUnderAttack = true;
+        Invoke("isNoMoreUnderAttack", 5f);
         OnValueChanged();
+    }
+
+    private void isNoMoreUnderAttack()
+    {
+        isUnderAttack = false;
     }
 
     public void IncreaseValue(float incremet)
@@ -116,6 +133,8 @@ public class HitpointsController : MonoBehaviour {
         onValueChanged.Invoke();
         if (minimumReached)
         {
+            CancelInvoke("isNoMoreUnderAttack");
+            isUnderAttack = false;
             onMinimumReached.Invoke();
             if(hpBar != null)
             { 
