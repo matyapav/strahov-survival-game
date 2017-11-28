@@ -39,8 +39,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     {
         LightsController.Instance.SetDirectionalLightOn(false);
         phase = DayNightPhase.NIGHT;
-        MainUISoundManager.Instance.PlayMain();
-        MainUISoundManager.Instance.PlayNight();
+        MainUISoundManager.Instance.PlaySound("main");
+        MainUISoundManager.Instance.PlaySound("night");
         dayNightText.text = "Night " + dayCounter;
         LightsController.Instance.SetLampsOn(true);
         MainCanvasManager.Instance.HideBuildMenu();
@@ -51,7 +51,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         LightsController.Instance.SetDirectionalLightOn(true);
         dayCounter++;
         phase = DayNightPhase.DAY;
-        MainUISoundManager.Instance.PlayDay();
+        MainUISoundManager.Instance.PlaySound("day");
         dayNightText.text = "Day " + dayCounter;
         LightsController.Instance.SetLampsOn(false);
         MainCanvasManager.Instance.ShowBuildMenu();

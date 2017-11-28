@@ -19,12 +19,29 @@ public class BusSpawner : MonoBehaviour {
 
     public void Arrive()
     {
+        MainUISoundManager.Instance.PlaySound("bus_ride");
         animator.SetBool(animator.GetParameter(0).name, true);
         MessageController.Instance.AddMessage("Prepare yourself! Bus n. "+ busName +" is arriving!!!", 6f, Color.green);
     }
 
+    public void StopBusRide()
+    {
+        MainUISoundManager.Instance.StopSound("bus_ride");
+    }
+
+    public void PlayArrivalSound()
+    {
+        MainUISoundManager.Instance.PlaySound("bus_arrival_sound");
+    }
+
+    public void PlayDoorSound()
+    {
+        MainUISoundManager.Instance.PlaySound("bus_door");
+    }
+
     public void Leave()
     {
+        MainUISoundManager.Instance.PlaySound("bus_ride");
         // Start the animation
         animator.SetBool(animator.GetParameter(0).name, false);
 
@@ -33,6 +50,7 @@ public class BusSpawner : MonoBehaviour {
     }
 
     public void SpawnWave () {
+        MainUISoundManager.Instance.PlaySound("spawn_horde");
         for (int i = 0; i < numberOfZombies; i++) {
             Invoke("SpawnZombie", i* timeBetweenSpawns);
         }

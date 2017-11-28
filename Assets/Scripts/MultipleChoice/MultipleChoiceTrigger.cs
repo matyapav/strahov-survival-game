@@ -36,7 +36,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
                     multipleChoiceControllerInstance.HidePanel();
                 }
 
-                MainUISoundManager.Instance.PlayBlop();
+                MainUISoundManager.Instance.PlaySound("blop");
             }
         }
 	}
@@ -52,7 +52,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 0f, 1f);
 
-        MainUISoundManager.Instance.PlayBlop();
+        MainUISoundManager.Instance.PlaySound("blop");
     }
 
     void Move()
@@ -60,7 +60,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         // just move it 
         ObstaclePlacer.Instance.SetObstacle(gameObject, 0, true);
 
-        MainUISoundManager.Instance.PlayBlop();
+        MainUISoundManager.Instance.PlaySound("blop");
     }
 
     void Upgrade()
@@ -69,13 +69,13 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 1f, 0f);
 
-        MainUISoundManager.Instance.PlayBlop();
+        MainUISoundManager.Instance.PlaySound("blop");
     }
 
     void Destroy()
     {
         Destroy(gameObject);
 
-        MainUISoundManager.Instance.PlayBlop();
+        MainUISoundManager.Instance.PlaySound("blop");
     }
 }

@@ -18,7 +18,7 @@ public class BlackMarket : MonoBehaviour {
                 if (hit.collider.gameObject.tag == Tag) {
                     // If I hit the blackMarket Invoke the event
                     MainEventManager.Instance.OnBlackMarketClicked.Invoke();
-                    MainUISoundManager.Instance.PlayBlop();
+                    MainUISoundManager.Instance.PlaySound("blop");
                 }
             }
         }

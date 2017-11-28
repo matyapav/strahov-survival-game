@@ -11,6 +11,8 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
     public UnityEvent OnDaySwitchPhase;
     [HideInInspector]
     public UnityEvent OnBusLeaving;
+    [HideInInspector]
+    public UnityEvent OnBusArrived;
     public UnityEvent OnBlackMarketClicked;
     [HideInInspector]
     public UnityEvent<int> OnBlokClicked;
@@ -24,6 +26,11 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
 
     public void SpawnWaveEventInvoke() {
         SpawnWaveEvent.Invoke();
+    }
+
+    public void OnBusArrivedInvoke()
+    {
+        OnBusArrived.Invoke();
     }
 
     public void OnBusLeavingInvoke() {
