@@ -23,6 +23,9 @@ GameObject:
   - component: {fileID: 114797709273650692}
   - component: {fileID: 114347083957288152}
   - component: {fileID: 114259548158995310}
+  - component: {fileID: 114733200745040834}
+  - component: {fileID: 114766411187428186}
+  - component: {fileID: 114271800052911864}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -60,8 +63,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CurrencyController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  startValue: 15000
+  startValue: 100000
   minValue: 0
+  maxValue: 999999
+--- !u!114 &114271800052911864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff90327ee6fef1468947b9c76befcb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAnimator: {fileID: 0}
+  lamps: {fileID: 0}
 --- !u!114 &114347083957288152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,6 +105,37 @@ MonoBehaviour:
   maxNumberOfMessages: 3
   messagePrefab: {fileID: 1827479993978140, guid: 608736aca514f8943af30e5668c59dad,
     type: 2}
+--- !u!114 &114733200745040834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56535ddb87249e14cb07fcfb708c97f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114766411187428186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512734754738174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc00e78c53d10648bd87d297b209b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayNightText: {fileID: 0}
+  cameraMovementDay: {fileID: 0}
+  cameraMovementNight: {fileID: 0}
+  onlyDayObjects: []
+  onlyNightObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114797709273650692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,3 +150,8 @@ MonoBehaviour:
   buses:
   - {fileID: 0}
   - {fileID: 0}
+  waveUI: {fileID: 0}
+  waveHp1: {fileID: 0}
+  waveHp2: {fileID: 0}
+  waveZombiesCount: {fileID: 0}
+  waveNumber: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4024837982367796}
   - component: {fileID: 33874512955291372}
   - component: {fileID: 23264112234112400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4442678701678898}
   - component: {fileID: 198829349077380064}
   - component: {fileID: 199529727415108066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 114311600465908094}
   - component: {fileID: 82026701872956916}
   - component: {fileID: 54110956167349904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretBasic
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
