@@ -2,6 +2,8 @@
 
 Project created for the B4B39HRY course at the FEL CTU.
 
+Game created in Unity engine in combination with C# scripts
+
 ## Team
 
 **Pavel Matyáš** developer  
