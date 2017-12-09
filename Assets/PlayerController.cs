@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody playerRigidbody;
 	private Animator animator;
 	private const string ANIM_IS_WALKING = "isWalking";
+	private const string ANIM_DIRECTION = "direction";
 
 	private int groundLayerMask;
 
@@ -35,8 +36,7 @@ public class PlayerController : MonoBehaviour {
         movement.Set (horizontal, 0f, vertical);
         movement = movement.normalized * speed * Time.deltaTime;
         playerRigidbody.MovePosition (transform.position + movement);
-        bool walking = horizontal != 0f || vertical != 0f;
-        animator.SetBool (ANIM_IS_WALKING, walking);
+		HandleAnimation (horizontal, vertical);
     }
 
     void HandleTurning ()
@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour {
             playerRigidbody.MoveRotation (Quaternion.LookRotation (playerToMouse));
         }
     }
-
-
+	void HandleAnimation (float horizontal, float vertical){
+		bool walking = horizontal != 0f || vertical != 0f;
+		animator.SetBool (ANIM_IS_WALKING, walking);
+		Vector3 product = Vector3.Cross (movement, transform.forward);
+		animator.SetFloat (ANIM_DIRECTION, 2.5f*product.y);
+	}
 }

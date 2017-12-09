@@ -50,10 +50,9 @@ public class PlayerShootingController : MonoBehaviour {
 		if(Input.GetButtonDown("Fire2")){
 			reloading = true;
 		}
-        if(Input.GetButton("Fire1") && timer >= timeBetweenBullets && bullets > 0 && !reloading)
-        {
-            Shoot ();
-        }
+		if (Input.GetButton ("Fire1") && timer >= timeBetweenBullets && bullets > 0 && !reloading) {
+			Shoot ();
+		}
 	}
 
 	private void Reload(){
