@@ -9,13 +9,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     public float health = 100;
 
-    private bool _dead = false;
-    public bool dead {
-        get { 
-            return _dead; 
-        }
-    }
-
     private float _startingHealth;
     public float GetStartingHealth() {
         return _startingHealth;
@@ -25,24 +18,24 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     private void OnEnable()
     {
         _startingHealth = health;
-
         zombieStateMachine = GetComponent<ZombieStateMachine>();
-
         zombieStateMachine.OnDying.AddListener(Die);
     }
 
     public void Damage(float damage) {
-        //TODO spatne funguje - obcas umre zombie treba 5x = zasekla animace a funkce Die se provola mnohonasobne
+        // TODO spatne funguje - obcas umre zombie treba 5x = zasekla animace a funkce Die se provola mnohonasobne
+        // Snad jsem to opravil (@Matyáš)
         if(health - damage <= 0){
             if (!zombieStateMachine.IsDying())
             {
                 health = 0f;
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
             }
-            return;
         }
-        WavesController.Instance.DecreaseWaveHealth(damage);
-        health -= damage;
+        else {
+            health -= damage;
+            WavesController.Instance.DecreaseWaveHealth(damage);
+        }
     }
 
     public bool Dead() {
@@ -51,7 +44,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     // Do some stuff to dispose itself
     void Die () {
-        
         // Remove the zombie from the MainGameObjectManager list
         if (MainObjectManager.Instance.zombies.Contains(gameObject)) {
             MainObjectManager.Instance.zombies.Remove(gameObject);
@@ -59,6 +51,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
         // Destroy itself after 2s
         Destroy(this.gameObject, 2f);
+
+        // Update the WaveController
         WavesController.Instance.DecreaseWaveHealth(health);
         WavesController.Instance.DecreaseWaveCount(1);
     }

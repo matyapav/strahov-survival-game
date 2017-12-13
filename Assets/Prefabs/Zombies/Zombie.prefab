@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 114395367515994644}
   - component: {fileID: 114941551173762640}
   - component: {fileID: 114925930533713810}
+  - component: {fileID: 114934206009815728}
   - component: {fileID: 54735786805214966}
   m_Layer: 9
   m_Name: Zombie
@@ -949,7 +950,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1861962750543516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.551563, y: -0.2, z: 77.268555}
+  m_LocalPosition: {x: 29.369307, y: 7.4748794e-16, z: -33.663864}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4277977453860784}
@@ -1237,6 +1238,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeltaY: 15.9
   MaxLineLenght: 10
+--- !u!114 &114934206009815728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861962750543516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cb0df26783f44c48395c81d445bd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masloPrefab: {fileID: 1561309529895774, guid: 9e48392d16c604824aece7435368a03b,
+    type: 2}
+  SpawnChance: 0.25
 --- !u!114 &114941551173762640
 MonoBehaviour:
   m_ObjectHideFlags: 1

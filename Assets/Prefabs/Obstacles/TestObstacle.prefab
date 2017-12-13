@@ -117,6 +117,7 @@ MonoBehaviour:
   startAtMaximum: 1
   maxValue: 400
   minValue: 0
+  minimumReached: 0
 --- !u!114 &114956282646864436
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -33,8 +33,12 @@ public class TurretController : MonoBehaviour {
     private NeighbourObjectTracker neighbourObjectTracker;
 
 	void Start () {
+        // The nozzle flash
         turretParticleSystem = GetComponentInChildren<ParticleSystem>();
+
+        // Get the rotating barrel form the children
         TurretTop = transform.GetChild(0);
+
         lastTimeShot = Time.time;
         audioSource = GetComponent<AudioSource>();
 
@@ -106,10 +110,12 @@ public class TurretController : MonoBehaviour {
             // Play the sound
             audioSource.Play();
 
+            // Get the damageable interface
+            IDamageable<float> damageable = _target.GetComponent<ZombieHealth>() as IDamageable<float>;
+
             // Damage the zombie
-            ZombieHealth zombieHealth = _target.GetComponent<ZombieHealth>();
-            if (zombieHealth != null) {
-                zombieHealth.Damage(damage);    
+            if (!damageable.Dead()) {
+                damageable.Damage(damage);    
             }
         }
     }

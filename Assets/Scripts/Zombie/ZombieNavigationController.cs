@@ -33,9 +33,11 @@ public class ZombieNavigationController : MonoBehaviour
     {
         zombieStateMachine = GetComponent<ZombieStateMachine>();
         agent = GetComponent<NavMeshAgent>();
+
         zombieStateMachine.OnSeekPath.AddListener(SeekANewtarget);
         zombieStateMachine.OnAttackStart.AddListener(StopNavigation);
         zombieStateMachine.OnDying.AddListener(StopNavigation);
+
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = false;
     }
@@ -55,8 +57,15 @@ public class ZombieNavigationController : MonoBehaviour
     // Seek a new target and start navigation
     private void SeekANewtarget()
     {
-        // TODO: Add more things than only bloks
-        Transform _target = MainObjectManager.Instance.GetRandomBlock().transform;
+        Transform _target;
+
+        // TODO TEMP for debug
+        if(target != null) {
+            _target = target;
+        } else {
+            _target = MainObjectManager.Instance.GetRandomBlock().transform;
+        }
+
         SeekANewtarget(_target);
     }
 
@@ -106,12 +115,10 @@ public class ZombieNavigationController : MonoBehaviour
 
             // Limit movement speed when doing sharp turns
             float turnAngle = Vector3.Angle(transform.forward, agent.destination);
-            if (turnAngle > angleTurnLimit)
-            {
+            if (turnAngle > angleTurnLimit) {
                 agent.speed = 0.3f;
             }
-            else
-            {
+            else {
                 agent.speed = movementSpeed;
             }
 

@@ -11,6 +11,7 @@ using UnityEngine.Events;
 /// </remarks>
 public class ZombieStateMachine : MonoBehaviour
 {
+    // All the possible states of the zombie
     public enum ZombieStateEnum {SeekPath, Walking, Attacking, Dying};
 
     [HideInInspector]
@@ -42,7 +43,10 @@ public class ZombieStateMachine : MonoBehaviour
             }
             else if (value == ZombieStateEnum.Dying)
             {
-                OnDying.Invoke();
+                // Security check not to call the animation twice
+                if (!IsDying()) {
+                    OnDying.Invoke();
+                }
             }
 
             _state = value;
@@ -50,8 +54,7 @@ public class ZombieStateMachine : MonoBehaviour
     }
 
     // On spawn start seeking a target
-    private void Start()
-    {
+    private void Start() {
         State = ZombieStateEnum.SeekPath;
     }
 
