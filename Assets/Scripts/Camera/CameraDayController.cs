@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CameraMovement : MonoBehaviour 
+public class CameraDayController : MonoBehaviour 
 {
     public Vector3 defaultCameraPosition;
     public Vector3 defaultCameraRotation;

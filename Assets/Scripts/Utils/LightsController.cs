@@ -7,7 +7,6 @@ public class LightsController : MonoBehaviourSingleton<LightsController>
 
     public Animator lightAnimator;
     public GameObject lamps;
-
     
     public void SetDirectionalLightOn (bool directionalLightOn) {
         lightAnimator.SetBool("night", !directionalLightOn);

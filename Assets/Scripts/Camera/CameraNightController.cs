@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraNightPhase : MonoBehaviour {
+public class CameraNightController : MonoBehaviour {
 
 	public GameObject followTarget;
 	public Vector3 offset;
@@ -28,8 +28,9 @@ public class CameraNightPhase : MonoBehaviour {
                 MainCanvasManager.Instance.HideBuildingsInfo();
             }
         } else {
-			 if (Input.GetKeyDown(KeyCode.I) && !MainCanvasManager.Instance.PauseMenu.activeInHierarchy &&
-                !MainCanvasManager.Instance.BlackMarketMenu.activeInHierarchy)
+			 if (Input.GetKeyDown(KeyCode.I) 
+                 && !MainCanvasManager.Instance.PauseMenu.activeInHierarchy
+                 && !MainCanvasManager.Instance.BlackMarketMenu.activeInHierarchy)
             {
 				transform.rotation = Quaternion.Euler(buildingInfoCameraRotationX, 0f, 0f);
                 backupPosition = transform.position;
@@ -39,11 +40,10 @@ public class CameraNightPhase : MonoBehaviour {
             }
 		}
 	}
-	// Update is called once per frame
-	void LateUpdate()
-	{
-		if (!showingBuildingInfo)
-        {
+	
+
+	void LateUpdate() {
+		if (!showingBuildingInfo) {
 			nextPosition = followTarget.transform.position;
 			nextPosition.x += offset.x;
 			nextPosition.y += offset.y;

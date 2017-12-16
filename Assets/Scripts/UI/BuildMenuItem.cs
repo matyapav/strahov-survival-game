@@ -14,6 +14,7 @@ public class BuildMenuItem : MonoBehaviour {
 
     public float price;
     public string objectName;
+
     [TextArea(3, 10)]
     public string infoText;
     public Sprite imageSource;
@@ -21,8 +22,7 @@ public class BuildMenuItem : MonoBehaviour {
     
     private void Start()
     {
-        if(price > 1000)
-        {
+        if (price > 1000) {
             priceText.text = price / 1000 + "K";
         }
         else {
@@ -38,13 +38,11 @@ public class BuildMenuItem : MonoBehaviour {
 
     public void PushToObstaclePlacer()
     {
-        if (CurrencyController.Instance.CanDecrease(price))
-        {
+        if (CurrencyController.Instance.CanDecrease(price)) {
             ObstaclePlacer.Instance.SetObstacle(obstaclePrefab, price);
         }
-        else
-        {
-            MessageController.Instance.AddMessage("You cannot afford "+objectName+" !" , 3f, Color.red);
+        else {
+            MessageController.Instance.AddMessage("You cannot afford " + objectName + " !" , 3f, Color.red);
         }
     }
 }

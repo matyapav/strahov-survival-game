@@ -12,11 +12,51 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
     // List that contains all the zombies in the scene
     public List<GameObject> zombies;
 
+    // Contains the Player GameObject
+    public GameObject player;
+
+
+    public GameObject[] DayObjects;
+    public GameObject[] NightObjects;
+
     // Returns a random blok from the array
-    public GameObject GetRandomBlock() {
-        if (bloky.Count < 1) {
+    public GameObject GetRandomBlock()
+    {
+        if (bloky.Count < 1)
+        {
             return null;
         }
         return bloky[Random.Range(0, bloky.Count)];
     }
+
+    // TODO: Attach this to an event?
+    // Update all the objects that need to be hidden or shown
+    public void UpdateSwitchableObjects(DayNightPhase nextPhase) {
+        // Switching to day
+        if (nextPhase == DayNightPhase.DAY)
+        {
+            SetStateToArray(ref NightObjects, false);   // Deactivate night
+            SetStateToArray(ref DayObjects, true);      // Activate day
+
+            // deactivate the player
+            if (player != null) player.SetActive(false);
+        }
+        // Switching to night
+        else if(nextPhase == DayNightPhase.NIGHT) {     
+            SetStateToArray(ref NightObjects, true);    // Activate night
+            SetStateToArray(ref DayObjects, false);     // Deactivate day
+
+            // activate the player
+            if (player != null) player.SetActive(true);
+        }
+    }
+
+    // Sets state to all objects in the array
+    private static void SetStateToArray(ref GameObject[] array, bool newState) {
+        for (int i = 0; i < array.Length; i++) {
+            if (array[i] != null) {
+                array[i].SetActive(newState);
+            }
+        }
+    } 
 }

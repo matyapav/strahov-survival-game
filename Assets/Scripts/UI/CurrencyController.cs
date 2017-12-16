@@ -17,7 +17,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
     public delegate void OnMinimumReached();
     public OnMinimumReached onMinimumReached;
 
-    public float startValue = 1500f;
+    public float startValue = 0f;
     public float minValue = 0f;
     public float maxValue = 999999f;
 
@@ -26,17 +26,13 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
     private void Start()
     {
         //set start value into current value
-        
-        if (startValue < minValue)
-        {
+        if (startValue < minValue) {
             currentValue = minValue;
         }
-        else if(startValue > maxValue)
-        {
+        else if(startValue > maxValue) {
             currentValue = maxValue;
         }
-        else
-        {
+        else {
             currentValue = startValue;
         }
         SetCurrencyText();
@@ -44,32 +40,27 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
     public bool SetValue(float newValue)
     {
-        if (newValue > maxValue)
-        {
+        if (newValue > maxValue) {
             currentValue = maxValue;
             OnValueChanged(false);
             return true;
         }
-        if (newValue <= minValue)
-        {
+        else if (newValue <= minValue) {
             return false;
         }
-        else
-        {
+        else {
             currentValue = newValue;
         }
         OnValueChanged(false);
         return true;
     }
 
-    public bool DescreaseValue(float decrement)
+    public bool DescreaseValue(float decrement) 
     {
-        if (currentValue - decrement <= minValue)
-        {
+        if (currentValue - decrement <= minValue) {
             return false;
         }
-        else
-        {
+        else {
             currentValue -= decrement;
         }
         OnValueChanged(false);
@@ -78,8 +69,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
     public bool CanDecrease(float decrement)
     {
-        if (currentValue - decrement <= minValue)
-        {
+        if (currentValue - decrement <= minValue) {
             return false;
         }
         return true;
@@ -87,8 +77,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
     public void IncreaseValue(float incremet)
     {
-        if(currentValue + incremet > maxValue)
-        {
+        if (currentValue + incremet > maxValue) {
             currentValue = maxValue;
             OnValueChanged(false);
             return;
@@ -97,28 +86,21 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
         OnValueChanged(false);
     }
 
-
-    private void OnValueChanged(bool minimumReached)
-    {
+    private void OnValueChanged(bool minimumReached) {
         SetCurrencyText();
         onValueChanged.Invoke();
-        if (minimumReached)
-        {
+        if (minimumReached) {
             onMinimumReached.Invoke();
         }
     }
     
     private void SetCurrencyText()
     {
-        if (currencyText != null)
-        {
-            if (currentValue > 10000)
-            {
-                currencyText.text = (currentValue / 1000 + "K");
-            }
-            else
-            {
-                currencyText.text = currentValue.ToString();
+        if (currencyText != null) {
+            if (currentValue > 10000) {
+                currencyText.text = (currentValue / 1000 + " Kg");
+            } else {
+                currencyText.text = currentValue.ToString() + " g";
             }
         }
     }

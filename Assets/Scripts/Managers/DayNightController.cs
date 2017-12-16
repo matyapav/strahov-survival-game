@@ -6,46 +6,50 @@ using UnityEngine.UI;
 public class DayNightController : MonoBehaviourSingleton<DayNightController> {
 
     public Text dayNightText;
-    public CameraMovement cameraMovementDay;
-    public CameraNightPhase cameraMovementNight;
+
+    public CameraDayController cameraMovementDay;
+    public CameraNightController cameraMovementNight;
+
     public GameObject[] onlyDayObjects;
     public GameObject[] onlyNightObjects;
 
     private DayNightPhase phase;
     private int dayCounter = 0;
 
-    public DayNightPhase Phase
+    // Get the current phase
+    public DayNightPhase Phase 
     {
-        get
-        {
+        get {
             return phase;
         }
     }
 
+    // Which phase should be starting? => Day
     public void Start()
     {
         StartDayPhase();
     }
 
-    public void SwitchPhace()
+    public void SwitchPhase()
     {       
-        if(phase == DayNightPhase.DAY)
+        if (phase == DayNightPhase.DAY)
         {
             ScreenFader.Instance.onFadeOut.RemoveListener(StartDayPhase);
             ScreenFader.Instance.onFadeOut.AddListener(StartNightPhase);
         }
-        else if(phase == DayNightPhase.NIGHT)
+        else if (phase == DayNightPhase.NIGHT)
         {
             LightsController.Instance.SetLampsOn(false);
             ScreenFader.Instance.onFadeOut.RemoveListener(StartNightPhase);
             ScreenFader.Instance.onFadeOut.AddListener(StartDayPhase);
         }
+
         ScreenFader.Instance.FadeOut();
 
         Invoke("InvokeFadeIn", 2f); //to hide camera change
     }
 
-    private void InvokeFadeIn(){
+    private void InvokeFadeIn() {
         ScreenFader.Instance.FadeIn();
     }
 
@@ -53,11 +57,15 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     {
         LightsController.Instance.SetLampsOn(true);
         LightsController.Instance.SetDirectionalLightOn(false);
+
         phase = DayNightPhase.NIGHT;
+
         MainUISoundManager.Instance.StopSound("day");
         MainUISoundManager.Instance.PlaySound("main");
         MainUISoundManager.Instance.PlaySound("night");
+
         dayNightText.text = "Night " + dayCounter;
+
         MainCanvasManager.Instance.HideBuildMenu();
         ActivateProperObjectsAndScripts();
     }
@@ -65,41 +73,38 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     private void StartDayPhase()
     {
         LightsController.Instance.SetDirectionalLightOn(true);
+
         dayCounter++;
+
         phase = DayNightPhase.DAY;
+
         MainUISoundManager.Instance.StopSound("main");
         MainUISoundManager.Instance.StopSound("night");
         MainUISoundManager.Instance.PlaySound("day");
+
         dayNightText.text = "Day " + dayCounter;
+
         MainCanvasManager.Instance.ShowBuildMenu();
         ActivateProperObjectsAndScripts();
     }
 
-    private void ActivateProperObjectsAndScripts(){
+    private void ActivateProperObjectsAndScripts()
+    {
         cameraMovementDay.enabled = IsDay;
         cameraMovementNight.enabled = IsNight;
-        foreach(GameObject obj in onlyDayObjects){
-            obj.SetActive(IsDay);
-        }
-         foreach(GameObject obj in onlyNightObjects){
-            obj.SetActive(IsNight);
-        }
+
+        MainObjectManager.Instance.UpdateSwitchableObjects(phase);
     }
 
-    public bool IsDay
-    {
-        get
-        {
+    public bool IsDay {
+        get {
             return phase == DayNightPhase.DAY;
         }
     }
 
-    public bool IsNight
-    {
-        get
-        {
+    public bool IsNight {
+        get {
             return phase == DayNightPhase.NIGHT;
         }
     }
-
 }

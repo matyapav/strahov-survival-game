@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerShootingController : MonoBehaviour {
 
 	public GameObject[] guns;
+
 	public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
 	public float range = 30f;
@@ -25,17 +26,16 @@ public class PlayerShootingController : MonoBehaviour {
 	private bool reloading = false;
 
 	// Use this for initialization
-	void Awake()
-	{
+	void Awake() {
 		shootableLayer = LayerMask.GetMask("Shootable");
 		Vector3 targetPos = target.transform.position;
 		targetPos.z = range - 5f;
 		target.transform.position = targetPos;
 		bulletsBackup = bullets;
-		bulletsCountUI.text = bullets+"/"+bulletsBackup;
+		bulletsCountUI.text = bullets + "/" +bulletsBackup;
 	} 
-	void Update()
-	{
+
+	void Update() {
 		HandleShooting();
 		if(reloading){
 			Reload();
@@ -44,10 +44,10 @@ public class PlayerShootingController : MonoBehaviour {
 		bulletsCountUI.text = bullets+"/"+bulletsBackup;
 	}
 
-	void HandleShooting(){
+	void HandleShooting() {
         timer += Time.deltaTime;
 		Debug.DrawRay(transform.position, range * transform.forward, Color.red);
-		if(Input.GetButtonDown("Fire2")){
+		if (Input.GetButtonDown("Fire2")){
 			reloading = true;
 		}
 		if (Input.GetButton ("Fire1") && timer >= timeBetweenBullets && bullets > 0 && !reloading) {
@@ -77,14 +77,16 @@ public class PlayerShootingController : MonoBehaviour {
 		gun.GetComponent<AudioSource>().Play();
         shootRay.origin = gun.transform.position;
         shootRay.direction = transform.forward;
-        ps.Stop ();
-        ps.Play ();
-        if(Physics.SphereCast (shootRay, 2f, out shootHit, range, shootableLayer))
-        {
-			if(shootHit.transform.gameObject.tag == "Zombie"){
+
+        ps.Stop();
+        ps.Play();
+
+        if (Physics.SphereCast (shootRay, 2f, out shootHit, range, shootableLayer)) {
+			if (shootHit.transform.gameObject.tag == "Zombie") {
 				shootHit.transform.GetComponent<ZombieHealth>().Damage(damagePerShot);
 			}
         }
+
 		gunIndex++;
 		bullets--;
 	}

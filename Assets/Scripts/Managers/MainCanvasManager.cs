@@ -60,29 +60,24 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
         }
     }
 
-    public void ShowBuildingsInfo()
-    {
+    public void ShowBuildingsInfo() {
         // Check if the pause menu is active. If it is do not open the menu.
-        if (!PauseMenu.activeInHierarchy)
-        {
+        if (!PauseMenu.activeInHierarchy) {
             BuildingsInfoMenu.SetActive(true);
             PauseTimescale();
         }
     }
 
-    public void HideBuildingsInfo()
-    {
+    public void HideBuildingsInfo() {
         BuildingsInfoMenu.SetActive(false);
         ResumeTimescale();
     }
 
-    public void HideBuildMenu()
-    {
+    public void HideBuildMenu() {
         BuildMenu.SetActive(false);
     }
 
-    public void ShowBuildMenu()
-    {
+    public void ShowBuildMenu() {
         BuildMenu.SetActive(true);
     }
 

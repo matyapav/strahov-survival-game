@@ -19,15 +19,13 @@ public class ZombieAnimationController : MonoBehaviour {
     private void OnEnable()
     {
         zombieStateMachine = GetComponent<ZombieStateMachine>();
+        anim = GetComponent<Animator>();
 
         // Add the listemers to the animation functions
         zombieStateMachine.OnDying.AddListener(PlayDieAnimation);
         zombieStateMachine.OnWalkingStart.AddListener(SetWalking);
         zombieStateMachine.OnAttackStart.AddListener(SetAttacking);
-
-        anim = GetComponent<Animator>();
     }
-
 
     private void PlayDieAnimation() {
         anim.SetTrigger("die");

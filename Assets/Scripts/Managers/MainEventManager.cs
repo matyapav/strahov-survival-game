@@ -7,8 +7,8 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
 
     // Only show those that should be visible
     public UnityEvent SpawnWaveEvent;
-
     public UnityEvent OnDaySwitchPhase;
+
     [HideInInspector]
     public UnityEvent OnBusLeaving;
     [HideInInspector]
@@ -28,8 +28,7 @@ public class MainEventManager : MonoBehaviourSingleton<MainEventManager> {
         SpawnWaveEvent.Invoke();
     }
 
-    public void OnBusArrivedInvoke()
-    {
+    public void OnBusArrivedInvoke() {
         OnBusArrived.Invoke();
     }
 
