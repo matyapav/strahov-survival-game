@@ -12,7 +12,12 @@ using UnityEngine.Events;
 public class ZombieStateMachine : MonoBehaviour
 {
     // All the possible states of the zombie
-    public enum ZombieStateEnum {SeekPath, Walking, Attacking, Dying};
+    public enum ZombieStateEnum {
+        SeekPath,   // Seek path is called only when the zombie has no path
+        Walking,    // When in walking mode
+        Attacking,  // When in attacking mode
+        Dying       // If the zombie is dead but still in the scene
+    };
 
     [HideInInspector]
     public UnityEvent OnSeekPath;
@@ -58,7 +63,10 @@ public class ZombieStateMachine : MonoBehaviour
         State = ZombieStateEnum.SeekPath;
     }
 
-    // Some bool checks
+    public bool IsSeekPath() {
+        return State == ZombieStateEnum.SeekPath;
+    }
+
     public bool IsWalking() {
         return State == ZombieStateEnum.Walking;
     }

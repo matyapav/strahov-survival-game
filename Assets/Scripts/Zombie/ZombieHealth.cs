@@ -9,12 +9,15 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     public float health = 100;
 
+    private bool _destroying = false;
+
     private float _startingHealth;
+
+    // The health that zombie had when started
     public float GetStartingHealth() {
         return _startingHealth;
     }
 
-    // Add the listener
     private void OnEnable()
     {
         _startingHealth = health;
@@ -23,14 +26,13 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     }
 
     public void Damage(float damage) {
-        // TODO spatne funguje - obcas umre zombie treba 5x = zasekla animace a funkce Die se provola mnohonasobne
-        // Snad jsem to opravil (@Matyáš)
-        if(health - damage <= 0){
-            if (!zombieStateMachine.IsDying())
-            {
-                health = 0f;
-                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
-            }
+        // Do nothing if already dead
+        if (zombieStateMachine.IsDying()) {
+            return;
+        }
+
+        if (health - damage <= 0) {
+            zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
         }
         else {
             health -= damage;
@@ -39,11 +41,10 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     }
 
     public bool Dead() {
-        return health <= 0;
+        return zombieStateMachine.IsDying();
     }
 
-    // Do some stuff to dispose itself
-    void Die () {
+    private void Die () {
         // Remove the zombie from the MainGameObjectManager list
         if (MainObjectManager.Instance.zombies.Contains(gameObject)) {
             MainObjectManager.Instance.zombies.Remove(gameObject);
@@ -51,6 +52,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
         // Destroy itself after 2s
         Destroy(this.gameObject, 2f);
+        _destroying = true;
 
         // Update the WaveController
         WavesController.Instance.DecreaseWaveHealth(health);

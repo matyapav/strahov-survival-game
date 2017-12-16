@@ -6,16 +6,12 @@ using UnityEngine;
 public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
 
     [Header("All the spawned objects in the scene are stored in this script")]
-    // Arary containing all blocks as GameObjects
     public List<GameObject> bloky;
-
-    // List that contains all the zombies in the scene
     public List<GameObject> zombies;
 
-    // Contains the Player GameObject
     public GameObject player;
 
-
+    // The objects that need to be hidden / shown 
     public GameObject[] DayObjects;
     public GameObject[] NightObjects;
 
@@ -48,6 +44,23 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
 
             // activate the player
             if (player != null) player.SetActive(true);
+        }
+    }
+
+    // Kill all zombies in the scene
+    public void KillAllZombiesInScene() {
+        int count = zombies.Count;
+        List<ZombieHealth> zombieHealths = new List<ZombieHealth>();
+
+        // First get all the zombies
+        for (int i = 0; i < count; i++) {
+            ZombieHealth zhl = zombies[i].GetComponent<ZombieHealth>();
+            zombieHealths.Add(zhl);
+        }
+
+        // Then kill em all
+        for (int i = 0; i < count; i++) {
+            zombieHealths[i].Damage(zombieHealths[i].health * 2);
         }
     }
 

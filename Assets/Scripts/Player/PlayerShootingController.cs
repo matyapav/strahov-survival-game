@@ -55,13 +55,13 @@ public class PlayerShootingController : MonoBehaviour {
 		}
 	}
 
-	private void Reload(){
-		if(!reloadUI.activeInHierarchy){
+	private void Reload() {
+		if (!reloadUI.activeInHierarchy){
 			reloadUI.SetActive(true);
 		}
 		reloadTimer += Time.deltaTime;
 		reloadProgressImage.fillAmount = reloadTimer/reloadTime;
-		if(reloadTimer >= reloadTime){
+		if (reloadTimer >= reloadTime){
 			reloadProgressImage.fillAmount = 0f;
 			reloadTimer = 0f;
 			reloadUI.SetActive(false);
@@ -70,7 +70,8 @@ public class PlayerShootingController : MonoBehaviour {
 		}
 	}
 
-	private void Shoot(){
+	private void Shoot() 
+    {
         timer = 0f;
 		GameObject gun =  guns[gunIndex % guns.Length];
 		ParticleSystem ps = gun.GetComponentInChildren<ParticleSystem>();
