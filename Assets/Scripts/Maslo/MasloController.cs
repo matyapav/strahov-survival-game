@@ -25,7 +25,7 @@ public class MasloController : MonoBehaviour {
     {
         if (other.tag == "Player") {
             Destroy(gameObject);
-            CurrencyController.Instance.IncreaseValue(Random.Range(minValue, maxValue));
+            CurrencyController.Instance.IncreaseValue(_value);
         }
     }
 }

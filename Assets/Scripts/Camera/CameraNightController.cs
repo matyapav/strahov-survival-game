@@ -20,7 +20,7 @@ public class CameraNightController : MonoBehaviour {
 	void Update () {
 		if (showingBuildingInfo)
         {
-            if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape))
             {
 				transform.rotation = Quaternion.Euler(cameraRotationX, 0f, 0f);
                 showingBuildingInfo = false;

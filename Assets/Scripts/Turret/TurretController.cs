@@ -26,11 +26,14 @@ public class TurretController : MonoBehaviour {
     [Tooltip("The widhth of the field of attack")]
     public float spread = 10f;
 
+    public GameObject rangeCylinder;
+
     private Transform TurretTop;
     private ParticleSystem turretParticleSystem;
     private float lastTimeShot;         // used for the time delay
     private AudioSource audioSource;    // used to play tunes
     private NeighbourObjectTracker neighbourObjectTracker;
+    private bool active = false;
 
 	void Start () {
         // The nozzle flash
@@ -45,16 +48,20 @@ public class TurretController : MonoBehaviour {
         // Init the neighbour tracker
         neighbourObjectTracker = GetComponent<NeighbourObjectTracker>();
         neighbourObjectTracker.Init(range);
+
+        rangeCylinder.transform.localScale = new Vector3(range / transform.localScale.x, 0.0001f, range / transform.localScale.x);
 	}
 	
 	void Update () {
         // TODO: do this better
-        foreach (GameObject g in neighbourObjectTracker.trackedObjects) {
-            if(g != null) {
-                ZombieStateMachine z = g.GetComponent<ZombieStateMachine>();
+        if(active){
+            foreach (GameObject g in neighbourObjectTracker.trackedObjects) {
+                if(g != null) {
+                    ZombieStateMachine z = g.GetComponent<ZombieStateMachine>();
 
-                if(!z.IsDying()) {
-                    SeekTarget(g.transform);
+                    if(!z.IsDying()) {
+                        SeekTarget(g.transform);
+                    }
                 }
             }
         }
@@ -118,5 +125,9 @@ public class TurretController : MonoBehaviour {
                 damageable.Damage(damage);    
             }
         }
+    }
+
+    public void Activate(bool a) {
+        active = a;
     }
 }
