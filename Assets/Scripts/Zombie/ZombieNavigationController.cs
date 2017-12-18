@@ -63,7 +63,7 @@ public class ZombieNavigationController : MonoBehaviour
         if(target != null) {
             _target = target;
         } else {
-            _target = MainObjectManager.Instance.GetRandomBlock().transform;
+            _target = MainObjectManager.Instance.GetRandomBlock().GetComponent<BlockTargets>().GetRandomTarget();
         }
 
         SeekANewtarget(_target);
