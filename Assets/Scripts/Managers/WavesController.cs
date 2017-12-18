@@ -23,12 +23,12 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
     private void Start()
     {
         // For each bus add a listener to the MainEventManager
-        foreach (BusSpawner spawner in buses)
-        {
+        foreach (BusSpawner spawner in buses) {
             MainEventManager.Instance.OnBusLeaving.AddListener(AllowSpawningNewWave);
         }
-        actualWaveZombieCount = MainObjectManager.Instance.zombies.Count;
-        foreach(GameObject zombie in MainObjectManager.Instance.zombies){
+
+        actualWaveZombieCount = MainObjectManager.Instance.CountZombiesInScene();
+        foreach(GameObject zombie in MainObjectManager.Instance.GetAllZombies()){
             actualWaveHp += zombie.GetComponent<ZombieHealth>().health;
         }
     }

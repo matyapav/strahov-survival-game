@@ -7,13 +7,22 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
 
     [Header("All the spawned objects in the scene are stored in this script")]
     public List<GameObject> bloky;
-    public List<GameObject> zombies;
+
+    // List of key-value pairs that contain the info about the zombie's wave
+    // - int - the id of wave
+    // - list<GameObject> list of zombies in the wave
+    public List<KeyValuePair<int, List<GameObject>>> zombies_wawes;
 
     public GameObject player;
 
     // The objects that need to be hidden / shown 
     public GameObject[] DayObjects;
     public GameObject[] NightObjects;
+
+    private void Start()
+    {
+        zombies_wawes = new List<KeyValuePair<int, List<GameObject>>>();
+    }
 
     // Returns a random blok from the array
     public GameObject GetRandomBlock()
@@ -25,7 +34,6 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         return bloky[Random.Range(0, bloky.Count)];
     }
 
-    // TODO: Attach this to an event?
     // Update all the objects that need to be hidden or shown
     public void UpdateSwitchableObjects(DayNightPhase nextPhase) {
         // Switching to day
@@ -47,8 +55,8 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         }
     }
 
-    // Kill all zombies in the scene
-    public void KillAllZombiesInScene() {
+    /*
+    public void KillAllZombiesInSceneOld() {
         int count = zombies.Count;
         List<ZombieHealth> zombieHealths = new List<ZombieHealth>();
 
@@ -62,6 +70,134 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         for (int i = 0; i < count; i++) {
             zombieHealths[i].Damage(zombieHealths[i].health * 2);
         }
+    }
+    */
+
+    public void KillAllZombiesInScene() {
+        // Get all KVPs first
+        List<KeyValuePair<int, List<GameObject>>> kvps = new List<KeyValuePair<int, List<GameObject>>>();
+        foreach (KeyValuePair<int, List<GameObject>> KVP in zombies_wawes) {
+            kvps.Add(KVP);
+        }
+
+        // Then remove them one by one
+        int count = kvps.Count;
+        for (int i = 0; i < count; i++) {
+            DestroyWave(kvps[i].Key);
+        }
+    }
+
+    // Kill all zombies in a wave and destroy it
+    public void DestroyWave (int wave_id) {
+        var list = GetWaveListByID(wave_id);
+
+        // Return if the wave does not exist
+        if (list == null) 
+            return;
+
+        // Else kill all zombies in the wave
+        // First obtain the zombies helth scripts
+        List<ZombieHealth> zombieHealths = new List<ZombieHealth>();
+        foreach (GameObject zomb in list)
+        {
+            ZombieHealth zhl = zomb.GetComponent<ZombieHealth>();
+            zombieHealths.Add(zhl);
+        }
+
+        // Then kill all the zombies
+        foreach (var zhl in zombieHealths)
+        {
+            zhl.Damage(zhl.health * 2);
+        }
+
+        // Then remove the whole KVP from the kvp array
+        zombies_wawes.Remove(new KeyValuePair<int, List<GameObject>>(wave_id, list));
+    }
+
+    // Get the wave list of zombies by their ID
+    public List<GameObject> GetWaveListByID(int wave_id) {
+        foreach (var kvp in zombies_wawes) {
+            if (kvp.Key == wave_id) {
+                return kvp.Value;
+            }
+        }
+        return null;
+    }
+
+    // Add a zombie to a wave with designated ID
+    public void AddZombieToWave(GameObject zombie, int wave_id) {
+        List <GameObject> wlist = GetWaveListByID(wave_id);
+
+        if (wlist != null) {
+            wlist.Add(zombie);    
+        } else if (wlist == null) {
+            // create a new entry with this ID
+            KeyValuePair<int, List<GameObject>> wavekvp = new KeyValuePair<int, List<GameObject>>(wave_id, new List<GameObject>());
+            wavekvp.Value.Add(zombie);
+
+            // add the kvp into the zombie_wave kvp array
+            zombies_wawes.Add(wavekvp);
+        }
+    }
+
+    // Remove a zombie from the DB
+    public void RemoveZombie(GameObject zombie) {
+        bool deleteWave = false;
+        int deleteWaveID = -1;
+
+        foreach(var _kvp in zombies_wawes) {
+            if (_kvp.Value.Contains(zombie)) {
+                _kvp.Value.Remove(zombie);
+
+                if (_kvp.Value.Count == 0) {
+                    deleteWave = true;
+                    deleteWaveID = _kvp.Key;
+                }
+
+                break;
+            }
+        }
+
+        // If the wave was empty, then delete it
+        if(deleteWave) {
+            DestroyWave(deleteWaveID);
+        }
+    }
+
+	// Get all zombies in the scene. Not very effective tho
+    public List<GameObject> GetAllZombies() {
+        List<GameObject> all_zombies = new List<GameObject>();
+        foreach(var kvp in zombies_wawes) {
+            foreach(var zomb in kvp.Value) {
+                all_zombies.Add(zomb);
+            }
+        }
+        return all_zombies;
+    }
+
+    // Count all the zombie GameObjects that are stored in the zombie_waves
+    public int CountZombiesInScene()
+    {
+        int count = 0;
+
+        foreach (var kvp in zombies_wawes) {
+            if(kvp.Value != null ) {
+                count += kvp.Value.Count;
+            }
+        }
+
+        return count;
+    }
+
+    // Get all the ids of the acrive waves in the scene
+    public List<int> GetCurrentlyActiveWavesInScene() {
+        List<int> wave_id_list = new List<int>();
+
+        foreach (var kvp in zombies_wawes) {
+            wave_id_list.Add(kvp.Key);
+        }
+
+        return wave_id_list;
     }
 
     // Sets state to all objects in the array

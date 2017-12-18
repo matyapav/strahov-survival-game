@@ -70,7 +70,8 @@ public class BusSpawner : MonoBehaviour {
         MainEventManager.Instance.OnZombieSpawn.Invoke(zombie);
 
         // Add every zombie to the ObjectManager for further management
-        MainObjectManager.Instance.zombies.Add(zombie);
+        // TODO: implement wave ID
+        MainObjectManager.Instance.AddZombieToWave(zombie, -1);
 
         // Set the destination of the zombie to a random target
 		zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);

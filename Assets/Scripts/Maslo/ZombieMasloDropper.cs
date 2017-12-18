@@ -13,7 +13,7 @@ public class ZombieMasloDropper : MonoBehaviour {
     }
 
     void SpawnOnDeath() {
-        if (Random.Range(0,1) < SpawnChance) {
+        if (Random.Range(0f, 1f) < SpawnChance) {
             Instantiate(masloPrefab, new Vector3(transform.position.x, 6f, transform.position.z), Quaternion.identity);
         }
     }

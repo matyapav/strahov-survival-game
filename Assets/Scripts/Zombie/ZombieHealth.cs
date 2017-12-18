@@ -9,8 +9,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     public float health = 100;
 
-    private bool _destroying = false;
-
     private float _startingHealth;
 
     // The health that zombie had when started
@@ -40,19 +38,16 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
         }
     }
 
-    public bool Dead() {
+    public bool Dead () {
         return zombieStateMachine.IsDying();
     }
 
     private void Die () {
-        // Remove the zombie from the MainGameObjectManager list
-        if (MainObjectManager.Instance.zombies.Contains(gameObject)) {
-            MainObjectManager.Instance.zombies.Remove(gameObject);
-        }
+        // Remove the zombie from the MainGameObjectManager 
+        MainObjectManager.Instance.RemoveZombie(gameObject);
 
         // Destroy itself after 2s
-        Destroy(this.gameObject, 2f);
-        _destroying = true;
+        Destroy(gameObject, 2f);
 
         // Update the WaveController
         WavesController.Instance.DecreaseWaveHealth(health);
