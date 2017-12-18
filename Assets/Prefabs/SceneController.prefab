@@ -63,7 +63,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CurrencyController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  startValue: 100000
+  startValue: 100
   minValue: 0
   maxValue: 999999
 --- !u!114 &114271800052911864
@@ -134,8 +134,6 @@ MonoBehaviour:
   onlyNightObjects:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114797709273650692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,8 +148,11 @@ MonoBehaviour:
   buses:
   - {fileID: 0}
   - {fileID: 0}
+  numberOfWavesPerNight: 3
+  secondsBetweenSpawns: 40
   waveUI: {fileID: 0}
   waveHp1: {fileID: 0}
   waveHp2: {fileID: 0}
   waveZombiesCount: {fileID: 0}
   waveNumber: {fileID: 0}
+  waweHpImage: {fileID: 0}

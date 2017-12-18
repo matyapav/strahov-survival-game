@@ -50,7 +50,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
         Destroy(gameObject, 2f);
 
         // Update the WaveController
-        WavesController.Instance.DecreaseWaveHealth(health);
-        WavesController.Instance.DecreaseWaveCount(1);
+        WavesController.Instance.DecreaseWaveHealthAndCount(health);
     }
 }

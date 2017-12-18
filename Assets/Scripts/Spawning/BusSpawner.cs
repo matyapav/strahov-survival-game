@@ -7,10 +7,11 @@ using UnityEngine.AI;
 public class BusSpawner : MonoBehaviour {
 
     public string busName;
-    public GameObject ZombiePrefab;
+    public GameObject[] ZombiePrefabs;
     public int numberOfZombies = 10;
     private Animator animator;
     public float timeBetweenSpawns = 0.75f;
+    
 
     private void Start()
     {
@@ -63,15 +64,16 @@ public class BusSpawner : MonoBehaviour {
         // Get a random target
         Transform target = MainObjectManager.Instance.GetRandomBlock().transform;
 
-        // Instantiate the zombie
-        GameObject zombie = (GameObject) Instantiate(ZombiePrefab, transform.position, Quaternion.Euler(0, 180, 0));
+        // Instantiate the zombie - random choose from zombie prefabs on
+        int index = UnityEngine.Random.Range(0, ZombiePrefabs.Length);
+        GameObject zombie = (GameObject) Instantiate(ZombiePrefabs[index], transform.position, Quaternion.Euler(0, 180, 0));
+        WavesController.Instance.IncreaseWaveCountAndHp(zombie.GetComponent<ZombieHealth>().health);
 
         // Invoke the zombie OnSpawn event
         MainEventManager.Instance.OnZombieSpawn.Invoke(zombie);
 
         // Add every zombie to the ObjectManager for further management
-        // TODO: implement wave ID
-        MainObjectManager.Instance.AddZombieToWave(zombie, -1);
+        //MainObjectManager.Instance.zombies.Add(zombie);
 
         // Set the destination of the zombie to a random target
 		zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
