@@ -15,17 +15,21 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
     private Vector3 obstacleRotation;
     private float obstaclePrice;
 
+    private bool canBeDeletedDuringPlacing = true;
+
     public void SetObstacle(GameObject obstacle, float price, bool alreadyInScene = false)
     {
         obstacleRotation = obstacle.transform.rotation.eulerAngles;
         // Debug.Log(obstacleRotation);
         obstacle_prefab = obstacle;
         obstaclePrice = price;
+        canBeDeletedDuringPlacing = true;
         if(alreadyInScene)
         {
             tempObstacle = obstacle;
             obstaclePrice = 0;
             tempObstacle.layer = LayerMask.NameToLayer("Default");
+            canBeDeletedDuringPlacing = false;
         }
     }
 
@@ -69,7 +73,7 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                 //Handle placing
                 if (Input.GetKey(KeyCode.Q)) place_rotation -= 2f;
                 if (Input.GetKey(KeyCode.E)) place_rotation += 2f;
-                if (Input.GetKeyDown(KeyCode.Mouse1) && tempObstacle != null)
+                if (Input.GetKeyDown(KeyCode.Mouse1) && tempObstacle != null && canBeDeletedDuringPlacing)
                 {
                     Destroy(tempObstacle);
                     tempObstacle = null;
@@ -92,8 +96,6 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                     
                 }
             }
-
-           
         }
     }
 }

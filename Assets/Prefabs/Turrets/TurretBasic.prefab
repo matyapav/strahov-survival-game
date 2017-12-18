@@ -60,8 +60,8 @@ GameObject:
   - component: {fileID: 114311600465908094}
   - component: {fileID: 82026701872956916}
   - component: {fileID: 54110956167349904}
-  - component: {fileID: 114997139018632596}
   - component: {fileID: 114914311426858668}
+  - component: {fileID: 114159640466661116}
   m_Layer: 8
   m_Name: TurretBasic
   m_TagString: Turret
@@ -353,6 +353,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114159640466661116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416805399143124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
+    type: 2}
+  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!114 &114311600465908094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,17 +423,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 114997139018632596}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 114339211067713318}
         m_MethodName: Activate
         m_Mode: 6
@@ -447,17 +450,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114997139018632596}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 114339211067713318}
         m_MethodName: Activate
         m_Mode: 6
@@ -471,20 +463,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114997139018632596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1416805399143124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a07d18c31fa0c40b5219e28b0853c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
-    type: 2}
-  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!136 &136581654146642952
 CapsuleCollider:
   m_ObjectHideFlags: 1

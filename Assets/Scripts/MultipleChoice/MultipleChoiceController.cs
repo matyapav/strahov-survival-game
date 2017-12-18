@@ -80,6 +80,7 @@ public class MultipleChoiceController : MonoBehaviour
     {
         Debug.Log("showing panel");
         TogglePanel(true, Camera.main.WorldToScreenPoint(position));
+        MainUISoundManager.Instance.PlaySound("blop");
         worldPos = position;
         if(onPanelShow != null){
             onPanelShow.Invoke();

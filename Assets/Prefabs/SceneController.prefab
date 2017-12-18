@@ -63,7 +63,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CurrencyController+ValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  startValue: 100
+  startValue: 1000
   minValue: 0
   maxValue: 999999
 --- !u!114 &114271800052911864
