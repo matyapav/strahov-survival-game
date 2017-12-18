@@ -56,6 +56,7 @@ ModelImporter:
     100096: Street_Main
     100098: Street_Others
     100100: Sphere
+    100102: Auto
     400000: Budovy
     400002: Hradby
     400004: Hriste
@@ -107,6 +108,7 @@ ModelImporter:
     400096: Street_Main
     400098: Street_Others
     400100: Sphere
+    400102: Auto
     2300000: Budovy
     2300002: Hradby
     2300004: Hriste
@@ -157,6 +159,7 @@ ModelImporter:
     2300094: Street_Main
     2300096: Street_Others
     2300098: Sphere
+    2300100: Auto
     3300000: Budovy
     3300002: Hradby
     3300004: Hriste
@@ -207,6 +210,7 @@ ModelImporter:
     3300094: Street_Main
     3300096: Street_Others
     3300098: Sphere
+    3300100: Auto
     4300000: Hradby
     4300002: Hriste
     4300004: Street_others
@@ -257,6 +261,7 @@ ModelImporter:
     4300094: Street_Others
     4300096: Street_Main
     4300098: Sphere
+    4300100: Auto
     7400000: Default Take
     9500000: //RootNode
   materials:
