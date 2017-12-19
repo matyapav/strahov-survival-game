@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,11 +20,14 @@ public class ZombieNavigationController : MonoBehaviour
     public float stoppingDistance = 1.0f;
     public float angleTurnLimit = 60;
     public float damage = 5f;
+    public float attackRange = 5f;
 
     private ZombieStateMachine zombieStateMachine;
     private NavMeshAgent agent;
 
-    public Transform target;
+    public Transform navigation_target;
+    public IDamageable<float> attack_target = null;
+
     private Rigidbody rb;
     private float nextAttackTime = 0.0f;
     private float nextAttackIn = 1.5f;
@@ -34,7 +38,7 @@ public class ZombieNavigationController : MonoBehaviour
         zombieStateMachine = GetComponent<ZombieStateMachine>();
         agent = GetComponent<NavMeshAgent>();
 
-        zombieStateMachine.OnSeekPath.AddListener(SeekANewtarget);
+        zombieStateMachine.OnSeekPath.AddListener(SeekNavigationTargetAfterAttacking);
         zombieStateMachine.OnAttackStart.AddListener(StopNavigation);
         zombieStateMachine.OnDying.AddListener(StopNavigation);
 
@@ -54,29 +58,22 @@ public class ZombieNavigationController : MonoBehaviour
         agent.autoBraking = false;
     }
 
-    // Seek a new target and start navigation
-    private void SeekANewtarget()
+
+    void SeekNavigationTargetAfterAttacking()
     {
-        Transform _target;
-
-        // TODO TEMP for debug
-        if(target != null) {
-            _target = target;
-        } else {
-            _target = MainObjectManager.Instance.GetRandomBlock().GetComponent<BlockTargets>().GetRandomTarget();
-        }
-
-        SeekANewtarget(_target);
+        attack_target = null;
+        Transform newNavTarget = MainObjectManager.Instance.GetRandomBlock().GetComponent<BlockTargets>().GetRandomTarget();
+        SetupNavigationTarget(newNavTarget);
     }
 
     // Seek a new target and start navigation
-    private void SeekANewtarget(Transform _target)
+    private void SetupNavigationTarget(Transform _target)
     {
-        target = _target;
+        navigation_target = _target;
         agent.isStopped = false;
-        agent.SetDestination(target.position);
-        zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
         rb.isKinematic = false;
+        agent.SetDestination(navigation_target.position);
+        zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
 
     // Stop the agent from navigating and moving
@@ -87,19 +84,15 @@ public class ZombieNavigationController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!zombieStateMachine.IsAttacking()) { 
-            Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 5f))
-            {
-                if(hit.transform.gameObject.tag == "Blok") {
-                    Debug.Log("Attacking");
-                    //a little hack for rigidbody to stop moving
-                    rb.isKinematic = true;
-                    target = hit.transform;
-                    zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.Attacking);
-                }
-            }
+        // If it is not attacking or dying, check if there is anything around to hit
+        if (!zombieStateMachine.IsAttacking() && !zombieStateMachine.IsDying()) { 
+            Ray front = new Ray(transform.position, transform.forward);
+            Ray left = new Ray(transform.position, transform.forward - transform.right);
+            Ray right = new Ray(transform.position, transform.forward + transform.right);
+
+            AttackRay(front);
+            AttackRay(left);
+            AttackRay(right);
         }
     }
 
@@ -107,12 +100,6 @@ public class ZombieNavigationController : MonoBehaviour
     {
         if (zombieStateMachine.IsWalking())
         {
-            // Stop pathfinding on the last step
-            if (Vector3.Magnitude(transform.position - agent.destination) <= stoppingDistance)
-            {
-                zombieStateMachine.OnAttackStart.Invoke();
-            }
-
             // Limit movement speed when doing sharp turns
             float turnAngle = Vector3.Angle(transform.forward, agent.destination);
             if (turnAngle > angleTurnLimit) {
@@ -121,34 +108,89 @@ public class ZombieNavigationController : MonoBehaviour
             else {
                 agent.speed = movementSpeed;
             }
-
-           
         }
         else if (zombieStateMachine.IsAttacking())
         {
-            // If the target is null, start seeking the path again
-            if (target == null)
-            {
-                zombieStateMachine.State = (ZombieStateMachine.ZombieStateEnum.SeekPath);
+            if (attack_target == null) {
+                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                return;
             }
-            else
+
+            if (Time.time > nextAttackTime)
             {
-                // TODO: attack logic = decrease blocks health,..   
-                if (target.tag == "Blok")
-                {
-                    if(Time.time > nextAttackTime)
-                    {
-                        nextAttackTime = Time.time + nextAttackIn;
-                        HitpointsController hpControl = target.GetComponent<HitpointsController>();
-                        hpControl.DescreaseValue(5f);
-                        if(hpControl.minimumReached)
-                        {
-                            target = null;
-                        }
-                    }
-                }
+                nextAttackTime = Time.time + nextAttackIn;
+
+				attack_target.Damage(damage);
+				
+				if (attack_target.Dead()) {
+                    Debug.Log("it is dead");
+                    attack_target = null;
+                    navigation_target = null;
+
+                    zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                    return;
+				}
             }
         }
+    }
+
+    // Draw the attacking gizmo ((o_o))
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.blue;
+
+            Ray front = new Ray(transform.position, transform.forward);
+            Ray left = new Ray(transform.position, transform.forward - transform.right);
+            Ray right = new Ray(transform.position, transform.forward + transform.right);
+
+
+            Gizmos.DrawLine(front.origin, front.origin + front.direction * attackRange);
+            Gizmos.DrawLine(left.origin, left.origin + left.direction * attackRange);
+            Gizmos.DrawLine(right.origin, right.origin + right.direction * attackRange);
+        }
+    }
+
+    // Attack along the ray
+    private void AttackRay(Ray r) {
+        RaycastHit hit;
+        if (Physics.Raycast(r.origin, r.direction, out hit, attackRange))
+        {
+            GameObject ghit = hit.transform.gameObject;
+            if (IsAttackableTag(ghit)) 
+            {
+
+                IDamageable<float> id = GetDamageableFromGO(ghit);
+
+                if(id == null) {
+                    Debug.LogError("Something went horribly wrong. Zombie wants to attack an target that does not implement IDamageable.");
+                }
+
+                navigation_target = null;
+                attack_target = id;
+
+                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Attacking;
+            }
+        }
+    }
+
+    // Check if the tags are allright to be attacked
+    private bool IsAttackableTag(GameObject go) {
+        if(go.tag == "Blok" || go.tag == "Turret" || go.tag == "Prakazka") {
+            return true;
+        }
+        return false;
+    }
+
+    // Get an Interface from GameObject
+    public static IDamageable<float> GetDamageableFromGO(GameObject go) {
+        Component[] d_components = go.GetComponents(typeof(IDamageable<float>));
+
+        if (d_components.Length < 1) 
+            return null;
+        
+        return (IDamageable<float>)d_components[0];
     }
 }
   

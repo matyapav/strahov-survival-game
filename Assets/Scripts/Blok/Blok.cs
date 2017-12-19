@@ -17,12 +17,11 @@ public class Blok : MonoBehaviour, IDamageable<float> {
     }
 
     public void Damage (float damage) {
-        
         hpControl.DescreaseValue(damage);
     }
 
     public bool Dead () {
-        return hpControl.GetCurrentValue() == hpControl.minValue;
+        return hpControl.GetCurrentValue() <= hpControl.minValue;
     }
 
     public void DestroyBlok()

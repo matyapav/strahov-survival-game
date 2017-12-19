@@ -27,11 +27,19 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
     // Returns a random blok from the array
     public GameObject GetRandomBlock()
     {
-        if (bloky.Count < 1)
-        {
+        List<GameObject> active_blocks = new List<GameObject>();
+
+        foreach (var b in bloky) {
+            if(b.activeSelf) {
+                active_blocks.Add(b);
+            }
+        }
+
+        if (active_blocks.Count < 1) {
             return null;
         }
-        return bloky[Random.Range(0, bloky.Count)];
+
+        return active_blocks[Random.Range(0, active_blocks.Count)];
     }
 
     // Update all the objects that need to be hidden or shown
@@ -54,24 +62,6 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
             if (player != null) player.SetActive(true);
         }
     }
-
-    /*
-    public void KillAllZombiesInSceneOld() {
-        int count = zombies.Count;
-        List<ZombieHealth> zombieHealths = new List<ZombieHealth>();
-
-        // First get all the zombies
-        for (int i = 0; i < count; i++) {
-            ZombieHealth zhl = zombies[i].GetComponent<ZombieHealth>();
-            zombieHealths.Add(zhl);
-        }
-
-        // Then kill em all
-        for (int i = 0; i < count; i++) {
-            zombieHealths[i].Damage(zombieHealths[i].health * 2);
-        }
-    }
-    */
 
     public void KillAllZombiesInScene() {
         // Get all KVPs first
