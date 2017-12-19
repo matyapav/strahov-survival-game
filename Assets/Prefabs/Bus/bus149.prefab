@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   busName: 149
   ZombiePrefabs:
-  - {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
+  - {fileID: 1001479585467826, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
   - {fileID: 1861962750543516, guid: 968dd81f5c2783c4dbe261ee365c0250, type: 2}
   numberOfZombies: 10
   timeBetweenSpawns: 1.5

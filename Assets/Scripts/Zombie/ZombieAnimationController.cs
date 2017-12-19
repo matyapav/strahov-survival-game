@@ -25,6 +25,7 @@ public class ZombieAnimationController : MonoBehaviour {
         zombieStateMachine.OnDying.AddListener(PlayDieAnimation);
         zombieStateMachine.OnWalkingStart.AddListener(SetWalking);
         zombieStateMachine.OnAttackStart.AddListener(SetAttacking);
+		zombieStateMachine.OnDrinkingStart.AddListener(SetDrinking);
     }
 
     private void PlayDieAnimation() {
@@ -34,10 +35,17 @@ public class ZombieAnimationController : MonoBehaviour {
     private void SetWalking() {
         anim.SetBool("isWalking", true);
         anim.SetBool("isAttacking", false);
+		anim.SetBool ("isDrinking", false);
     }
 
     private void SetAttacking() {
         anim.SetBool("isAttacking", true);
         anim.SetBool("isWalking", false);
+		anim.SetBool ("isDrinking", false);
     }
+	private void SetDrinking(){
+		anim.SetBool("isWalking", false);
+		anim.SetBool("isAttacking", false);
+		anim.SetBool ("isDrinking", true);
+	}
 }
