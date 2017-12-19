@@ -38,6 +38,8 @@ public class ZombieNavigationController : MonoBehaviour
         zombieStateMachine = GetComponent<ZombieStateMachine>();
         agent = GetComponent<NavMeshAgent>();
 
+        // SetAgentSettings();
+
         zombieStateMachine.OnSeekPath.AddListener(SeekNavigationTargetAfterAttacking);
         zombieStateMachine.OnAttackStart.AddListener(StopNavigation);
         zombieStateMachine.OnDying.AddListener(StopNavigation);
@@ -47,14 +49,11 @@ public class ZombieNavigationController : MonoBehaviour
     }
 
     // Set some hardcoded stuff to the Agent
-    private void SetAgentSeeting()
+    private void SetAgentSettings()
     {
         agent.speed = movementSpeed;
         agent.angularSpeed = 900;   // Huge number helps with clumsy turning
         agent.acceleration = 5;
-
-        // Removes ugly sliding on the last few steps
-        // but causes the agent to overshoot the target position sometimes
         agent.autoBraking = false;
     }
 
