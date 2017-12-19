@@ -16,6 +16,7 @@ public class ZombieStateMachine : MonoBehaviour
         SeekPath,   // Seek path is called only when the zombie has no path
         Walking,    // When in walking mode
         Attacking,  // When in attacking mode
+		Drinking,   // When in drinking mode (attacking a block)
         Dying       // If the zombie is dead but still in the scene
     };
 
@@ -25,8 +26,11 @@ public class ZombieStateMachine : MonoBehaviour
     public UnityEvent OnWalkingStart;
     [HideInInspector]
     public UnityEvent OnAttackStart;
+	[HideInInspector]
+	public UnityEvent OnDrinkingStart;
     [HideInInspector]
     public UnityEvent OnDying;
+
 
     private ZombieStateEnum _state;
     public ZombieStateEnum State {
@@ -34,18 +38,15 @@ public class ZombieStateMachine : MonoBehaviour
             return _state;
         }
         set {
-            if (value == ZombieStateEnum.SeekPath)
-            {
-                OnSeekPath.Invoke();
-            }
-            else if (value == ZombieStateEnum.Walking)
-            {
-                OnWalkingStart.Invoke();
-            }
-            else if (value == ZombieStateEnum.Attacking)
-            {
-                OnAttackStart.Invoke();
-            }
+			if (value == ZombieStateEnum.SeekPath) {
+				OnSeekPath.Invoke ();
+			} else if (value == ZombieStateEnum.Walking) {
+				OnWalkingStart.Invoke ();
+			} else if (value == ZombieStateEnum.Attacking) {
+				OnAttackStart.Invoke ();
+			} else if (value == ZombieStateEnum.Drinking) {
+				OnDrinkingStart.Invoke ();
+			}
             else if (value == ZombieStateEnum.Dying)
             {
                 // Security check not to call the animation twice
@@ -74,6 +75,10 @@ public class ZombieStateMachine : MonoBehaviour
     public bool IsAttacking() {
         return State == ZombieStateEnum.Attacking;
     }
+
+	public bool IsDrinking(){
+		return State == ZombieStateEnum.Drinking;
+	}
 
     public bool IsDying() {
         return State == ZombieStateEnum.Dying;
