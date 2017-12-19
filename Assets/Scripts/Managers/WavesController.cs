@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WavesController : MonoBehaviourSingleton<WavesController> {
-
+    [Header("Wave spawning")]
     public BusSpawner[] buses;
+    public int numberOfWavesPerNight = 3;
+    public float secondsBetweenSpawns = 90f;
 
+    [Header("User interface")]
     public GameObject waveUI;
     public Text waveHp1, waveHp2;
     public Text waveZombiesCount;
     public Text waveNumber;
     public Image waweHpImage;
+   
 
     private int actualBusIndex = 0;
     private bool canSpawnNewWave = true;
@@ -19,6 +23,7 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
     private float actualWaveHp;
     private float actualWaveHpBackup;
     private int waveIndex = 1;
+    private int numberOfWaves;
 
     private void Start()
     {
@@ -36,14 +41,7 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
     public void StartNextWave()
     {
         if (canSpawnNewWave)
-        {
-            //handle wave UI
-            waveUI.SetActive(true);
-            actualWaveZombieCount += buses[actualBusIndex].numberOfZombies;
-            actualWaveHp += actualWaveZombieCount*buses[actualBusIndex].ZombiePrefab.GetComponent<ZombieHealth>().health; //TODO az bude vice zombie v autobuse potreba vymyslet jinak!!!!!
-            actualWaveHpBackup = actualWaveHp;
-            UpdateWaveUIInfo();
-
+        {   
             buses[actualBusIndex].Arrive();
             actualBusIndex = (actualBusIndex + 1) % buses.Length; //cycle buses
             canSpawnNewWave = false;
@@ -60,6 +58,18 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
 
     public void AllowSpawningNewWave() {
         canSpawnNewWave = true;
+        if(waveIndex <= numberOfWavesPerNight){
+            Invoke("StartNextWave", secondsBetweenSpawns);
+        }
+    }
+
+    public void DecreaseWaveHealthAndCount(float amount){
+         actualWaveZombieCount--;
+        if(actualWaveZombieCount <= 0){
+            Debug.Log("Wave finished!"); 
+            waveUI.SetActive(false);
+        }
+        DecreaseWaveHealth(amount);
     }
 
     public void DecreaseWaveHealth(float amount){
@@ -71,13 +81,13 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
         UpdateWaveUIInfo();
     }
 
-    public void DecreaseWaveCount(int amount){
-        if(actualWaveZombieCount - amount < 0){
-            actualWaveZombieCount = 0;
-            Debug.Log("Wave finished!"); 
-            return;
+    public void IncreaseWaveCountAndHp(float hp) {
+        if(!waveUI.activeInHierarchy){
+            waveUI.SetActive(true);
         }
-        actualWaveZombieCount -= amount;
+        actualWaveHp += hp;
+        actualWaveZombieCount ++;
+        actualWaveHpBackup = actualWaveHp;
         UpdateWaveUIInfo();
     }
 

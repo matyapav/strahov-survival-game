@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191223638612602}
   m_LocalRotation: {x: 0.09166386, y: 0.6928814, z: -0.08950694, w: 0.70957845}
-  m_LocalPosition: {x: 69.70003, y: 32, z: -11.600037}
+  m_LocalPosition: {x: 109.90004, y: 11.9, z: -10.5000305}
   m_LocalScale: {x: 1.0000263, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4462359569030274}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1048108736628702}
   m_LocalRotation: {x: 0.09166386, y: 0.6928814, z: -0.08950694, w: 0.70957845}
-  m_LocalPosition: {x: 69.199936, y: 32, z: 11.199951}
+  m_LocalPosition: {x: 109.4, y: 11.9, z: 12.3}
   m_LocalScale: {x: 1.0000263, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4462359569030274}
@@ -189,8 +189,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 30
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 35
   m_CookieSize: 10
   m_Shadows:
@@ -204,7 +204,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -225,8 +225,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 30
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 35
   m_CookieSize: 10
   m_Shadows:
@@ -240,7 +240,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -263,7 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   busName: 143
-  ZombiePrefab: {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738,
-    type: 2}
-  numberOfZombies: 50
+  ZombiePrefabs:
+  - {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
+  - {fileID: 1861962750543516, guid: 968dd81f5c2783c4dbe261ee365c0250, type: 2}
+  numberOfZombies: 15
   timeBetweenSpawns: 1.5

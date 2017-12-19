@@ -57,10 +57,11 @@ GameObject:
   - component: {fileID: 23532148429269044}
   - component: {fileID: 136581654146642952}
   - component: {fileID: 114339211067713318}
-  - component: {fileID: 114533974262776624}
   - component: {fileID: 114311600465908094}
   - component: {fileID: 82026701872956916}
   - component: {fileID: 54110956167349904}
+  - component: {fileID: 114914311426858668}
+  - component: {fileID: 114159640466661116}
   m_Layer: 8
   m_Name: TurretBasic
   m_TagString: Turret
@@ -68,6 +69,23 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
+--- !u!1 &1760328065335368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4421901077736246}
+  - component: {fileID: 33292134345390846}
+  - component: {fileID: 23736617234623276}
+  m_Layer: 8
+  m_Name: Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4024837982367796
 Transform:
   m_ObjectHideFlags: 1
@@ -89,13 +107,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416805399143124}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -40.7, y: -0.2, z: -34.5}
+  m_LocalPosition: {x: -42.6035, y: -0.19881363, z: -25.625233}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4024837982367796}
+  - {fileID: 4421901077736246}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
+--- !u!4 &4421901077736246
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760328065335368}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0, z: 1}
+  m_LocalScale: {x: 10, y: 0.01, z: 10}
+  m_Children: []
+  m_Father: {fileID: 4188652494521150}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4442678701678898
 Transform:
   m_ObjectHideFlags: 1
@@ -173,6 +205,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23736617234623276
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760328065335368}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b8068eda99dcb4fddbca976a5d9123bf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33292134345390846
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760328065335368}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33874512955291372
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -282,6 +353,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114159640466661116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416805399143124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
+    type: 2}
+  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!114 &114311600465908094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,7 +397,8 @@ MonoBehaviour:
   damage: 20
   range: 50
   spread: 20
---- !u!114 &114533974262776624
+  rangeCylinder: {fileID: 1760328065335368}
+--- !u!114 &114914311426858668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -320,12 +406,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 1416805399143124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
-    type: 2}
-  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
+  onBeginPlacing:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1760328065335368}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114339211067713318}
+        m_MethodName: Activate
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onPlaced:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1760328065335368}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114339211067713318}
+        m_MethodName: Activate
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!136 &136581654146642952
 CapsuleCollider:
   m_ObjectHideFlags: 1

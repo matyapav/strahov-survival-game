@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MultipleChoiceController : MonoBehaviour
@@ -10,6 +11,10 @@ public class MultipleChoiceController : MonoBehaviour
     public event OnButtonDownDelegate onSecondButtonDown;
     public event OnButtonDownDelegate onThirdButtonDown;
     public event OnButtonDownDelegate onFourthButtonDown;
+
+    public delegate void OnPanelVisibilityChanged();
+    public event OnPanelVisibilityChanged onPanelShow;
+    public event OnPanelVisibilityChanged onPanelHide;
 
     public bool MultipleChoiceVisible
     {
@@ -75,7 +80,11 @@ public class MultipleChoiceController : MonoBehaviour
     {
         Debug.Log("showing panel");
         TogglePanel(true, Camera.main.WorldToScreenPoint(position));
+        MainUISoundManager.Instance.PlaySound("blop");
         worldPos = position;
+        if(onPanelShow != null){
+            onPanelShow.Invoke();
+        }
     }
 
     /// <summary>
@@ -84,6 +93,9 @@ public class MultipleChoiceController : MonoBehaviour
     /// <param name="position"></param>
     public void HidePanel() {
         TogglePanel(false, Camera.main.WorldToScreenPoint(worldPos));
+        if(onPanelHide != null){
+            onPanelHide.Invoke();
+        }
     }
 
     // UNDER HOOD

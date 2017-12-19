@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114804393687544810}
   - component: {fileID: 208793404070230696}
   - component: {fileID: 65976814777323902}
+  - component: {fileID: 114969145484836466}
   m_Layer: 0
   m_Name: HedgehogPrefab
   m_TagString: Untagged
@@ -157,6 +158,27 @@ MonoBehaviour:
   multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
     type: 2}
   backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
+--- !u!114 &114969145484836466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949343397470300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onBeginPlacing:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onPlaced:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!208 &208793404070230696
 NavMeshObstacle:
   m_ObjectHideFlags: 1

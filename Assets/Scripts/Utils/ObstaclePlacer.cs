@@ -15,17 +15,21 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
     private Vector3 obstacleRotation;
     private float obstaclePrice;
 
+    private bool canBeDeletedDuringPlacing = true;
+
     public void SetObstacle(GameObject obstacle, float price, bool alreadyInScene = false)
     {
         obstacleRotation = obstacle.transform.rotation.eulerAngles;
         // Debug.Log(obstacleRotation);
         obstacle_prefab = obstacle;
         obstaclePrice = price;
+        canBeDeletedDuringPlacing = true;
         if(alreadyInScene)
         {
             tempObstacle = obstacle;
             obstaclePrice = 0;
             tempObstacle.layer = LayerMask.NameToLayer("Default");
+            canBeDeletedDuringPlacing = false;
         }
     }
 
@@ -45,11 +49,7 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
             if (tempObstacle)
             {
                 //TODO opravit .. zatim nechame placovat vsude
-                /*Collider[] overlapedObjects = Physics.OverlapBox(tempObstacle.transform.position, tempObstacle.transform.localScale /2, tempObstacle.transform.rotation, LayerMask.GetMask("Obstacle"));
-                foreach(Collider col in overlapedObjects)
-                {
-                    Debug.Log(col.gameObject.name);
-                }
+               /*Collider[] overlapedObjects = Physics.OverlapBox(tempObstacle.transform.position, tempObstacle.transform.localScale /2, tempObstacle.transform.rotation, LayerMask.GetMask("Obstacle"));
                 if (overlapedObjects.Length > 0)
                 {
                     //hits another obstacle 
@@ -61,7 +61,9 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                     canPlace = true;
                     tempObstacle.GetComponent<Renderer>().material.color = tempObstacleMaterialBackupColor; 
                 }*/
-
+                if(tempObstacle.GetComponent<PlacingEvents>()){
+                    tempObstacle.GetComponent<PlacingEvents>().InvokeOnBeginPlacing();
+                }
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
@@ -71,7 +73,7 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                 //Handle placing
                 if (Input.GetKey(KeyCode.Q)) place_rotation -= 2f;
                 if (Input.GetKey(KeyCode.E)) place_rotation += 2f;
-                if (Input.GetKeyDown(KeyCode.Mouse1) && tempObstacle != null)
+                if (Input.GetKeyDown(KeyCode.Mouse1) && tempObstacle != null && canBeDeletedDuringPlacing)
                 {
                     Destroy(tempObstacle);
                     tempObstacle = null;
@@ -81,9 +83,8 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                 {
                     if (CurrencyController.Instance.DescreaseValue(obstaclePrice)) { 
                         tempObstacle.layer = LayerMask.NameToLayer("Obstacle");
-                        if (tempObstacle.GetComponent<MultipleChoiceTrigger>())
-                        {
-                            tempObstacle.GetComponent<MultipleChoiceTrigger>().Activate();
+                        if(tempObstacle.GetComponent<PlacingEvents>()){
+                            tempObstacle.GetComponent<PlacingEvents>().InvokeOnPlaced();
                         }
                         tempObstacle = null;
                         obstacle_prefab = null;
@@ -95,8 +96,6 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                     
                 }
             }
-
-           
         }
     }
 }

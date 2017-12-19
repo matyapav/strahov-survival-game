@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181783459392516}
   m_LocalRotation: {x: 0.09166387, y: 0.69288146, z: -0.08950695, w: 0.7095785}
-  m_LocalPosition: {x: 69.2, y: 32, z: 11.2}
+  m_LocalPosition: {x: 110.60001, y: 10.300001, z: 12.300006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4378846041318996}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1332320105044396}
   m_LocalRotation: {x: 0.09166387, y: 0.69288146, z: -0.08950695, w: 0.7095785}
-  m_LocalPosition: {x: 69.7, y: 32, z: -11.6}
+  m_LocalPosition: {x: 111.1, y: 10.3, z: -10.5}
   m_LocalScale: {x: 1.0000266, y: 1.0000055, z: 0.9999931}
   m_Children: []
   m_Father: {fileID: 4378846041318996}
@@ -188,9 +188,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 30
-  m_SpotAngle: 35
+  m_Intensity: 2
+  m_Range: 50
+  m_SpotAngle: 30.415344
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -203,7 +203,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -224,8 +224,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 30
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 35
   m_CookieSize: 10
   m_Shadows:
@@ -239,7 +239,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -262,7 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   busName: 149
-  ZombiePrefab: {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738,
-    type: 2}
-  numberOfZombies: 20
+  ZombiePrefabs:
+  - {fileID: 1861962750543516, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
+  - {fileID: 1861962750543516, guid: 968dd81f5c2783c4dbe261ee365c0250, type: 2}
+  numberOfZombies: 10
   timeBetweenSpawns: 1.5

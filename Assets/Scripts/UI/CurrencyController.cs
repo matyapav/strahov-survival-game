@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
@@ -98,9 +99,9 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
     {
         if (currencyText != null) {
             if (currentValue > 10000) {
-                currencyText.text = (currentValue / 1000 + " Kg");
+                currencyText.text = (Math.Round(currentValue / 1000, 2) + " Kg");
             } else {
-                currencyText.text = currentValue.ToString() + " g";
+                currencyText.text = Math.Round(currentValue, 2).ToString() + " g";
             }
         }
     }

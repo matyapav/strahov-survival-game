@@ -7,13 +7,15 @@ public class MultipleChoiceTrigger : MonoBehaviour {
 
     public MultipleChoiceControllerBuilder multipleChoiceBuilder;
     public Sprite backGroundImage;
-    private MultipleChoiceController multipleChoiceControllerInstance;
+    protected MultipleChoiceController multipleChoiceControllerInstance;
     private bool active = false;
+    private bool placing = false;
 
-    private void Start()
-    {
-        multipleChoiceControllerInstance = multipleChoiceBuilder.SetNumberOfChoices(4)
-                                                               .SetBackgroundImageToAllButtons(backGroundImage) //TODO nefunguje
+    protected delegate void TriggerStatusChange();
+
+    void Start () {
+		multipleChoiceControllerInstance = multipleChoiceBuilder.SetNumberOfChoices(4)
+                                                               .SetBackgroundImageToAllButtons(backGroundImage)
                                                                .SetBackgroundColorToAllButtons(Color.white)
                                                                .SetTextToAllButtons("")
                                                                .SetScale(0.75f, 0.75f)
@@ -22,8 +24,10 @@ public class MultipleChoiceTrigger : MonoBehaviour {
                                                                .AddOnThirdButtonDownAction(Upgrade)
                                                                .AddOnFourthButtonDownAction(Destroy)
                                                                .Build(transform);
-    }
 
+        GetComponent<PlacingEvents>().onBeginPlacing.AddListener(() => Activate(false));
+        GetComponent<PlacingEvents>().onPlaced.AddListener(() => Activate(true));
+	}
     void Update () {
         if (active && Input.GetMouseButtonDown(1)){
             RaycastHit hit;
@@ -41,12 +45,12 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         }
 	}
 
-    public void Activate()
+    public void Activate(bool a)
     {
-        active = true;
+        this.active = a;
     }
 
-    void Repair()
+     void Repair()
     {
         // just change cube to blue
         Material mat = gameObject.GetComponent<Renderer>().material;
@@ -78,4 +82,5 @@ public class MultipleChoiceTrigger : MonoBehaviour {
 
         MainUISoundManager.Instance.PlaySound("blop");
     }
+
 }
