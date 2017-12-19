@@ -87,13 +87,13 @@ public class WavesController : MonoBehaviourSingleton<WavesController> {
         }
         actualWaveHp += hp;
         actualWaveZombieCount ++;
-        actualWaveHpBackup = actualWaveHp;
+        actualWaveHpBackup += hp;
         UpdateWaveUIInfo();
     }
 
     private void UpdateWaveUIInfo(){
         waweHpImage.fillAmount = actualWaveHp/actualWaveHpBackup;
-        waveZombiesCount.text = "Zombies "+actualWaveZombieCount+" / " +actualWaveZombieCount;
-        waveHp1.text = waveHp2.text = "Hp: "+actualWaveHp+" / "+actualWaveHp;
+        waveZombiesCount.text = "Students "+actualWaveZombieCount+" / " +actualWaveZombieCount;
+        waveHp1.text = waveHp2.text = "Hp: "+actualWaveHp+" / "+actualWaveHpBackup;
     }
 }
