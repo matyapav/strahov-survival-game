@@ -40,15 +40,6 @@ public class BusSpawner : MonoBehaviour {
         MainUISoundManager.Instance.PlaySound("bus_door");
     }
 
-    public void Leave()
-    {
-        MainUISoundManager.Instance.PlaySound("bus_ride");
-        // Start the animation
-        animator.SetBool(animator.GetParameter(0).name, false);
-
-        // Invoke the event in the EventManager
-        MainEventManager.Instance.OnBusLeaving.Invoke();
-    }
 
     public void SpawnWave () {
         // Play the sound
@@ -64,7 +55,7 @@ public class BusSpawner : MonoBehaviour {
     {
         for (int i = 0; i < number; i++) {
             // Get a random target
-            GameObject random_block = MainObjectManager.Instance.GetRandomBlock();
+            GameObject random_block = MainObjectManager.Instance.GetRandomActiveBlock();
 
             if (random_block == null)
             {
@@ -77,6 +68,8 @@ public class BusSpawner : MonoBehaviour {
             // Instantiate the zombie - random choose from zombie prefabs on
             int index = UnityEngine.Random.Range(0, ZombiePrefabs.Length);
             GameObject zombie = (GameObject)Instantiate(ZombiePrefabs[index], transform.position, Quaternion.Euler(0, 180, 0));
+
+            // Update the WaveBar
             WavesController.Instance.IncreaseWaveCountAndHp(zombie.GetComponent<ZombieHealth>().health);
 
             // Invoke the zombie OnSpawn event
@@ -87,11 +80,21 @@ public class BusSpawner : MonoBehaviour {
             MainObjectManager.Instance.AddZombieToWave(zombie, -1);
 
             // Set the destination of the zombie to a random target
-            zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
+            var zsm = zombie.GetComponent<ZombieStateMachine>();
+            zsm.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+            zsm.OnSeekPath.Invoke();
+
+            // This should be done automatically 
+            // zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
 
             yield return new WaitForSeconds(waittime);
         }
 
-        Leave();
+        MainUISoundManager.Instance.PlaySound("bus_ride");
+        // Start the animation
+        animator.SetBool(animator.GetParameter(0).name, false);
+
+        // Invoke the event in the EventManager
+        MainEventManager.Instance.OnBusLeaving.Invoke();
     }
 }

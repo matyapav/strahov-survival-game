@@ -22,7 +22,7 @@ public class ZombieAnimationController : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         // Add the listemers to the animation functions
-        zombieStateMachine.OnDying.AddListener(PlayDieAnimation);
+        zombieStateMachine.OnDyingStart.AddListener(PlayDieAnimation);
         zombieStateMachine.OnWalkingStart.AddListener(SetWalking);
         zombieStateMachine.OnAttackStart.AddListener(SetAttacking);
 		zombieStateMachine.OnDrinkingStart.AddListener(SetDrinking);

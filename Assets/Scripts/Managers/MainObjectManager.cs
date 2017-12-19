@@ -13,19 +13,20 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
     // - list<GameObject> list of zombies in the wave
     public List<KeyValuePair<int, List<GameObject>>> zombies_wawes;
 
+    // the player's gameobject that gets activated or deactivated at day/night
     public GameObject player;
 
     // The objects that need to be hidden / shown 
     public GameObject[] DayObjects;
     public GameObject[] NightObjects;
 
-    private void Start()
-    {
+    // init zombies-waves
+    private void Start() {
         zombies_wawes = new List<KeyValuePair<int, List<GameObject>>>();
     }
 
     // Returns a random blok from the array
-    public GameObject GetRandomBlock()
+    public GameObject GetRandomActiveBlock()
     {
         List<GameObject> active_blocks = new List<GameObject>();
 
@@ -63,6 +64,7 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         }
     }
 
+    // Kills all zombies in all waves in the scene. Also remowes the waves.
     public void KillAllZombiesInScene() {
         // Get all KVPs first
         List<KeyValuePair<int, List<GameObject>>> kvps = new List<KeyValuePair<int, List<GameObject>>>();
@@ -71,8 +73,8 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         }
 
         // Then remove them one by one
-        int count = kvps.Count;
-        for (int i = 0; i < count; i++) {
+        int wave_count = kvps.Count;
+        for (int i = 0; i < wave_count; i++) {
             DestroyWave(kvps[i].Key);
         }
     }
@@ -154,7 +156,7 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         }
     }
 
-	// Get all zombies in the scene. Not very effective tho
+	// Get all zombies in the scene. Not very effective tho. Should not be used alot.
     public List<GameObject> GetAllZombies() {
         List<GameObject> all_zombies = new List<GameObject>();
         foreach(var kvp in zombies_wawes) {

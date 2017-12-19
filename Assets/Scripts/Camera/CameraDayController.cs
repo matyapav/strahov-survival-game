@@ -168,7 +168,7 @@ public class CameraDayController : MonoBehaviour
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             //pos.y -= scroll * zoomingSpeed * Time.deltaTime;
-            Vector3 deltaPos = transform.forward * scroll * zoomingSpeed * Time.deltaTime;
+            Vector3 deltaPos = transform.forward * scroll * zoomingSpeed;
             if(pos.y + deltaPos.y >= minY && pos.y + deltaPos.y <= maxY) {
                 pos += deltaPos;
             }

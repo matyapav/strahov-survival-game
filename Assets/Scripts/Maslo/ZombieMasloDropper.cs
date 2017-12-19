@@ -9,7 +9,7 @@ public class ZombieMasloDropper : MonoBehaviour {
 
     private void OnEnable()
     {
-        GetComponent<ZombieStateMachine>().OnDying.AddListener(SpawnOnDeath);
+        GetComponent<ZombieStateMachine>().OnDyingStart.AddListener(SpawnOnDeath);
     }
 
     void SpawnOnDeath() {

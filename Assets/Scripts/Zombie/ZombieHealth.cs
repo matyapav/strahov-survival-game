@@ -8,7 +8,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     private ZombieStateMachine zombieStateMachine;
 
     public float health = 100;
-
     private float _startingHealth;
 
     // The health that zombie had when started
@@ -20,7 +19,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     {
         _startingHealth = health;
         zombieStateMachine = GetComponent<ZombieStateMachine>();
-        zombieStateMachine.OnDying.AddListener(Die);
+        zombieStateMachine.OnDyingStart.AddListener(Die);
     }
 
     public void Damage(float damage) {

@@ -29,15 +29,17 @@ public class ZombieStateMachine : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent OnDrinkingStart;
     [HideInInspector]
-    public UnityEvent OnDying;
+    public UnityEvent OnDyingStart;
 
-
-    private ZombieStateEnum _state;
+    public ZombieStateEnum _state = ZombieStateEnum.Walking;
     public ZombieStateEnum State {
         get {
             return _state;
         }
+
         set {
+            _state = value;
+
 			if (value == ZombieStateEnum.SeekPath) {
 				OnSeekPath.Invoke ();
 			} else if (value == ZombieStateEnum.Walking) {
@@ -46,22 +48,13 @@ public class ZombieStateMachine : MonoBehaviour
 				OnAttackStart.Invoke ();
 			} else if (value == ZombieStateEnum.Drinking) {
 				OnDrinkingStart.Invoke ();
-			}
-            else if (value == ZombieStateEnum.Dying)
-            {
+			} else if (value == ZombieStateEnum.Dying) {
                 // Security check not to call the animation twice
                 if (!IsDying()) {
-                    OnDying.Invoke();
+                    OnDyingStart.Invoke();
                 }
             }
-
-            _state = value;
         }
-    }
-
-    // On spawn start seeking a target
-    private void Start() {
-        State = ZombieStateEnum.SeekPath;
     }
 
     public bool IsSeekPath() {
