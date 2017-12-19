@@ -115,7 +115,7 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
     }
 
     // Add a zombie to a wave with designated ID
-    public void AddZombieToWave(GameObject zombie, int wave_id) {
+    public void AddZombieToWave (GameObject zombie, int wave_id) {
         List <GameObject> wlist = GetWaveListByID(wave_id);
 
         if (wlist != null) {
@@ -131,7 +131,7 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
     }
 
     // Remove a zombie from the DB
-    public void RemoveZombie(GameObject zombie) {
+    public void RemoveZombie (GameObject zombie) {
         bool deleteWave = false;
         int deleteWaveID = -1;
 

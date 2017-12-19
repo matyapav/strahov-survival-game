@@ -51,31 +51,47 @@ public class BusSpawner : MonoBehaviour {
     }
 
     public void SpawnWave () {
+        // Play the sound
         MainUISoundManager.Instance.PlaySound("spawn_horde");
-        for (int i = 0; i < numberOfZombies; i++) {
-            Invoke("SpawnZombie", i* timeBetweenSpawns);
-        }
-        Invoke("Leave", (numberOfZombies + 1) * timeBetweenSpawns);
+
+        // Invoke the Spawning of the zombie
+        // TODO: Add wave id info 
+        StartCoroutine(SpawnZombies(numberOfZombies, timeBetweenSpawns, -1));
     }
 
     // Spawn a zombie
-    private void SpawnZombie()
+    IEnumerator SpawnZombies(int number, float waittime, int wave_id)
     {
-        // Get a random target
-        Transform target = MainObjectManager.Instance.GetRandomBlock().transform;
+        for (int i = 0; i < number; i++) {
+            // Get a random target
+            GameObject random_block = MainObjectManager.Instance.GetRandomBlock();
 
-        // Instantiate the zombie - random choose from zombie prefabs on
-        int index = UnityEngine.Random.Range(0, ZombiePrefabs.Length);
-        GameObject zombie = (GameObject) Instantiate(ZombiePrefabs[index], transform.position, Quaternion.Euler(0, 180, 0));
-        WavesController.Instance.IncreaseWaveCountAndHp(zombie.GetComponent<ZombieHealth>().health);
+            if (random_block == null)
+            {
+                Debug.LogError("There is no active block left in the scene.");
+                break;
+            }
 
-        // Invoke the zombie OnSpawn event
-        MainEventManager.Instance.OnZombieSpawn.Invoke(zombie);
+            Transform target = random_block.transform;
 
-        // Add every zombie to the ObjectManager for further management
-        //MainObjectManager.Instance.zombies.Add(zombie);
+            // Instantiate the zombie - random choose from zombie prefabs on
+            int index = UnityEngine.Random.Range(0, ZombiePrefabs.Length);
+            GameObject zombie = (GameObject)Instantiate(ZombiePrefabs[index], transform.position, Quaternion.Euler(0, 180, 0));
+            WavesController.Instance.IncreaseWaveCountAndHp(zombie.GetComponent<ZombieHealth>().health);
 
-        // Set the destination of the zombie to a random target
-		zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
+            // Invoke the zombie OnSpawn event
+            MainEventManager.Instance.OnZombieSpawn.Invoke(zombie);
+
+            // Add every zombie to the ObjectManager for further management
+            // TODO: Set the correct wave
+            MainObjectManager.Instance.AddZombieToWave(zombie, -1);
+
+            // Set the destination of the zombie to a random target
+            zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
+
+            yield return new WaitForSeconds(waittime);
+        }
+
+        Leave();
     }
 }

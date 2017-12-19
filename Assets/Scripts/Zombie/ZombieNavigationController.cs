@@ -38,8 +38,6 @@ public class ZombieNavigationController : MonoBehaviour
         zombieStateMachine = GetComponent<ZombieStateMachine>();
         agent = GetComponent<NavMeshAgent>();
 
-        // SetAgentSettings();
-
         zombieStateMachine.OnSeekPath.AddListener(SeekNavigationTargetAfterAttacking);
         zombieStateMachine.OnAttackStart.AddListener(StopNavigation);
         zombieStateMachine.OnDying.AddListener(StopNavigation);
@@ -48,20 +46,23 @@ public class ZombieNavigationController : MonoBehaviour
         rb.isKinematic = false;
     }
 
-    // Set some hardcoded stuff to the Agent
-    private void SetAgentSettings()
+    // Stop the agent from navigating and moving
+    private void StopNavigation()
     {
-        agent.speed = movementSpeed;
-        agent.angularSpeed = 900;   // Huge number helps with clumsy turning
-        agent.acceleration = 5;
-        agent.autoBraking = false;
+        agent.isStopped = true;
     }
 
-
+    // Seek for a new target
     void SeekNavigationTargetAfterAttacking()
     {
         attack_target = null;
-        Transform newNavTarget = MainObjectManager.Instance.GetRandomBlock().GetComponent<BlockTargets>().GetRandomTarget();
+        Transform newNavTarget = MainObjectManager.Instance.GetRandomBlock().GetComponent<Blok>().GetRandomTarget();
+
+        if (newNavTarget == null) {
+            Debug.LogError("There is not target to be navigated to in the scene");
+            return;
+        }
+
         SetupNavigationTarget(newNavTarget);
     }
 
@@ -75,16 +76,11 @@ public class ZombieNavigationController : MonoBehaviour
         zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
 
-    // Stop the agent from navigating and moving
-    private void StopNavigation()
-    {
-        agent.isStopped = true;
-    }
-
-    private void LateUpdate()
+    private void Update()
     {
         // If it is not attacking or dying, check if there is anything around to hit
-        if (!zombieStateMachine.IsAttacking() && !zombieStateMachine.IsDying()) { 
+        if (!zombieStateMachine.IsAttacking() && !zombieStateMachine.IsDying() || zombieStateMachine.IsWalking()) // bit of nonsense overkill
+        {
             Ray front = new Ray(transform.position, transform.forward);
             Ray left = new Ray(transform.position, transform.forward - transform.right);
             Ray right = new Ray(transform.position, transform.forward + transform.right);
@@ -93,20 +89,16 @@ public class ZombieNavigationController : MonoBehaviour
             AttackRay(left);
             AttackRay(right);
         }
-    }
-
-    private void Update()
-    {
-        if (zombieStateMachine.IsWalking())
+        else if (zombieStateMachine.IsWalking())
         {
             // Limit movement speed when doing sharp turns
-            float turnAngle = Vector3.Angle(transform.forward, agent.destination);
-            if (turnAngle > angleTurnLimit) {
-                agent.speed = 0.3f;
-            }
-            else {
-                agent.speed = movementSpeed;
-            }
+            //float turnAngle = Vector3.Angle(transform.forward, agent.destination);
+            //if (turnAngle > angleTurnLimit) {
+            //    agent.speed = 0.3f;
+            //}
+            //else {
+            //    agent.speed = movementSpeed;
+            //}
         }
         else if (zombieStateMachine.IsAttacking())
         {
@@ -133,7 +125,7 @@ public class ZombieNavigationController : MonoBehaviour
         }
     }
 
-    // Draw the attacking gizmo ((o_o))
+    // Draw the attacking gizmo in front of the zombie
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -162,7 +154,7 @@ public class ZombieNavigationController : MonoBehaviour
 
                 IDamageable<float> id = GetDamageableFromGO(ghit);
 
-                if(id == null) {
+                if (id == null) {
                     Debug.LogError("Something went horribly wrong. Zombie wants to attack an target that does not implement IDamageable.");
                 }
 
@@ -175,12 +167,20 @@ public class ZombieNavigationController : MonoBehaviour
     }
 
     // Check if the tags are allright to be attacked
-    private bool IsAttackableTag(GameObject go) {
-        if(go.tag == "Blok" || go.tag == "Turret" || go.tag == "Prakazka") {
+    private static bool IsAttackableTag(GameObject go) {
+        if (go.tag == "Blok" || go.tag == "Turret" || go.tag == "Prakazka") {
             return true;
         }
         return false;
     }
+
+    private static bool IsDrinkAttackableTag(GameObject go) {
+        if (go.tag == "Blok") {
+            return true;
+        }
+        return false;
+    }
+
 
     // Get an Interface from GameObject
     public static IDamageable<float> GetDamageableFromGO(GameObject go) {
