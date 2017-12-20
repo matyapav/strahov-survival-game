@@ -31,7 +31,7 @@ public class ZombieStateMachine : MonoBehaviour
     [HideInInspector]
     public UnityEvent OnDyingStart;
 
-    public ZombieStateEnum _state = ZombieStateEnum.Walking;
+    private ZombieStateEnum _state = ZombieStateEnum.Walking;
     public ZombieStateEnum State {
         get {
             return _state;
@@ -49,10 +49,7 @@ public class ZombieStateMachine : MonoBehaviour
 			} else if (value == ZombieStateEnum.Drinking) {
 				OnDrinkingStart.Invoke ();
 			} else if (value == ZombieStateEnum.Dying) {
-                // Security check not to call the animation twice
-                if (!IsDying()) {
-                    OnDyingStart.Invoke();
-                }
+                OnDyingStart.Invoke();
             }
         }
     }

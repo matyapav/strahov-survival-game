@@ -101,16 +101,14 @@ public class ZombieNavigationController : MonoBehaviour
         else if (zombieStateMachine.IsDrinking() || zombieStateMachine.IsAttacking())
         {
             // Do checking
-            if (attack_target == null)
-            {
+            if (attack_target == null) {
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                 return;
             }
 
             IDamageable<float> damagable_attack_target = GetDamageableFromGO(attack_target);
 
-            if (damagable_attack_target == null)
-            {
+            if (damagable_attack_target == null) {
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                 return;
             }
@@ -118,19 +116,15 @@ public class ZombieNavigationController : MonoBehaviour
             // Rotate towards target
             Vector3 lookTarget = attack_target.transform.position;
             lookTarget.y = transform.position.y;
-
-            transform.LookAt(lookTarget);
+            var targetRotation = Quaternion.LookRotation(lookTarget - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
 
             // Attack once upon time
-            if (Time.time > nextAttackTime)
-            {
+            if (Time.time > nextAttackTime) {
                 nextAttackTime = Time.time + nextAttackIn;
-
                 damagable_attack_target.Damage(damage);
 
-                if (damagable_attack_target.Dead())
-                {
-                    Debug.Log("it is dead");
+                if (damagable_attack_target.Dead()) {
                     attack_target = null;
                     navigation_target = null;
 
@@ -139,8 +133,9 @@ public class ZombieNavigationController : MonoBehaviour
                 }
             }
         }
-        else if(zombieStateMachine.IsDying()) {
-            
+        else if(zombieStateMachine.IsDying()) 
+        {
+            // don't do shit man
         }
     }
 
@@ -174,11 +169,9 @@ public class ZombieNavigationController : MonoBehaviour
     // Attack along the ray
     private void AttackRay(Ray r) {
         RaycastHit hit;
-        if (Physics.Raycast(r.origin, r.direction, out hit, attackRange))
-        {
+        if (Physics.Raycast(r.origin, r.direction, out hit, attackRange)) {
             GameObject ghit = hit.transform.gameObject;
-            if (IsAttackableTag(ghit)) 
-            {
+            if (IsAttackableTag(ghit)) {
 
                 IDamageable<float> id = GetDamageableFromGO(ghit);
 
@@ -189,7 +182,13 @@ public class ZombieNavigationController : MonoBehaviour
                 navigation_target = null;
                 attack_target = ghit;
 
-                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Attacking;
+                // Set to drinking if drinking target
+                if (IsDrinkAttackableTag(ghit)) {
+                    zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Drinking;
+                } else {
+                    zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Attacking;
+                }
+
             }
         }
     }

@@ -24,6 +24,7 @@ public class PlayerShootingController : MonoBehaviour {
 	public GameObject reloadUI;
 	public Image reloadProgressImage;
 	private bool reloading = false;
+    public Light flashlight; 
 
 	// Use this for initialization
 	void Awake() {
@@ -47,9 +48,12 @@ public class PlayerShootingController : MonoBehaviour {
 	void HandleShooting() {
         timer += Time.deltaTime;
 		Debug.DrawRay(transform.position, range * transform.forward, Color.red);
-		if (Input.GetButtonDown("Fire2")){
+		if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.R)){
 			reloading = true;
 		}
+        if (Input.GetKeyDown(KeyCode.F)) {
+            flashlight.enabled = !flashlight.enabled;
+        }
 		if (Input.GetButton ("Fire1") && timer >= timeBetweenBullets && bullets > 0 && !reloading) {
 			Shoot ();
 		}

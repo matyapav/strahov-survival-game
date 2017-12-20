@@ -29,7 +29,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
         }
 
         if (health - damage <= 0) {
-            zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
+            if(!Dead()) 
+                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
         }
         else {
             health -= damage;
