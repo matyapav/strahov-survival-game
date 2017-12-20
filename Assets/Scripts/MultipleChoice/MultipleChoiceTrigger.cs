@@ -10,6 +10,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
     protected MultipleChoiceController multipleChoiceControllerInstance;
     private bool active = false;
     private bool placing = false;
+    private bool isShow = false;
 
     protected delegate void TriggerStatusChange();
 
@@ -30,17 +31,23 @@ public class MultipleChoiceTrigger : MonoBehaviour {
 	}
     void Update () {
         if (active && Input.GetMouseButtonDown(1)){
+            if (isShow){
+                MainUISoundManager.Instance.PlaySound("blop");
+                isShow = false;
+            }
+
             RaycastHit hit;
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
                 if (hit.collider.gameObject == this.gameObject) {
                     multipleChoiceControllerInstance.ShowPanel(transform.position);
+                    isShow = true;
                 } else {
                     multipleChoiceControllerInstance.HidePanel();
                 }
             }
         }
-	}
+    }
 
     public void Activate(bool a)
     {
