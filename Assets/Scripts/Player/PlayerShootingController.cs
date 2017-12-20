@@ -41,7 +41,7 @@ public class PlayerShootingController : MonoBehaviour {
 		if(reloading){
 			Reload();
 		}
-		//update bullets count ui
+		// Update bullets count ui
 		bulletsCountUI.text = bullets+"/"+bulletsBackup;
 	}
 

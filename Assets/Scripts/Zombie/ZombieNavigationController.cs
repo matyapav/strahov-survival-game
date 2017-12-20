@@ -15,19 +15,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(CapsuleCollider))]
 public class ZombieNavigationController : MonoBehaviour
 {
-    public static bool DEBUG = false;
-
-    public float movementSpeed = 2.7f;
-    public float stoppingDistance = 1.0f;
-    public float angleTurnLimit = 60;
     public float damage = 5f;
     public float attackRange = 5f;
 
     private ZombieStateMachine zombieStateMachine;
     private NavMeshAgent agent;
 
-    public Transform navigation_target = null;
-    public GameObject attack_target = null;
+    public BlokAtackTarget target;
 
     private Rigidbody rb;
     private float nextAttackTime = 0.0f;
@@ -38,7 +32,9 @@ public class ZombieNavigationController : MonoBehaviour
         zombieStateMachine = GetComponent<ZombieStateMachine>();
         agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
-		
+
+        target = new BlokAtackTarget();
+
         rb.isKinematic = false;
 
         // Add the events
@@ -53,6 +49,7 @@ public class ZombieNavigationController : MonoBehaviour
     private void StopNavigation() {
         agent.isStopped = true;
         rb.isKinematic = true;
+        agent.velocity = Vector3.zero;
     }
 
     private void ResumeNavigation() {
@@ -64,19 +61,18 @@ public class ZombieNavigationController : MonoBehaviour
     void SeekNavigationTargetAfterAttacking()
     {
         // While debugging do not change the target 
-        Transform newNavTarget = MainObjectManager.Instance.GetRandomActiveBlock().GetComponent<Blok>().GetRandomTarget();
+        GameObject newNavTarget = MainObjectManager.Instance.GetRandomActiveBlock();
 
         if (newNavTarget == null) {
             Debug.LogError("There is not target to be navigated to in the scene");
             return;
         }
 
-        attack_target = null;
-        navigation_target = newNavTarget;
+        target.Assign(newNavTarget);
 
         agent.isStopped = false;
         rb.isKinematic = false;
-        agent.SetDestination(navigation_target.position);
+        agent.SetDestination(target.nav_target.position);
 
         zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
@@ -101,12 +97,12 @@ public class ZombieNavigationController : MonoBehaviour
         else if (zombieStateMachine.IsDrinking() || zombieStateMachine.IsAttacking())
         {
             // Do checking
-            if (attack_target == null) {
+            if (target.target_blok == null) {
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                 return;
             }
 
-            IDamageable<float> damagable_attack_target = GetDamageableFromGO(attack_target);
+            IDamageable<float> damagable_attack_target = target.damageable;
 
             if (damagable_attack_target == null) {
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
@@ -114,7 +110,8 @@ public class ZombieNavigationController : MonoBehaviour
             }
 
             // Rotate towards target
-            Vector3 lookTarget = attack_target.transform.position;
+            // TODO: use hitpoint
+            Vector3 lookTarget = target.hitpoint;
             lookTarget.y = transform.position.y;
             var targetRotation = Quaternion.LookRotation(lookTarget - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
@@ -125,8 +122,7 @@ public class ZombieNavigationController : MonoBehaviour
                 damagable_attack_target.Damage(damage);
 
                 if (damagable_attack_target.Dead()) {
-                    attack_target = null;
-                    navigation_target = null;
+                    target.Erase();
 
                     zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                     return;
@@ -179,8 +175,7 @@ public class ZombieNavigationController : MonoBehaviour
                     Debug.LogError("Something went horribly wrong. Zombie wants to attack an target that does not implement IDamageable.");
                 }
 
-                navigation_target = null;
-                attack_target = ghit;
+                target.Assign(ghit, hit.point);
 
                 // Set to drinking if drinking target
                 if (IsDrinkAttackableTag(ghit)) {
