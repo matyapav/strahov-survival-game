@@ -22,6 +22,7 @@ public class BuildMenuController : MonoBehaviour {
 
     public void Toggle()
     {
+        MainUISoundManager.Instance.PlaySound("scroll");
         animator.SetBool("active", !opened);
         opened = !opened;
         if (opened) { 
