@@ -1860,14 +1860,14 @@ Transform:
   - {fileID: 1847211943}
   - {fileID: 1686287701}
   - {fileID: 510888214}
-  - {fileID: 663144678}
   - {fileID: 574927227}
-  - {fileID: 1403696458}
   - {fileID: 1106140848}
+  - {fileID: 1403696458}
   - {fileID: 1093031137}
   - {fileID: 2120425202}
   - {fileID: 864051526}
   - {fileID: 935291111}
+  - {fileID: 1520871999}
   m_Father: {fileID: 691981947}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13657,7 +13657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eddfa6f613d95446b33e37d19bbc2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpointsController: {fileID: 0}
+  hitpointsController: {fileID: 1946026038}
   blackMarketBar: {fileID: 1908966462}
   blackMarketBtn: {fileID: 1376310525}
   blackMarketMenuController: {fileID: 391962943}
@@ -13857,7 +13857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 92870618}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &574927228
 MeshRenderer:
@@ -15480,103 +15480,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 137a625f838241643887ce85957880a5, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &663144677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100056, guid: 4da856d80c55441ea9c8e60325243dd6, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 663144678}
-  - component: {fileID: 663144681}
-  - component: {fileID: 663144680}
-  - component: {fileID: 663144679}
-  - component: {fileID: 663144682}
-  m_Layer: 8
-  m_Name: BlackMarket
-  m_TagString: BlackMarket
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
-  m_IsActive: 1
---- !u!4 &663144678
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400056, guid: 4da856d80c55441ea9c8e60325243dd6, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663144677}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 59.459564, y: 7.2531753, z: -71.33477}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 92870618}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &663144679
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663144677}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 22.188814, y: 49.873158, z: 14.50636}
-  m_Center: {x: -0.8982477, y: -5.994475, z: 0}
---- !u!23 &663144680
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300054, guid: 4da856d80c55441ea9c8e60325243dd6,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663144677}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 78639034a12894d1a8b4abcdd5a36058, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &663144681
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300054, guid: 4da856d80c55441ea9c8e60325243dd6,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663144677}
-  m_Mesh: {fileID: 4300076, guid: 4da856d80c55441ea9c8e60325243dd6, type: 3}
---- !u!114 &663144682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663144677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4dbed4cf84af4962a149a9f5ddba5e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tag: BlackMarket
 --- !u!1 &668222077
 GameObject:
   m_ObjectHideFlags: 0
@@ -18274,7 +18177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 92870618}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &864051527
 MeshRenderer:
@@ -19817,7 +19720,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 92870618}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &935291112
 MeshRenderer:
@@ -22454,7 +22357,7 @@ Transform:
   - {fileID: 1069260359}
   - {fileID: 1322897970}
   m_Father: {fileID: 92870618}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1099214416
 GameObject:
@@ -22706,7 +22609,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 92870618}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1106140849
 BoxCollider:
@@ -26451,7 +26354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eddfa6f613d95446b33e37d19bbc2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpointsController: {fileID: 0}
+  hitpointsController: {fileID: 510888213}
   blackMarketBar: {fileID: 2109162893}
   blackMarketBtn: {fileID: 329711623}
   blackMarketMenuController: {fileID: 391962943}
@@ -26718,6 +26621,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326331988}
+--- !u!1 &1330209225 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+  m_PrefabInternal: {fileID: 1520871998}
+--- !u!114 &1330209226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330209225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4dbed4cf84af4962a149a9f5ddba5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: BlackMarket
+--- !u!65 &1330209227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330209225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021773023, y: 0.004889561, z: 0.0014982072}
+  m_Center: {x: 0.0000009636864, y: -0.000000018760403, z: 0.0007491035}
 --- !u!1001 &1332670621
 Prefab:
   m_ObjectHideFlags: 0
@@ -29375,6 +29306,104 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1514101050}
+--- !u!1001 &1520871998
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 92870618}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 58.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -65
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7069834
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7072302
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10000.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10000.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10000.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_TagString
+      value: BlackMarket
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e93a785839cf264494b9626541ec8d7, type: 2}
+    - target: {fileID: 2300000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e173fadca59559a4288ae0e3dd59f7b5, type: 2}
+    - target: {fileID: 2300000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3db1d9f16f1a6a1459bf9fa4a3df52da, type: 2}
+    - target: {fileID: 2300000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebd2b1805ea6b71488e62dce5da52ada, type: 2}
+    - target: {fileID: 100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967294
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+      propertyPath: m_Name
+      value: BlackMarket
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &1520871999 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 49feb452110da404d9c165d264801bb9, type: 3}
+  m_PrefabInternal: {fileID: 1520871998}
 --- !u!1001 &1521327951
 Prefab:
   m_ObjectHideFlags: 0
@@ -40498,7 +40527,7 @@ Transform:
   - {fileID: 428879073}
   - {fileID: 1428457211}
   m_Father: {fileID: 92870618}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2122861735
 GameObject:
