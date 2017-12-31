@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
 
 
-    public void LoadScene(string sceneName)
+    public void LoadScene (string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
     }
@@ -14,5 +14,9 @@ public class SceneLoader : MonoBehaviour {
     public void QuitApplication()
     {
         Application.Quit();
+    }
+
+    public void LoadMainMenu() {
+        SceneManager.LoadSceneAsync("MenuScene");
     }
 }
