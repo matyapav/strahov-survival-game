@@ -15,6 +15,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     public GameObject BlackMarketMenu;
     public GameObject BuildMenu;
     public GameObject BuildingsInfoMenu;
+    public GameObject EndDay;
 
     private void Start()
     {
@@ -75,6 +76,14 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
     public void HideBuildMenu() {
         BuildMenu.SetActive(false);
+    }
+
+    public void HideEndDayButton() {
+        EndDay.SetActive(false);
+    }
+
+    public void ShowEndDayButton() {
+        EndDay.SetActive(true);
     }
 
     public void ShowBuildMenu() {

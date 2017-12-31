@@ -25,10 +25,11 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     // Which phase should be starting? => Day
-    public void Start()
+    private void Start()
     {
-        StartDayPhase();
+        DayNightController.Instance.StartDayPhase();
     }
+
 
     public void SwitchPhase()
     {       
@@ -67,10 +68,11 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         dayNightText.text = "Night " + dayCounter;
 
         MainCanvasManager.Instance.HideBuildMenu();
+        MainCanvasManager.Instance.HideEndDayButton();
         ActivateProperObjectsAndScripts();
     }
 
-    private void StartDayPhase()
+    public void StartDayPhase()
     {
         LightsController.Instance.SetDirectionalLightOn(true);
 
@@ -85,6 +87,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         dayNightText.text = "Day " + dayCounter;
 
         MainCanvasManager.Instance.ShowBuildMenu();
+        MainCanvasManager.Instance.ShowEndDayButton();
         ActivateProperObjectsAndScripts();
     }
 
@@ -106,5 +109,13 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         get {
             return phase == DayNightPhase.NIGHT;
         }
+    }
+
+    private int NumberOfWavesInCurrentDay() {
+        return dayCounter * 2;
+    }
+
+    private int NumberOfZombiesInWave() {
+        return dayCounter * 2 + Random.Range(0, dayCounter);
     }
 }
