@@ -29,7 +29,7 @@ public class BlackMarketButton : MonoBehaviour {
 
     public void Refill()
     {
-        if(CurrencyController.Instance.CanDecrease(refillAmount * pricePerUnit) && hitpointsController.CanIncrease(refillAmount))
+        if (CurrencyController.Instance.CanDecrease(refillAmount * pricePerUnit) && hitpointsController.CanIncrease(refillAmount))
         {
             hitpointsController.IncreaseValue(refillAmount);
             CurrencyController.Instance.DescreaseValue(refillAmount * pricePerUnit); 

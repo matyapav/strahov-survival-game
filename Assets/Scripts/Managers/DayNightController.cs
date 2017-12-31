@@ -13,8 +13,14 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     public GameObject[] onlyDayObjects;
     public GameObject[] onlyNightObjects;
 
-    private DayNightPhase phase;
+    private DayNightPhase phase = DayNightPhase.DAY;
     private int dayCounter = 0;
+
+    private void OnEnable()
+    {
+        // CRASHES unity for some reason
+        //MainEventManager.Instance.OnDaySwitchPhase.AddListener(_SwitchPhase);
+    }
 
     // Get the current phase
     public DayNightPhase Phase 
@@ -27,11 +33,15 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     // Which phase should be starting? => Day
     private void Start()
     {
-        DayNightController.Instance.StartDayPhase();
+        StartDayPhase();
     }
 
+    public void SwitchPhase() {
+        //MainEventManager.Instance.OnDaySwitchPhase.Invoke();
+        _SwitchPhase();
+    }
 
-    public void SwitchPhase()
+    private void _SwitchPhase()
     {       
         if (phase == DayNightPhase.DAY)
         {
@@ -70,6 +80,9 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         MainCanvasManager.Instance.HideBuildMenu();
         MainCanvasManager.Instance.HideEndDayButton();
         ActivateProperObjectsAndScripts();
+
+        // Start spawning waves of zombies
+        WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 30, 60);
     }
 
     public void StartDayPhase()
@@ -116,6 +129,6 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     private int NumberOfZombiesInWave() {
-        return dayCounter * 2 + Random.Range(0, dayCounter);
+        return dayCounter * 1 + Random.Range(0, dayCounter);
     }
 }

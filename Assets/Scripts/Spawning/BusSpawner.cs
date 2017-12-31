@@ -22,6 +22,7 @@ public class BusSpawner : MonoBehaviour {
     {
         MainUISoundManager.Instance.PlaySound("bus_ride");
         animator.SetBool(animator.GetParameter(0).name, true);
+        MainEventManager.Instance.OnBusDispatched.Invoke();
         MessageController.Instance.AddMessage("Prepare yourself! Bus n. "+ busName +" is arriving!!!", 6f, Color.green);
     }
 
@@ -44,6 +45,8 @@ public class BusSpawner : MonoBehaviour {
     public void SpawnWave () {
         // Play the sound
         MainUISoundManager.Instance.PlaySound("spawn_horde");
+
+        MainEventManager.Instance.OnBusArrived.Invoke();
 
         // Invoke the Spawning of the zombie
         // TODO: Add wave id info 
