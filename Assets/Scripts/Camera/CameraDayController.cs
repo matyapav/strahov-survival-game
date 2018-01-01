@@ -38,7 +38,7 @@ public class CameraDayController : MonoBehaviour
 
     [Header("Camera zooming")]
     [Tooltip("Enable or disable zooming")]
-    bool scrollingEnabled = true;
+    public bool scrollingEnabled = true;
     [Tooltip("Zooming speed")]
     public float zoomingSpeed = 20.0f;
     [Tooltip("Minimum y (height) to which user can zoom")]
@@ -167,11 +167,7 @@ public class CameraDayController : MonoBehaviour
         if (scrollingEnabled)
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            //pos.y -= scroll * zoomingSpeed * Time.deltaTime;
-            Vector3 deltaPos = transform.forward * scroll * zoomingSpeed;
-            if(pos.y + deltaPos.y >= minY && pos.y + deltaPos.y <= maxY) {
-                pos += deltaPos;
-            }
+            pos.y -= scroll * zoomingSpeed * Time.deltaTime;
         }
 
         // Rotate the camera if enabled
