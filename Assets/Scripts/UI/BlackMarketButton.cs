@@ -20,9 +20,15 @@ public class BlackMarketButton : MonoBehaviour {
     }
     // Use this for initialization
     void OnEnable () {
-        blackMarketBar.fillAmount = hitpointsController.hpBar.barValueImage.fillAmount;
-        if (hitpointsController.minimumReached)
-        {
+        if(hitpointsController != null && hitpointsController.hpBar != null) {
+            blackMarketBar.fillAmount = hitpointsController.hpBar.barValueImage.fillAmount;
+            if (hitpointsController.minimumReached || hitpointsController.GetCurrentValue() == hitpointsController.maxValue)
+            {
+                blackMarketBtn.interactable = false;
+            }
+        } else {
+            blackMarketBar.fillAmount = 0;
+            blackMarketBtn.GetComponent<Image>().color = Color.red;
             blackMarketBtn.interactable = false;
         }
     }
@@ -34,7 +40,7 @@ public class BlackMarketButton : MonoBehaviour {
             hitpointsController.IncreaseValue(refillAmount);
             CurrencyController.Instance.DescreaseValue(refillAmount * pricePerUnit); 
             blackMarketBar.fillAmount = hitpointsController.hpBar.barValueImage.fillAmount;
-        }
+        } 
     }
 	
 }

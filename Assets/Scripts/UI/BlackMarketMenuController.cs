@@ -12,13 +12,13 @@ public class BlackMarketMenuController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (pricePerUnit > 10000)
+        if (pricePerUnit * refillAmount > 10000)
         {
-            priceText.text = (pricePerUnit / 1000 + "K");
+            priceText.text = (pricePerUnit * refillAmount / 1000 + "K");
         }
         else
         {
-            priceText.text = pricePerUnit.ToString();
+            priceText.text = (pricePerUnit * refillAmount).ToString();
         }
     }
 }

@@ -28,7 +28,7 @@ public class CameraNightController : MonoBehaviour {
                 MainCanvasManager.Instance.HideBuildingsInfo();
             }
         } else {
-			 if (Input.GetKeyDown(KeyCode.I) 
+			 if (Input.GetKeyDown(KeyCode.M) 
                  && !MainCanvasManager.Instance.PauseMenu.activeInHierarchy
                  && !MainCanvasManager.Instance.BlackMarketMenu.activeInHierarchy)
             {

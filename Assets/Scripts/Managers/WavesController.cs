@@ -38,7 +38,7 @@ public class WavesController : MonoBehaviourSingleton<WavesController>
     }
 
     void IncreaseBussesDispatched() {
-        wave_busses_left++;
+        wave_busses_dipatched++;
     }
 
     void IncreaseBussesLeft() {
