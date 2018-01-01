@@ -9,7 +9,9 @@ public class LightsController : MonoBehaviourSingleton<LightsController>
     public GameObject lamps;
     
     public void SetDirectionalLightOn (bool directionalLightOn) {
-        lightAnimator.SetBool("night", !directionalLightOn);
+        if(lightAnimator != null){
+            lightAnimator.SetBool("night", !directionalLightOn);
+        }
     }
 
     public void SetLampsOn(bool lampsOn)

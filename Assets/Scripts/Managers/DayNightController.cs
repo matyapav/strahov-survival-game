@@ -82,7 +82,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         ActivateProperObjectsAndScripts();
 
         // Start spawning waves of zombies
-        WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 30, 60);
+        WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 0, 20);
     }
 
     public void StartDayPhase()

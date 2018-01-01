@@ -42285,16 +42285,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114699383604780398, guid: 4566e1a31ad66a84897225e4b843ba6c,
-        type: 2}
-      propertyPath: messageList
-      value: 
-      objectReference: {fileID: 39656829}
-    - target: {fileID: 114259548158995310, guid: 4566e1a31ad66a84897225e4b843ba6c,
-        type: 2}
-      propertyPath: currencyText
-      value: 
-      objectReference: {fileID: 1037460324}
     - target: {fileID: 114271800052911864, guid: 4566e1a31ad66a84897225e4b843ba6c,
         type: 2}
       propertyPath: lightAnimator
@@ -42305,6 +42295,16 @@ Prefab:
       propertyPath: lamps
       value: 
       objectReference: {fileID: 1939009198}
+    - target: {fileID: 114259548158995310, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: currencyText
+      value: 
+      objectReference: {fileID: 1037460324}
+    - target: {fileID: 114699383604780398, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: messageList
+      value: 
+      objectReference: {fileID: 39656829}
     - target: {fileID: 1512734754738174, guid: 4566e1a31ad66a84897225e4b843ba6c, type: 2}
       propertyPath: m_Name
       value: Main Scene Controller
