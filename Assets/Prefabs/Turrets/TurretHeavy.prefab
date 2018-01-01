@@ -384,6 +384,7 @@ MonoBehaviour:
   damage: 80
   range: 100
   spread: 20
+  HP: 200
   rangeCylinder: {fileID: 1196576473221484}
 --- !u!114 &114226277723246956
 MonoBehaviour:

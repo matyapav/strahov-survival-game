@@ -27,9 +27,9 @@ GameObject:
   - component: {fileID: 208793404070230696}
   - component: {fileID: 65976814777323902}
   - component: {fileID: 114969145484836466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HedgehogPrefab
-  m_TagString: Untagged
+  m_TagString: Prekazka
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949343397470300}
   m_LocalRotation: {x: -0.7071067, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -34.8, y: -0.2, z: 79.1}
+  m_LocalPosition: {x: -91.217415, y: -0.18520615, z: -142.31796}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}

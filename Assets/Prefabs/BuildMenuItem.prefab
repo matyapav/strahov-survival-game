@@ -454,7 +454,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114421959084855464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8bf7102a8821b40a48d8c152bc1b4ce9,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114333021245451558
@@ -609,12 +621,12 @@ MonoBehaviour:
   infoPanelInfoText: {fileID: 114076334140525804}
   image: {fileID: 114362098250292814}
   buyButton: {fileID: 114316733388840230}
-  price: 250
-  objectName: "Lep\u0161ej\u0161\xED obst\xE1kl"
-  infoText: "Dur\xE1bilita:  <b>400</b>\nDam\xE1\u017E: <b>Prd - Prd</b>\nLze urobit
-    lep\u0161\xED: <b>Jasn\xE9</b>\n "
-  imageSource: {fileID: 21300000, guid: 6d00f83aa90491240bbc9b2f9d12bbbf, type: 3}
-  obstaclePrefab: {fileID: 1702146487033730, guid: 402a1aa61b6b8426d892b20051ced6f7,
+  price: 12
+  objectName: Surprise barrel
+  infoText: Another empty barrel which serves as bait for students. But ... is this
+    barrel really empty?
+  imageSource: {fileID: 21300000, guid: 0d441030a3e0234439c79416687d1410, type: 3}
+  obstaclePrefab: {fileID: 1416805399143124, guid: dff21a91312514554add3b0991d369b5,
     type: 2}
 --- !u!114 &114518355729684134
 MonoBehaviour:
