@@ -21,7 +21,9 @@ public class ZombieNavigationController : MonoBehaviour
     private ZombieStateMachine zombieStateMachine;
     private NavMeshAgent agent;
 
-    public BlokAtackTarget target;
+    public BlokAtackTarget blok_target;
+    public IDamageable<float> other_target_damageable;
+    public Vector3 other_target_position;
 
     private Rigidbody rb;
     private float nextAttackTime = 0.0f;
@@ -33,7 +35,7 @@ public class ZombieNavigationController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
 
-        target = new BlokAtackTarget();
+        blok_target = new BlokAtackTarget();
 
         rb.isKinematic = false;
 
@@ -68,11 +70,11 @@ public class ZombieNavigationController : MonoBehaviour
             return;
         }
 
-        target.Assign(newNavTarget);
+        blok_target.Assign(newNavTarget);
 
         agent.isStopped = false;
         rb.isKinematic = false;
-        agent.SetDestination(target.nav_target.position);
+        agent.SetDestination(blok_target.nav_target.position);
 
         zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
@@ -96,22 +98,35 @@ public class ZombieNavigationController : MonoBehaviour
         }
         else if (zombieStateMachine.IsDrinking() || zombieStateMachine.IsAttacking())
         {
-            // Do checking
-            if (target.target_blok == null) {
-                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
-                return;
+            IDamageable<float> damagable_attack_target = null;
+            Vector3 lookTarget = Vector3.zero;
+
+            // Attacking blok
+            if(blok_target != null) {
+                if (blok_target.damageable.Dead()) {
+                    zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                    return;
+                }
+
+                damagable_attack_target = blok_target.damageable;
+                lookTarget = blok_target.hitpoint;
             }
+            else if(other_target_damageable != null) {
+                if (other_target_damageable.Dead()) {
+                    zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                    return;
+                }
 
-            IDamageable<float> damagable_attack_target = target.damageable;
-
-            if (damagable_attack_target == null) {
+                damagable_attack_target = other_target_damageable;
+                lookTarget = other_target_position;
+            }
+            else {
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                 return;
             }
 
             // Rotate towards target
             // TODO: use hitpoint
-            Vector3 lookTarget = target.hitpoint;
             lookTarget.y = transform.position.y;
             var targetRotation = Quaternion.LookRotation(lookTarget - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
@@ -122,7 +137,11 @@ public class ZombieNavigationController : MonoBehaviour
                 damagable_attack_target.Damage(damage);
 
                 if (damagable_attack_target.Dead()) {
-                    target.Erase();
+                    if (other_target_damageable == null) {
+                        blok_target.Erase();
+                    } else {
+                        other_target_damageable = null;
+                    }
 
                     zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
                     return;
@@ -170,12 +189,20 @@ public class ZombieNavigationController : MonoBehaviour
             if (IsAttackableTag(ghit)) {
 
                 IDamageable<float> id = GetDamageableFromGO(ghit);
+                Debug.Log("Hit");
 
                 if (id == null) {
                     Debug.LogError("Something went horribly wrong. Zombie wants to attack an target that does not implement IDamageable.");
                 }
 
-                target.Assign(ghit, hit.point);
+                if (ghit.tag == "Blok") {
+                    blok_target.Assign(ghit, hit.point);
+                }
+                else {
+                    other_target_damageable = id;
+                }
+
+
 
                 // Set to drinking if drinking target
                 if (IsDrinkAttackableTag(ghit)) {

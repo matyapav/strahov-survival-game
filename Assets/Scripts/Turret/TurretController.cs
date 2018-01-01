@@ -64,6 +64,7 @@ public class TurretController : MonoBehaviour, IDamageable<float> {
 
                     if(!z.IsDying()) {
                         SeekTarget(g.transform);
+                        break;
                     }
                 }
             }
