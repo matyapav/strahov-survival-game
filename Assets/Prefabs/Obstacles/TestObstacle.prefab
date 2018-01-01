@@ -23,11 +23,11 @@ GameObject:
   - component: {fileID: 65687210277329562}
   - component: {fileID: 23452967899238418}
   - component: {fileID: 208468115281520142}
-  - component: {fileID: 114776376445288340}
   - component: {fileID: 114956282646864436}
+  - component: {fileID: 114864996722630702}
   m_Layer: 2
   m_Name: TestObstacle
-  m_TagString: Untagged
+  m_TagString: Prekazka
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114776376445288340
+--- !u!114 &114864996722630702
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,20 +104,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1702146487033730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7603d6fad1adbd14f9f8953982cf02d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 69a9d602dbafb49be82249eff8501717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar: {fileID: 0}
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: HitpointsController+ValueEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  startValue: 100
-  startAtMaximum: 1
-  maxValue: 400
-  minValue: 0
-  minimumReached: 0
+  hitpoints: 10
 --- !u!114 &114956282646864436
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,10 @@ public class DestroyableThing : MonoBehaviour, IDamageable<float>{
 
     public void Damage (float dmg) {
         hitpoints -= dmg;
+
+        if(Dead()) {
+            Destroy();
+        }
     }
 
     public bool Dead () {
