@@ -15185,13 +15185,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1194986847623132, guid: 7283ed5ea6b64e1459a0543959a487e4,
     type: 2}
   m_PrefabInternal: {fileID: 1807525328}
---- !u!81 &526660926
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 526660919}
-  m_Enabled: 1
 --- !u!1 &529328785
 GameObject:
   m_ObjectHideFlags: 0
