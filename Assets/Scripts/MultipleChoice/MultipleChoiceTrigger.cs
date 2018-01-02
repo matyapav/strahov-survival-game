@@ -36,10 +36,14 @@ public class MultipleChoiceTrigger : MonoBehaviour {
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
                 if (hit.collider.gameObject == this.gameObject) {
-                    multipleChoiceControllerInstance.ShowPanel(transform.position);                    
-                } else
-                {
+                    multipleChoiceControllerInstance.ShowPanel(transform.position);
+                    placing = true;
+                } else {
                     multipleChoiceControllerInstance.HidePanel();
+                    if (placing){
+                        MainUISoundManager.Instance.PlaySound("blop");
+                        placing = false;
+                    }
                 }
 
             }
@@ -57,6 +61,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 0f, 1f);
 
+        MainUISoundManager.Instance.PlaySound("repair");
         MainUISoundManager.Instance.PlaySound("blop");
     }
 
@@ -74,6 +79,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         Material mat = gameObject.GetComponent<Renderer>().material;
         mat.color = new Color(0f, 1f, 0f);
 
+        MainUISoundManager.Instance.PlaySound("upgrade");
         MainUISoundManager.Instance.PlaySound("blop");
     }
 
@@ -81,6 +87,7 @@ public class MultipleChoiceTrigger : MonoBehaviour {
     {
         Destroy(gameObject);
 
+        MainUISoundManager.Instance.PlaySound("delete_item");
         MainUISoundManager.Instance.PlaySound("blop");
     }
 
