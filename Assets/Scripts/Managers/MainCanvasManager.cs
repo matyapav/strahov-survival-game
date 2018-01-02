@@ -136,6 +136,7 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     }
 
     public void ShowGameOver() {
+        MainUISoundManager.Instance.PlaySound("game_over");
         GameOver.SetActive(true);
         GameOver.GetComponentInChildren<Text>().text = "There is no life without beer. Wanna try again?\nYou have fought bravely and survived for " 
             + DayNightController.Instance.GetDayCount() +
