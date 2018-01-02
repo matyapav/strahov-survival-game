@@ -54,6 +54,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     private void Die () {
         selectDeadSound();
         deadSound.Play();
+		// This prevents the dead zombie from blocking the player when picking up máslo
+		GetComponent<CapsuleCollider> ().enabled = false;
         // Remove the zombie from the MainGameObjectManager 
         MainObjectManager.Instance.RemoveZombie(gameObject);
 

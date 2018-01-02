@@ -9,7 +9,7 @@ public class Blok : MonoBehaviour, IDamageable<float> {
 
     private HitpointsController hpControl;
     private BlockTargets blockTargets;
-    private AudioSource audio;
+    private AudioSource blockAudio;
     public AudioClip swallowing;
     public AudioClip destroyed;
 
@@ -19,13 +19,13 @@ public class Blok : MonoBehaviour, IDamageable<float> {
         blockTargets = GetComponent<BlockTargets>();
         hpControl.hpBar.SetBarName(blockName);
         hpControl.onMinimumReached += DestroyBlok;
-        audio = GetComponent<AudioSource>();
+		blockAudio = GetComponent<AudioSource>();
     }
 
     public void Damage (float damage) {
         hpControl.DescreaseValue(damage);
-        audio.clip = swallowing;
-        audio.Play();
+		blockAudio.clip = swallowing;
+		blockAudio.Play();
     }
 
     public bool Dead () {
@@ -46,8 +46,11 @@ public class Blok : MonoBehaviour, IDamageable<float> {
     public void DestroyBlok()
     {
         if (gameObject.activeInHierarchy) {
-            audio.clip = destroyed;
-            audio.Play();
+			blockAudio.clip = destroyed;
+			AudioSource phantomAudio = (AudioSource)GameObject.Instantiate (blockAudio);
+			phantomAudio.clip = destroyed;
+			phantomAudio.Play ();
+			Destroy (phantomAudio, phantomAudio.clip.length);
             gameObject.SetActive(false);
             MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
             MainObjectManager.Instance.bloky.Remove(gameObject);
