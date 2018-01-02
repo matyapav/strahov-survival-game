@@ -42,6 +42,7 @@ public class BuildMenuItem : MonoBehaviour {
             ObstaclePlacer.Instance.SetObstacle(obstaclePrefab, price);
         }
         else {
+            MainUISoundManager.Instance.PlaySound("no_butter");
             MessageController.Instance.AddMessage("You cannot afford " + objectName + " !" , 3f, Color.red);
         }
     }
