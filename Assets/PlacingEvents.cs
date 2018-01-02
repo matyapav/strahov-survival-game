@@ -19,7 +19,7 @@ public class PlacingEvents : MonoBehaviour {
 			onBeginPlacing.Invoke();
 			placing = true;
 			placed = false;
-		}
+        }
 	}
 
 	public void InvokeOnPlaced(){
@@ -27,7 +27,8 @@ public class PlacingEvents : MonoBehaviour {
 			onPlaced.Invoke();
 			placing = false;
 			placed = true;
-		}
+            MainUISoundManager.Instance.PlaySound("placed");
+        }
 	}
 
 }
