@@ -25,6 +25,13 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         zombies_wawes = new List<KeyValuePair<int, List<GameObject>>>();
     }
 
+    // Exit the game if there is no block to be attacked
+    private void LateUpdate() {
+        if (GetRandomActiveBlock() == null) {
+            MainCanvasManager.Instance.ShowGameOver();
+        }
+    }
+
     // Returns a random blok from the array
     public GameObject GetRandomActiveBlock()
     {

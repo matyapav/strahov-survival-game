@@ -99,9 +99,9 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
     {
         if (currencyText != null) {
             if (currentValue > 10000) {
-                currencyText.text = (Math.Round(currentValue / 1000, 2) + " Kg");
+                currencyText.text = (Math.Round(currentValue / 1000, 1) + " Kg");
             } else {
-                currencyText.text = Math.Round(currentValue, 2).ToString() + " g";
+                currencyText.text = (int)currentValue + " g";
             }
         }
     }

@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masloPrefab: {fileID: 1561309529895774, guid: 9e48392d16c604824aece7435368a03b,
     type: 2}
-  SpawnChance: 0.25
+  SpawnChance: 0.4
 --- !u!114 &114369703596920120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1347,7 +1347,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnDying:
+  OnDyingStart:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
@@ -1374,12 +1374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b886bd98dd2374a02b6932382270e985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2.7
-  stoppingDistance: 1
-  angleTurnLimit: 60
   damage: 5
   attackRange: 5
-  navigation_target: {fileID: 0}
 --- !u!136 &136485024942365428
 CapsuleCollider:
   m_ObjectHideFlags: 1

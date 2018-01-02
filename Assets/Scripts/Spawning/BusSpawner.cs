@@ -8,7 +8,6 @@ public class BusSpawner : MonoBehaviour {
 
     public string busName;
     public GameObject[] ZombiePrefabs;
-    public int numberOfZombies = 10;
     private Animator animator;
     public float timeBetweenSpawns = 0.75f;
     
@@ -50,7 +49,9 @@ public class BusSpawner : MonoBehaviour {
 
         // Invoke the Spawning of the zombie
         // TODO: Add wave id info 
-        StartCoroutine(SpawnZombies(numberOfZombies, timeBetweenSpawns, -1));
+        int number_of_zombies = DayNightController.Instance.NumberOfZombiesInWave();
+        Debug.Log("Spawning " + number_of_zombies + " zombies.");
+        StartCoroutine(SpawnZombies(number_of_zombies, timeBetweenSpawns, -1));
     }
 
     // Spawn a zombie

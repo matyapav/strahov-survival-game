@@ -16,6 +16,8 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
     public GameObject BuildMenu;
     public GameObject BuildingsInfoMenu;
     public GameObject EndDay;
+    public GameObject ReloadUI;
+    public GameObject GameOver;
 
     private void Start()
     {
@@ -26,6 +28,18 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
         BuildMenu.SetActive(true);
         BlackMarketMenu.SetActive(false);
         BuildingsInfoMenu.SetActive(false);
+        GameOver.SetActive(false);
+    }
+
+    // TODO delete from production
+    private void Update()
+    {
+        if (MainDebugManager.Instance.DEBUG) {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShowGameOver();
+            }
+        }
     }
 
     private void OnEnable()
@@ -111,5 +125,21 @@ public class MainCanvasManager : MonoBehaviourSingleton<MainCanvasManager> {
 
     public void ResumeTimescale() {
         Time.timeScale = 1f;
+    }
+
+    public void HideReloadUI() {
+        ReloadUI.SetActive(false);
+    }
+
+    public void ShowReloadUI() {
+        ReloadUI.SetActive(true);
+    }
+
+    public void ShowGameOver() {
+        GameOver.SetActive(true);
+        GameOver.GetComponentInChildren<Text>().text = "There is no life without beer. Wanna try again?\nYou have fought bravely and survived for " 
+            + DayNightController.Instance.GetDayCount() +
+            " days. ";
+        PauseTimescale();
     }
 }

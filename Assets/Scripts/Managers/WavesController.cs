@@ -7,8 +7,6 @@ public class WavesController : MonoBehaviourSingleton<WavesController>
 {
     [Header("Wave spawning")]
     public BusSpawner[] buses;
-    public int numberOfWavesPerNight = 3;
-    public float secondsBetweenSpawns = 90f;
 
     [Header("User interface")]
     public GameObject waveUI;
@@ -79,9 +77,13 @@ public class WavesController : MonoBehaviourSingleton<WavesController>
             yield return new WaitForSeconds(1);
         }
 
-        // After start trying to switch to day
+        // After spaning start trying to switch to day
         while (true) {
             if (wave_busses_left >= wave_busses_target && MainObjectManager.Instance.CountZombiesInScene() == 0) {
+                // Some time for player to realise its end of the level
+                yield return new WaitForSeconds(5);
+
+                // Switch to day
                 MainEventManager.Instance.SwitchDayPhaseEventInvoke();
                 break;
             }

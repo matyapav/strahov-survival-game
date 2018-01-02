@@ -118,5 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f833b589aca084fef8a4e234152b1265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: 10
-  maxValue: 100
+  minValue: 20
+  maxValue: 60
+  minimum_time_spawned: 5
+  maximum_time_spawned: 12

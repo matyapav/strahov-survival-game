@@ -10,8 +10,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     public CameraDayController cameraMovementDay;
     public CameraNightController cameraMovementNight;
 
-    public GameObject[] onlyDayObjects;
-    public GameObject[] onlyNightObjects;
+    //public GameObject[] onlyDayObjects;
+    //public GameObject[] onlyNightObjects;
 
     private DayNightPhase phase = DayNightPhase.DAY;
     private int dayCounter = 0;
@@ -125,10 +125,14 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     private int NumberOfWavesInCurrentDay() {
-        return dayCounter * 2;
+        return dayCounter;
     }
 
-    private int NumberOfZombiesInWave() {
+    public int NumberOfZombiesInWave() {
         return dayCounter * 1 + Random.Range(0, dayCounter);
+    }
+
+    public int GetDayCount() {
+        return dayCounter;
     }
 }
