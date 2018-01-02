@@ -14925,7 +14925,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e8b5f4962de20b40b1b10995460def6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c810daf854a927c478882512ac887d47, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.75
   m_Pitch: 1
@@ -17953,6 +17953,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1861962750543516, guid: 968dd81f5c2783c4dbe261ee365c0250,
         type: 2}
+    - target: {fileID: 114457093833729194, guid: 4006650b5f2a6524d98dcb0c20e038ed,
+        type: 2}
+      propertyPath: spawn2
+      value: 
+      objectReference: {fileID: 8300000, guid: 96d387f557a31d9429e9d955240f0dfc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4006650b5f2a6524d98dcb0c20e038ed, type: 2}
   m_IsPrefabParent: 0
@@ -43241,6 +43246,31 @@ Prefab:
       propertyPath: startValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114797709273650692, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: spawn1
+      value: 
+      objectReference: {fileID: 8300000, guid: e159992aeb16eec4c9054d6108bda6c1, type: 3}
+    - target: {fileID: 114797709273650692, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: spawn2
+      value: 
+      objectReference: {fileID: 8300000, guid: 96d387f557a31d9429e9d955240f0dfc, type: 3}
+    - target: {fileID: 114797709273650692, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: spawn3
+      value: 
+      objectReference: {fileID: 8300000, guid: a021469683580574c97f56655d03cd2b, type: 3}
+    - target: {fileID: 114797709273650692, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: spawn4
+      value: 
+      objectReference: {fileID: 8300000, guid: 758aeece150166d4eb1c4017132bfe89, type: 3}
+    - target: {fileID: 114797709273650692, guid: 4566e1a31ad66a84897225e4b843ba6c,
+        type: 2}
+      propertyPath: spawn5
+      value: 
+      objectReference: {fileID: 8300000, guid: 663c9cf07d6d3434c84e9ed22b200c94, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4566e1a31ad66a84897225e4b843ba6c, type: 2}
   m_IsPrefabParent: 0
@@ -45994,8 +46024,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235517692}
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.93030655
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

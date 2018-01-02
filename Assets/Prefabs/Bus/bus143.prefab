@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 95149270665029054}
   - component: {fileID: 65859417992965960}
   - component: {fileID: 114457093833729194}
+  - component: {fileID: 82638826900885010}
   m_Layer: 0
   m_Name: bus143
   m_TagString: Untagged
@@ -162,6 +163,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 242.74069, y: 36.4398, z: 33.96081}
   m_Center: {x: 0, y: 18.219904, z: -0.0000019073486}
+--- !u!82 &82638826900885010
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420999804372786}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95149270665029054
 Animator:
   serializedVersion: 3
@@ -265,6 +346,10 @@ MonoBehaviour:
   busName: 143
   ZombiePrefabs:
   - {fileID: 1001479585467826, guid: 05b9372baf2ec4141a26c4fb82ae9738, type: 2}
-  - {fileID: 1861962750543516, guid: 968dd81f5c2783c4dbe261ee365c0250, type: 2}
-  numberOfZombies: 15
+  - {fileID: 0}
   timeBetweenSpawns: 1.5
+  spawn1: {fileID: 8300000, guid: e159992aeb16eec4c9054d6108bda6c1, type: 3}
+  spawn2: {fileID: 8300000, guid: 96d387f557a31d9429e9d955240f0dfc, type: 3}
+  spawn3: {fileID: 8300000, guid: a021469683580574c97f56655d03cd2b, type: 3}
+  spawn4: {fileID: 8300000, guid: 758aeece150166d4eb1c4017132bfe89, type: 3}
+  spawn5: {fileID: 8300000, guid: 663c9cf07d6d3434c84e9ed22b200c94, type: 3}

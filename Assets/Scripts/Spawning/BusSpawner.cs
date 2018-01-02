@@ -10,11 +10,20 @@ public class BusSpawner : MonoBehaviour {
     public GameObject[] ZombiePrefabs;
     private Animator animator;
     public float timeBetweenSpawns = 0.75f;
-    
+
+    private AudioSource spawnSound;
+
+    public AudioClip spawn1;
+    public AudioClip spawn2;
+    public AudioClip spawn3;
+    public AudioClip spawn4;
+    public AudioClip spawn5;
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        spawnSound = GetComponent<AudioSource>();
     }
 
     public void Arrive()
@@ -42,9 +51,6 @@ public class BusSpawner : MonoBehaviour {
 
 
     public void SpawnWave () {
-        // Play the sound
-        MainUISoundManager.Instance.PlaySound("spawn_horde");
-
         MainEventManager.Instance.OnBusArrived.Invoke();
 
         // Invoke the Spawning of the zombie
@@ -58,6 +64,10 @@ public class BusSpawner : MonoBehaviour {
     IEnumerator SpawnZombies(int number, float waittime, int wave_id)
     {
         for (int i = 0; i < number; i++) {
+            // get random sound and play it
+            selectSpawnSound();
+            spawnSound.Play();
+
             // Get a random target
             GameObject random_block = MainObjectManager.Instance.GetRandomActiveBlock();
 
@@ -100,5 +110,29 @@ public class BusSpawner : MonoBehaviour {
 
         // Invoke the event in the EventManager
         MainEventManager.Instance.OnBusLeaving.Invoke();
+    }
+
+    private void selectSpawnSound()
+    {
+        int randomInt = UnityEngine.Random.Range(0, 4);
+
+        switch (randomInt)
+        {
+            case 0:
+                spawnSound.clip = spawn1;
+                break;
+            case 1:
+                spawnSound.clip = spawn2;
+                break;
+            case 2:
+                spawnSound.clip = spawn3;
+                break;
+            case 3:
+                spawnSound.clip = spawn4;
+                break;
+            case 4:
+                spawnSound.clip = spawn5;
+                break;
+        }
     }
 }
