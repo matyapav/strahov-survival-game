@@ -8,6 +8,12 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     private ZombieStateMachine zombieStateMachine;
     private AudioSource deadSound;
 
+    public AudioClip dead1;
+    public AudioClip dead2;
+    public AudioClip dead3;
+    public AudioClip dead4;
+    public AudioClip dead5;
+
     public float health = 100;
     private float _startingHealth;
 
@@ -46,6 +52,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     }
 
     private void Die () {
+        selectDeadSound();
         deadSound.Play();
         // Remove the zombie from the MainGameObjectManager 
         MainObjectManager.Instance.RemoveZombie(gameObject);
@@ -55,5 +62,27 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
         // Update the WaveController
         WavesController.Instance.DecreaseWaveHealthAndCount(health);
+    }
+
+    private void selectDeadSound(){
+        int randomInt = Random.Range(0, 4);
+
+        switch (randomInt){
+            case 0:
+                deadSound.clip = dead1;
+                break;
+            case 1:
+                deadSound.clip = dead2;
+                break;
+            case 2:
+                deadSound.clip = dead3;
+                break;
+            case 3:
+                deadSound.clip = dead4;
+                break;
+            case 4:
+                deadSound.clip = dead5;
+                break;
+        }
     }
 }
