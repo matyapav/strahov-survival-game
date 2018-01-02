@@ -6,6 +6,7 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour, IDamageable<float> {
 
     private ZombieStateMachine zombieStateMachine;
+    private AudioSource deadSound;
 
     public float health = 100;
     private float _startingHealth;
@@ -19,6 +20,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     {
         _startingHealth = health;
         zombieStateMachine = GetComponent<ZombieStateMachine>();
+        deadSound = GetComponent<AudioSource>();
         zombieStateMachine.OnDyingStart.AddListener(Die);
     }
 
@@ -29,8 +31,9 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
         }
 
         if (health - damage <= 0) {
-            if(!Dead()) 
+            if (!Dead()){
                 zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Dying;
+            }
         }
         else {
             health -= damage;
@@ -43,6 +46,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable<float> {
     }
 
     private void Die () {
+        deadSound.Play();
         // Remove the zombie from the MainGameObjectManager 
         MainObjectManager.Instance.RemoveZombie(gameObject);
 
