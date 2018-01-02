@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 208420099506022720}
   - component: {fileID: 65128228256208656}
   - component: {fileID: 114109197931059908}
+  - component: {fileID: 114395051477926296}
   m_Layer: 8
   m_Name: BarrelPrefab
   m_TagString: Prekazka
@@ -136,6 +137,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114395051477926296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484866413708058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
+    type: 2}
+  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!114 &114566824733952320
 MonoBehaviour:
   m_ObjectHideFlags: 1

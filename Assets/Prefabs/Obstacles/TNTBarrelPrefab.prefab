@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 208351995773724364}
   - component: {fileID: 114694680072962506}
   - component: {fileID: 65300454493456878}
+  - component: {fileID: 114966108636538720}
   m_Layer: 8
   m_Name: TNTBarrelPrefab
   m_TagString: Prekazka
@@ -614,6 +615,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114966108636538720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735566047972320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0f2a9f56395c340bffff3d569cf768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleChoiceBuilder: {fileID: 114636703911314124, guid: ad5ef2988a18ba846baf77a504c705cc,
+    type: 2}
+  backGroundImage: {fileID: 21300000, guid: 1c1968d9dd115f741ba4b8394f77e064, type: 3}
 --- !u!208 &208351995773724364
 NavMeshObstacle:
   m_ObjectHideFlags: 1

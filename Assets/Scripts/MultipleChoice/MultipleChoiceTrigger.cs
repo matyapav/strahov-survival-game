@@ -10,7 +10,6 @@ public class MultipleChoiceTrigger : MonoBehaviour {
     protected MultipleChoiceController multipleChoiceControllerInstance;
     private bool active = false;
     private bool placing = false;
-    private bool isShow = false;
 
     protected delegate void TriggerStatusChange();
 
@@ -25,29 +24,27 @@ public class MultipleChoiceTrigger : MonoBehaviour {
                                                                .AddOnThirdButtonDownAction(Upgrade)
                                                                .AddOnFourthButtonDownAction(Destroy)
                                                                .Build(transform);
-
-        GetComponent<PlacingEvents>().onBeginPlacing.AddListener(() => Activate(false));
-        GetComponent<PlacingEvents>().onPlaced.AddListener(() => Activate(true));
+        PlacingEvents placingEvents = GetComponent<PlacingEvents>();
+        if(placingEvents != null) {
+            GetComponent<PlacingEvents>().onBeginPlacing.AddListener(() => Activate(false));
+            GetComponent<PlacingEvents>().onPlaced.AddListener(() => Activate(true));
+        }
 	}
     void Update () {
         if (active && Input.GetMouseButtonDown(1)){
-            if (isShow){
-                MainUISoundManager.Instance.PlaySound("blop");
-                isShow = false;
-            }
-
             RaycastHit hit;
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f))
             {
                 if (hit.collider.gameObject == this.gameObject) {
-                    multipleChoiceControllerInstance.ShowPanel(transform.position);
-                    isShow = true;
-                } else {
+                    multipleChoiceControllerInstance.ShowPanel(transform.position);                    
+                } else
+                {
                     multipleChoiceControllerInstance.HidePanel();
                 }
+
             }
         }
-    }
+	}
 
     public void Activate(bool a)
     {
@@ -61,7 +58,6 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         mat.color = new Color(0f, 0f, 1f);
 
         MainUISoundManager.Instance.PlaySound("blop");
-        MainUISoundManager.Instance.PlaySound("repair");
     }
 
     void Move()
@@ -79,7 +75,6 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         mat.color = new Color(0f, 1f, 0f);
 
         MainUISoundManager.Instance.PlaySound("blop");
-        MainUISoundManager.Instance.PlaySound("upgrade");
     }
 
     void Destroy()
@@ -87,7 +82,6 @@ public class MultipleChoiceTrigger : MonoBehaviour {
         Destroy(gameObject);
 
         MainUISoundManager.Instance.PlaySound("blop");
-        MainUISoundManager.Instance.PlaySound("delete_item");
     }
 
 }
