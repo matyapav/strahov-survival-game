@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
 
     private GameObject tempObstacle;
-    private Color tempObstacleMaterialBackupColor;
+    //private Color tempObstacleMaterialBackupColor;
     private RaycastHit hit;
     private float place_rotation = 0f;
     private bool canPlace = true;
@@ -41,7 +41,7 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
             if (!tempObstacle)
             {
                 tempObstacle = Instantiate(obstacle_prefab, hit.point, Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z));
-                tempObstacleMaterialBackupColor = tempObstacle.GetComponent<Renderer>().material.color;
+                //tempObstacleMaterialBackupColor = tempObstacle.GetComponent<Renderer>().material.color;
                     
             }
                 

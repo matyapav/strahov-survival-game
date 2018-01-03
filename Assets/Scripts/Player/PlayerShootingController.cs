@@ -18,7 +18,7 @@ public class PlayerShootingController : MonoBehaviour {
 	private float reloadTimer;
 	private int gunIndex = 0;
     private float timer;
-    private Ray shootRay;
+    private Ray shootRay = new Ray();
     private RaycastHit shootHit;
 	private int shootableLayer;
 	public GameObject reloadUI;

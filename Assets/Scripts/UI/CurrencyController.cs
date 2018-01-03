@@ -46,7 +46,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
             OnValueChanged(false);
             return true;
         }
-        else if (newValue <= minValue) {
+        else if (newValue < minValue) {
             return false;
         }
         else {
@@ -58,7 +58,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
     public bool DescreaseValue(float decrement) 
     {
-        if (currentValue - decrement <= minValue) {
+        if (currentValue - decrement < minValue) {
             return false;
         }
         else {
@@ -70,7 +70,7 @@ public class CurrencyController : MonoBehaviourSingleton<CurrencyController> {
 
     public bool CanDecrease(float decrement)
     {
-        if (currentValue - decrement <= minValue) {
+        if (currentValue - decrement < minValue) {
             return false;
         }
         return true;

@@ -15,7 +15,6 @@ public class BarController : MonoBehaviour {
     [Tooltip("After how many seconds without any change should the bar hide.")]
     public float secondsToHide = 3f;
 
-
     public delegate void OnMinimumReached();
 
     private string barName;
@@ -33,9 +32,9 @@ public class BarController : MonoBehaviour {
         this.maxValue = maxVal;
     }
 
-    public void SetMinValue(float minVal)
+	public void SetMinValue(float minVal)
     {
-        this.minValue = minVal;
+        minValue = minVal;
     }
 
     public void SetValue(float newValue)
