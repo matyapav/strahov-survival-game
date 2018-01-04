@@ -108,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1416805399143124}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -38.395412, y: -0.19881363, z: -113.90799}
+  m_LocalPosition: {x: -41.62008, y: -0.19881363, z: 9.25502}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4024837982367796}
@@ -398,7 +398,6 @@ MonoBehaviour:
   damage: 20
   range: 50
   spread: 20
-  HP: 100
   rangeCylinder: {fileID: 1760328065335368}
 --- !u!114 &114914311426858668
 MonoBehaviour:
@@ -408,63 +407,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1416805399143124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a3fa171ab91c1643aafe6f27212203c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBeginPlacing:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1760328065335368}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 114339211067713318}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onPlaced:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1760328065335368}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114339211067713318}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  hitpoints: 5
 --- !u!136 &136581654146642952
 CapsuleCollider:
   m_ObjectHideFlags: 1

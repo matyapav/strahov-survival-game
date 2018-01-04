@@ -122,11 +122,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4275362302148444}
   - component: {fileID: 95482557202912014}
-  - component: {fileID: 114889613879930706}
   - component: {fileID: 208351995773724364}
   - component: {fileID: 114694680072962506}
   - component: {fileID: 65300454493456878}
   - component: {fileID: 114966108636538720}
+  - component: {fileID: 114564226235126670}
   m_Layer: 8
   m_Name: TNTBarrelPrefab
   m_TagString: Prekazka
@@ -572,6 +572,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114564226235126670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735566047972320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3fa171ab91c1643aafe6f27212203c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 20
 --- !u!114 &114694680072962506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,27 +606,6 @@ MonoBehaviour:
   maxValue: 100
   minValue: 0
   minimumReached: 0
---- !u!114 &114889613879930706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735566047972320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onBeginPlacing:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onPlaced:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114966108636538720
 MonoBehaviour:
   m_ObjectHideFlags: 1

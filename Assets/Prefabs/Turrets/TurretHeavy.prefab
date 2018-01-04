@@ -63,7 +63,6 @@ GameObject:
   - component: {fileID: 114934566413043642}
   - component: {fileID: 114196402166270616}
   - component: {fileID: 208858237386983884}
-  - component: {fileID: 114182581642832070}
   m_Layer: 8
   m_Name: TurretHeavy
   m_TagString: Turret
@@ -355,18 +354,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114182581642832070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1315142544864832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69a9d602dbafb49be82249eff8501717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitpoints: 20
 --- !u!114 &114196402166270616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,7 +385,6 @@ MonoBehaviour:
   damage: 80
   range: 100
   spread: 20
-  HP: 200
   rangeCylinder: {fileID: 1196576473221484}
 --- !u!114 &114226277723246956
 MonoBehaviour:
@@ -421,63 +407,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315142544864832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a3fa171ab91c1643aafe6f27212203c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBeginPlacing:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1196576473221484}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114206250479506866}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onPlaced:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1196576473221484}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114206250479506866}
-        m_MethodName: Activate
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  hitpoints: 10
 --- !u!136 &136084339451251246
 CapsuleCollider:
   m_ObjectHideFlags: 1

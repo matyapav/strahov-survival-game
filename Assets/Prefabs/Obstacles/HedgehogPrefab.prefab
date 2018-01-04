@@ -156,19 +156,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949343397470300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad65e8ca0eeaf224ebef90b7fc106d4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a3fa171ab91c1643aafe6f27212203c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBeginPlacing:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onPlaced:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: PlacingEvents+PlacingEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  hitpoints: 20
 --- !u!208 &208793404070230696
 NavMeshObstacle:
   m_ObjectHideFlags: 1
