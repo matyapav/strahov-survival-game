@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Transform))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(NeighbourObjectTracker))]
-public class TurretController : MonoBehaviour, IDamageable<float> {
+public class TurretController : MonoBehaviour {
 
     [Tooltip("The target transform")]
     public Transform TargetTransform;
@@ -26,9 +26,6 @@ public class TurretController : MonoBehaviour, IDamageable<float> {
     [Tooltip("The widhth of the field of attack")]
     public float spread = 10f;
 
-    // TODO: do this better
-    public float HP = 100f;
-
     public GameObject rangeCylinder;
 
     private Transform TurretTop;
@@ -36,7 +33,7 @@ public class TurretController : MonoBehaviour, IDamageable<float> {
     private float lastTimeShot;         // used for the time delay
     private AudioSource audioSource;    // used to play tunes
     private NeighbourObjectTracker neighbourObjectTracker;
-    private bool active = false;
+    private bool active = true; // CHANGED
 
 	void Start () {
         // The nozzle flash
@@ -129,17 +126,5 @@ public class TurretController : MonoBehaviour, IDamageable<float> {
                 damageable.Damage(damage);    
             }
         }
-    }
-
-    public void Activate(bool a) {
-        active = a;
-    }
-
-    public bool Dead() {
-        return HP <= 0;
-    }
-
-    public void Damage(float dmg) {
-        HP -= dmg;
     }
 }
