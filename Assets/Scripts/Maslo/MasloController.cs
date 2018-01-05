@@ -13,14 +13,10 @@ public class MasloController : MonoBehaviour {
     private float _value;
     private float _alive_time;
 
-    private AudioSource masloAudio;
-
     private void Start()
     {
         _alive_time = Random.Range(minimum_time_spawned, maximum_time_spawned);
         _value = Random.Range(minValue, maxValue);
-
-		masloAudio = GetComponent<AudioSource>();
 
         Destroy(gameObject, _alive_time);
     }
@@ -28,8 +24,8 @@ public class MasloController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
-			masloAudio.Play();
-			Destroy (gameObject, masloAudio.clip.length);
+			MainUISoundManager.Instance.PlaySound("butter_picked", true);
+			Destroy (gameObject);
             CurrencyController.Instance.IncreaseValue(_value);
         }
     }
