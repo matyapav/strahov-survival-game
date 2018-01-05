@@ -97,6 +97,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
 
         MainCanvasManager.Instance.ShowBuildMenu();
         MainCanvasManager.Instance.ShowEndDayButton();
+        MainCanvasManager.Instance.HideReloadUI();
         ActivateProperObjectsAndScripts();
 
         switching = false;
