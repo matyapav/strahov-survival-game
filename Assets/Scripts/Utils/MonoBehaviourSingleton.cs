@@ -20,32 +20,13 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour
                 }
                 if (_instance == null)
                 {
-                    GameObject obj = new GameObject();
-                    obj.hideFlags = HideFlags.HideAndDontSave;
-                    _instance = obj.AddComponent<T>();
+                    // HACK: We dont need this (Matyáš)
+					//GameObject obj = new GameObject();
+                    //obj.hideFlags = HideFlags.HideAndDontSave;
+                    //_instance = obj.AddComponent<T>();
                 }
             }
             return _instance;
-        }
-    }
-}
-
-
-public class MonoBehaviourSingletonPersistent<T> : MonoBehaviour
-    where T : Component
-{
-    public static T Instance { get; private set; }
-
-    public virtual void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this as T;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 }

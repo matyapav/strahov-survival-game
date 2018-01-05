@@ -20,25 +20,30 @@ public class MainUISoundManager : MonoBehaviourSingleton<MainUISoundManager> {
 
     public void PlaySound(string key, bool forcePlay = false)
     {
-        foreach(AudioSourceWithKey aswk in sounds)
+        if (sounds != null)
         {
-            if(aswk.key == key && (forcePlay || !aswk.sound.isPlaying))
+            foreach (AudioSourceWithKey aswk in sounds)
             {
-                aswk.sound.Play();
-                return;
+                if (aswk.key == key && (forcePlay || !aswk.sound.isPlaying))
+                {
+                    aswk.sound.Play();
+                    return;
+                }
             }
         }
     }
 
     public void StopSound(string key)
     {
-        foreach (AudioSourceWithKey aswk in sounds)
-        {
-            if (aswk.key == key && aswk.sound.isPlaying)
-            {
-                aswk.sound.Stop();
-                return;
-            }
+        if(sounds != null) {         
+			foreach (AudioSourceWithKey aswk in sounds)
+			{
+				if (aswk != null && aswk.key == key && aswk.sound.isPlaying)
+				{
+					aswk.sound.Stop();
+					return;
+				}
+			}
         }
     }
 
