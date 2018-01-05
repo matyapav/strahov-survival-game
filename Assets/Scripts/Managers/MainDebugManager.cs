@@ -18,9 +18,20 @@ public class MainDebugManager : MonoBehaviourSingleton<MainDebugManager> {
 
     private void LateUpdate()
     {
-        if (_DEBUG != DEBUG) {
+        if (_DEBUG != DEBUG)
+        {
             _DEBUG = DEBUG;
             UpdateDebugGameObjects(DEBUG);
+        }
+
+        if (_DEBUG) {
+            if (MainDebugManager.Instance.DEBUG)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    MainCanvasManager.Instance.ShowGameOver();
+                }
+            }
         }
     }
 

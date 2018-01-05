@@ -12,8 +12,11 @@ public class InputHandler : MonoBehaviourSingleton<InputHandler> {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.B) && DayNightController.Instance.IsDay) {
-            Controls_Build.Invoke();
+        if (Input.GetKeyDown(KeyCode.B)) {
+            if (DayNightController.Instance.IsDay) {
+                // Controls_Build.Invoke();
+                BuildMenuController.Instance.Toggle();
+            }
         } 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Controls_Exit.Invoke();

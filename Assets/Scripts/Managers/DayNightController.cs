@@ -10,17 +10,10 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     public CameraDayController cameraMovementDay;
     public CameraNightController cameraMovementNight;
 
-    //public GameObject[] onlyDayObjects;
-    //public GameObject[] onlyNightObjects;
-
     private DayNightPhase phase = DayNightPhase.DAY;
     private int dayCounter = 0;
 
-    private void OnEnable()
-    {
-        // CRASHES unity for some reason
-        //MainEventManager.Instance.OnDaySwitchPhase.AddListener(_SwitchPhase);
-    }
+    public bool switching = false;
 
     // Get the current phase
     public DayNightPhase Phase 
@@ -37,7 +30,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     public void SwitchPhase() {
-        //MainEventManager.Instance.OnDaySwitchPhase.Invoke();
+        switching = true;
+        BuildMenuController.Instance.Hide();
         _SwitchPhase();
     }
 
@@ -81,6 +75,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         MainCanvasManager.Instance.HideEndDayButton();
         ActivateProperObjectsAndScripts();
 
+        switching = false;
+
         // Start spawning waves of zombies
         WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 0, 20);
     }
@@ -102,6 +98,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         MainCanvasManager.Instance.ShowBuildMenu();
         MainCanvasManager.Instance.ShowEndDayButton();
         ActivateProperObjectsAndScripts();
+
+        switching = false;
     }
 
     private void ActivateProperObjectsAndScripts()
