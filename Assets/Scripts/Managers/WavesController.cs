@@ -66,6 +66,11 @@ public class WavesController : MonoBehaviourSingleton<WavesController>
         {
             if (canSpawnNewWave)
             {
+                if (DayNightController.Instance.Phase == DayNightPhase.DAY) {
+                    Debug.LogError("A bus was trying to be spawned during the day");
+                    break;
+                }
+
                 // Make pause between spawns
                 if (wave_busses_dipatched != 0) {
                     yield return new WaitForSeconds(Random.Range(wait_lower, wait_upper));

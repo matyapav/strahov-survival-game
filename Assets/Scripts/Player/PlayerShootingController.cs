@@ -24,10 +24,16 @@ public class PlayerShootingController : MonoBehaviour {
 	public GameObject reloadUI;
 	public Image reloadProgressImage;
 	private bool reloading = false;
-    public Light flashlight; 
+    public Light flashlight;
 
-	// Use this for initialization
-	void Awake() {
+    private void OnEnable()
+    {
+        // Deactivate reload UI
+        MainEventManager.Instance.OnDaySwitchPhase.AddListener(DeactivateReloadUI);
+    }
+
+    // Use this for initialization
+    void Awake() {
 		shootableLayer = LayerMask.GetMask("Shootable");
 		Vector3 targetPos = target.transform.position;
 		targetPos.z = range - 5f;
@@ -37,12 +43,19 @@ public class PlayerShootingController : MonoBehaviour {
 	} 
 
 	void Update() {
-		HandleShooting();
-		if(reloading){
-			Reload();
-		}
-		// Update bullets count ui
-		bulletsCountUI.text = bullets+"/"+bulletsBackup;
+        if (DayNightController.Instance.Phase == DayNightPhase.NIGHT) {
+            HandleShooting();
+			
+			if(reloading) {
+				Reload();
+			}
+
+			// Update bullets count ui
+			bulletsCountUI.text = bullets+"/"+bulletsBackup;
+        }
+        else {
+            Debug.LogError("Player shooting controller is active during the day!");
+        }
 	}
 
 	void HandleShooting() {
@@ -66,13 +79,17 @@ public class PlayerShootingController : MonoBehaviour {
 		reloadTimer += Time.deltaTime;
 		reloadProgressImage.fillAmount = reloadTimer/reloadTime;
 		if (reloadTimer >= reloadTime){
-			reloadProgressImage.fillAmount = 0f;
-			reloadTimer = 0f;
-			reloadUI.SetActive(false);
-			bullets = bulletsBackup;
-			reloading = false;
+			DeactivateReloadUI();
 		}
 	}
+
+    private void DeactivateReloadUI() {
+        reloadProgressImage.fillAmount = 0f;
+        reloadTimer = 0f;
+        reloadUI.SetActive(false);
+        bullets = bulletsBackup;
+        reloading = false;
+    }
 
 	private void Shoot() 
     {
