@@ -380,10 +380,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 0}
-  rotationSpeed: 5
-  fireDelay: 2
-  damage: 80
-  range: 100
+  rotationSpeed: 2
+  fireDelay: 3
+  damage: 1000
+  range: 140
   spread: 20
   rangeCylinder: {fileID: 1196576473221484}
 --- !u!114 &114226277723246956

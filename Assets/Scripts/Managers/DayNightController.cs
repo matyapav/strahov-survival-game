@@ -128,7 +128,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     public int NumberOfZombiesInWave() {
-        return dayCounter * 1 + Random.Range(0, dayCounter);
+        return dayCounter * 1 + Random.Range(0, 2*dayCounter);
     }
 
     public int GetDayCount() {

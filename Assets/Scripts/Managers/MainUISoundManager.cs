@@ -13,10 +13,6 @@ public class MainUISoundManager : MonoBehaviourSingleton<MainUISoundManager> {
 
     public List<AudioSourceWithKey> sounds;
 
-    public void Awake()
-    {
-        Debug.Log(sounds);
-    }
 
     public void PlaySound(string key, bool forcePlay = false)
     {

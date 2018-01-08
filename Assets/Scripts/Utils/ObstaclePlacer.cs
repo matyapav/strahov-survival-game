@@ -40,7 +40,14 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
             //Handle creating obstacle in scene
             if (!tempObstacle)
             {
-                tempObstacle = Instantiate(obstacle_prefab, hit.point, Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z));
+                // Do not rotate the turret otherwise it will get screwed
+                if (obstacle_prefab.tag == "Turret") {
+                    tempObstacle = Instantiate(obstacle_prefab, hit.point, Quaternion.Euler(obstacleRotation.x, 0, obstacleRotation.z));
+                }
+                else {
+                    tempObstacle = Instantiate(obstacle_prefab, hit.point, Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z));
+                }
+
                 //tempObstacleMaterialBackupColor = tempObstacle.GetComponent<Renderer>().material.color;
                     
             }
@@ -61,24 +68,35 @@ public class ObstaclePlacer : MonoBehaviourSingleton<ObstaclePlacer> {
                     canPlace = true;
                     tempObstacle.GetComponent<Renderer>().material.color = tempObstacleMaterialBackupColor; 
                 }*/
-                if(tempObstacle.GetComponent<PlacingEvents>()){
+
+                if (tempObstacle.GetComponent<PlacingEvents>()){
                     tempObstacle.GetComponent<PlacingEvents>().InvokeOnBeginPlacing();
                 }
+
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
                     tempObstacle.transform.position = new Vector3(hit.point.x, 0f ,hit.point.z);
-                    tempObstacle.transform.rotation = Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z);   // Set the rotation
+                    // Set the rotation if the obstacle is not Turret
+                    if (tempObstacle.tag != "Turret") {
+                        tempObstacle.transform.rotation = Quaternion.Euler(obstacleRotation.x, place_rotation, obstacleRotation.z);
+                    }
                 }
+
+                // Update rotation
+                if(tempObstacle.tag != "Turret") {
+                    if (Input.GetKey(KeyCode.Q)) place_rotation -= 2f;
+                    if (Input.GetKey(KeyCode.E)) place_rotation += 2f;
+                }
+
                 //Handle placing
-                if (Input.GetKey(KeyCode.Q)) place_rotation -= 2f;
-                if (Input.GetKey(KeyCode.E)) place_rotation += 2f;
                 if (Input.GetKeyDown(KeyCode.Mouse1) && tempObstacle != null && canBeDeletedDuringPlacing)
                 {
                     Destroy(tempObstacle);
                     tempObstacle = null;
                     obstacle_prefab = null;
                 }
+
                 if (Input.GetKeyDown(KeyCode.Mouse0) && tempObstacle != null && canPlace)
                 {
                     if (CurrencyController.Instance.DescreaseValue(obstaclePrice)) { 
