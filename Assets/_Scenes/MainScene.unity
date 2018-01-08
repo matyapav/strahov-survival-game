@@ -7274,7 +7274,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 44912085
+  randomSeed: 881883168
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -34871,7 +34871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -108.099976, y: 31.600006}
+  m_AnchoredPosition: {x: -108.09961, y: 31.600098}
   m_SizeDelta: {x: 180.2, y: 48.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570417799
@@ -40842,7 +40842,7 @@ Prefab:
     - target: {fileID: 114503728025486454, guid: 4c12d0d35a8e74046ad941d06d7d2c9c,
         type: 2}
       propertyPath: price
-      value: 101
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 114503728025486454, guid: 4c12d0d35a8e74046ad941d06d7d2c9c,
         type: 2}
@@ -46248,8 +46248,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1235517692}
   m_HandleRect: {fileID: 1235517691}
   m_Direction: 0
-  m_Value: 0.49999884
-  m_Size: 0.9170083
+  m_Value: 0.49999982
+  m_Size: 0.7421717
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46435,7 +46435,7 @@ Prefab:
     - target: {fileID: 114503728025486454, guid: 4c12d0d35a8e74046ad941d06d7d2c9c,
         type: 2}
       propertyPath: price
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114316733388840230, guid: 4c12d0d35a8e74046ad941d06d7d2c9c,
         type: 2}
