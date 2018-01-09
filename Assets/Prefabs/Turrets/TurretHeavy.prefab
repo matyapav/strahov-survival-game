@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 0}
   rotationSpeed: 2
-  fireDelay: 5
+  fireDelay: 10
   damage: 1000
   range: 100
   spread: 20
