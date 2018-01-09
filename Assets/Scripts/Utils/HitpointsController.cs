@@ -34,7 +34,8 @@ public class HitpointsController : MonoBehaviour {
         }
     }
 
-    private float currentValue;
+    // TODO: Made public for debug
+    public float currentValue;
 
     private void Start()
     {

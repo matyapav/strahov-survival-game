@@ -33,7 +33,7 @@ public class Blok : MonoBehaviour, IDamageable<float> {
     }
 
     public Transform GetRandomTarget() {
-        if(!Dead()) {
+        if(!Dead() && gameObject.activeSelf) {
             Transform rtarget = blockTargets.GetRandomTarget();
             if (rtarget == null) {
                 Debug.LogError("Target on the block" + blockName + "is missing.");
@@ -47,13 +47,14 @@ public class Blok : MonoBehaviour, IDamageable<float> {
     {
         if (gameObject.activeInHierarchy) {
 			blockAudio.clip = destroyed;
-			AudioSource phantomAudio = (AudioSource)GameObject.Instantiate (blockAudio);
-			phantomAudio.clip = destroyed;
-			phantomAudio.Play ();
-			Destroy (phantomAudio, phantomAudio.clip.length);
-            gameObject.SetActive(false);
+			//AudioSource phantomAudio = (AudioSource)GameObject.Instantiate (blockAudio);
+			//phantomAudio.clip = destroyed;
+            //phantomAudio.Play ();
+            //Destroy (phantomAudio, phantomAudio.clip.length);
             MessageController.Instance.AddMessage(blockName + " was destroyed!!!", 2f, Color.cyan);
             MainObjectManager.Instance.bloky.Remove(gameObject);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

@@ -22,9 +22,10 @@ public class BlackMarketButton : MonoBehaviour {
     void OnEnable () {
         if(hitpointsController != null && hitpointsController.hpBar != null) {
             blackMarketBar.fillAmount = hitpointsController.hpBar.barValueImage.fillAmount;
-            if (hitpointsController.minimumReached || hitpointsController.GetCurrentValue() == hitpointsController.maxValue)
+            if (hitpointsController.minimumReached || hitpointsController.GetCurrentValue() - hitpointsController.maxValue < 0.1f)
             {
-                blackMarketBtn.interactable = false;
+                // TODO: FIX
+                //blackMarketBtn.interactable = false;
             }
         } else {
             blackMarketBar.fillAmount = 0;

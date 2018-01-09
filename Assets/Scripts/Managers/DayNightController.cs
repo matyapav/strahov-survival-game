@@ -11,7 +11,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     public CameraNightController cameraMovementNight;
 
     private DayNightPhase phase = DayNightPhase.DAY;
-    private int dayCounter = 0;
+    // TODO: Make private. Set public only for DEBUG
+    public int dayCounter = 0;
 
     public bool switching = false;
 
@@ -51,7 +52,8 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
 
         ScreenFader.Instance.FadeOut();
 
-        Invoke("InvokeFadeIn", 2f); //to hide camera change
+        // to hide camera change
+        Invoke("InvokeFadeIn", 2f); 
     }
 
     private void InvokeFadeIn() {
@@ -78,7 +80,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
         switching = false;
 
         // Start spawning waves of zombies
-        WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 0, 20);
+        WavesController.Instance.SpawnNWaves(NumberOfWavesInCurrentDay(), 0, 10);
     }
 
     public void StartDayPhase()
@@ -128,7 +130,7 @@ public class DayNightController : MonoBehaviourSingleton<DayNightController> {
     }
 
     public int NumberOfZombiesInWave() {
-        return dayCounter * 1 + Random.Range(0, 2*dayCounter);
+        return dayCounter * 1 + Random.Range(0, dayCounter);
     }
 
     public int GetDayCount() {

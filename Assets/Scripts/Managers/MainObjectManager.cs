@@ -38,7 +38,9 @@ public class MainObjectManager : MonoBehaviourSingleton<MainObjectManager> {
         List<GameObject> active_blocks = new List<GameObject>();
 
         foreach (var b in bloky) {
-            if(b.activeSelf) {
+            Blok blok = b.GetComponent<Blok>();
+
+            if(b.activeSelf && !blok.Dead()) {
                 active_blocks.Add(b);
             }
         }

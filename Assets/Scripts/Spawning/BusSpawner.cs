@@ -68,17 +68,6 @@ public class BusSpawner : MonoBehaviour {
             selectSpawnSound();
             spawnSound.Play();
 
-            // Get a random target
-            GameObject random_block = MainObjectManager.Instance.GetRandomActiveBlock();
-
-            if (random_block == null)
-            {
-                Debug.LogError("There is no active block left in the scene.");
-                break;
-            }
-
-            Transform target = random_block.transform;
-
             // Instantiate the zombie - random choose from zombie prefabs on
             int index = UnityEngine.Random.Range(0, ZombiePrefabs.Length);
             GameObject zombie = (GameObject)Instantiate(ZombiePrefabs[index], transform.position, Quaternion.Euler(0, 180, 0));
@@ -97,9 +86,6 @@ public class BusSpawner : MonoBehaviour {
             var zsm = zombie.GetComponent<ZombieStateMachine>();
             zsm.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
             zsm.OnSeekPath.Invoke();
-
-            // This should be done automatically 
-            // zombie.GetComponent<NavMeshAgent>().SetDestination(target.position);
 
             yield return new WaitForSeconds(waittime);
         }

@@ -64,11 +64,17 @@ public class ZombieNavigationController : MonoBehaviour
             return;
         }
 
+        if (!newNavTarget.activeSelf) {
+            Debug.LogError("The target of the zombie " + gameObject.name + "is not enabled");
+        }
+
+        ResumeNavigation();
         attack_target.Assign(newNavTarget);
 
-        agent.isStopped = false;
-        rb.isKinematic = false;
-        agent.SetDestination(attack_target.nav_target.position);
+        // Calculate the path
+        if (!agent.SetDestination(attack_target.nav_target.position)) {
+            Debug.Log("Zombie " + gameObject.name + "has failed to calculate a path");
+        }
 
         zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.Walking;
     }
@@ -81,6 +87,13 @@ public class ZombieNavigationController : MonoBehaviour
         }
         else if (zombieStateMachine.IsWalking())
         {
+            // TODO: resolve this, this is just quick fix
+            if (attack_target.target_gameObject == null || !attack_target.target_gameObject.activeSelf)
+            {
+                zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                return;
+            }
+
             // Do the attacking
             Ray front = new Ray(transform.position, transform.forward);
             Ray left = new Ray(transform.position, transform.forward - transform.right);
@@ -117,6 +130,7 @@ public class ZombieNavigationController : MonoBehaviour
                 {
                     attack_target.Erase();
                     zombieStateMachine.State = ZombieStateMachine.ZombieStateEnum.SeekPath;
+                    ResumeNavigation();
                     return;
                 }
             }
