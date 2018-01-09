@@ -395,8 +395,8 @@ MonoBehaviour:
   TargetTransform: {fileID: 0}
   rotationSpeed: 5
   fireDelay: 0.5
-  damage: 20
-  range: 50
+  damage: 5
+  range: 40
   spread: 20
   rangeCylinder: {fileID: 1760328065335368}
 --- !u!114 &114914311426858668
